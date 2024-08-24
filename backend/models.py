@@ -10,6 +10,10 @@ database = MySQLDatabase(
     password='Sergi@123'
 )
 
+# charfield texto
+# intergerfield numericos
+#  datafield fechas
+# AutoField
 
 class affiliates(Model): # creacion de tablas
     id = AutoField() # llamado a llave primaria
@@ -57,6 +61,10 @@ class create_appointment(Model):#confirmacion de elemento
     class Meta:
         database = database #confirmacion de elemento 
         db_table = 'create_appointment'
+class Person(Model):
+     id = AutoField()
+     fullname = CharField()
+     number_document = IntegerField(inque = True)
 if __name__ == '__main__':
         # Conectar a la base de datos
         database.connect()
