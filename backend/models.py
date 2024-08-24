@@ -10,20 +10,17 @@ database = MySQLDatabase(
     password='Sergi@123'
 )
 
-# charfield texto
-# intergerfield numericos
-#  datafield fechas
-# AutoField
 
-class affiliates(Model): # creacion de tablas
+class User(Model): # creacion de tablas
     id = AutoField() # llamado a llave primaria
     fullname = CharField(null=False)
     document_type = CharField(null=False)
     document_number = IntegerField(null=False)
     birthdate = DateField(null=False)
+    gender = CharField (null=False)
     email = CharField(index=True, unique=True, null=False)
-    first_number = CharField(null=False)
-    second_number = IntegerField()
+    Address = CharField(null=False)
+    phone_number = IntegerField(null=False)
     city = CharField(index=True, null=False)
     password = CharField(null=False)
     membership_type = CharField(null=False)
@@ -31,10 +28,10 @@ class affiliates(Model): # creacion de tablas
     
     class Meta:
         database = database
-        db_table = 'affiliates' #confirmacion de elemento 
+        db_table = 'user' #confirmacion de elemento 
 
-class admin(Model): # creacion de tablas 
-    id = AutoField()
+class admin(Model): # creación de tablas 
+    id = AutoField() # llamado a llave primaria
     fullname = CharField(null=False)
     document_type = CharField(null=False)
     document_number = IntegerField(null=False)
@@ -51,20 +48,85 @@ class admin(Model): # creacion de tablas
         database = database
         db_table = 'admin' #confirmacion de elemento 
 
-class create_appointment(Model):#confirmacion de elemento 
-    id = AutoField() 
-    create_by = CharField(null=False, index=True)
+class Database(Model):#Creación de tablas
+    id = AutoField() # llamado a llave primaria
+    appointment_type = CharField (null=False)
+    specialist = CharField (null=False)
+    time_date = CharField (null=False)
+    hospital_name = CharField (null=False)
+    clinic_name = CharField (null=False)
+    medications = CharField (null=False)
+    Clinical_history = CharField (null=False)
     create_date = DateField(default=datetime.date.today)
-    appointment_type = CharField(null=False)
     hour = IntegerField(null=False)
     
     class Meta:
         database = database #confirmacion de elemento 
-        db_table = 'create_appointment'
-class Person(Model):
-     id = AutoField()
+        db_table = 'database'
+
+class Specialist(Model):#Creación de tablas
+     id = AutoField() # llamado a llave primaria
      fullname = CharField()
      number_document = IntegerField(inque = True)
+     email = CharField(index=True, unique=True, null=False)
+     phone_number = IntegerField(null=False)
+     specialty = CharField(null=False)
+     create_date = DateField(default=datetime.date.today)
+     hour = IntegerField(null=False)
+
+     class Meta:
+          database = database #confirmacion de elemento
+          db_table = "Specialist"
+
+class Hospital(Model): #Creación de tabla
+     id = AutoField() # llamado a llave primaria
+     fullname = CharField(null=False)
+     city_id = CharField(null=False)
+     Address = CharField(null=False)
+     specialty = CharField(null=False)
+     email = CharField(index=True, unique=True, null=False)
+     phone_number = IntegerField(null=False)
+     ambulance = IntegerField(full=False)
+     
+
+     class Meta: 
+          database = database #confirmacion de elemento
+          db_table = "Hospital"
+
+
+class Health_Centers(Model): #Creación de tabla
+     id = AutoField() # llamado a llave primaria
+     fullname = CharField(null=False)
+     city_id = CharField(null=False)
+     Address = CharField(null=False)
+     specialty = CharField(null=False)
+     email = CharField(index=True, unique=True, null=False)
+     phone_number = IntegerField(null=False)
+     ambulance = IntegerField(full=False)
+     
+
+     class Meta: 
+          database = database #confirmacion de elemento
+          db_table = "Health_Centers"
+
+
+class Medications(Model): #Creación de tabla
+     id = AutoField() # llamado a llave primaria
+     geneic_name = CharField(null=False)
+     dose = CharField(null=False)
+     price = CharField(null=False)
+     contraindications = CharField(null=False)
+              
+
+     class Meta: 
+          database = database #confirmacion de elemento
+          db_table ="Medications"
+
+
+
+     
+
+
 if __name__ == '__main__':
         # Conectar a la base de datos
         database.connect()
