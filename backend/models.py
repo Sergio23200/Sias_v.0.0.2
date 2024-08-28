@@ -1,4 +1,5 @@
 from peewee import MySQLDatabase, AutoField, CharField, DateField, Model, IntegerField #importacion de librerias 
+import bcrypt
 import datetime # importacion para menjeo de fechas y hora
 
 # Configuración de la base de datos
@@ -10,12 +11,11 @@ database = MySQLDatabase(
     password='Sergi@123'
 )
 
-
-class User(Model): # creacion de tablas
+class Affiliate(Model): # creacion de tablas
     id = AutoField() # llamado a llave primaria
     fullname = CharField(null=False)
     document_type = CharField(null=False)
-    document_number = IntegerField(null=False)
+    document_number = IntegerField(null=False, unique=True)
     birthdate = DateField(null=False)
     gender = CharField (null=False)
     email = CharField(index=True, unique=True, null=False)
@@ -28,9 +28,9 @@ class User(Model): # creacion de tablas
     
     class Meta:
         database = database
-        db_table = 'user' #confirmacion de elemento 
+        db_table = 'Affiliate' #confirmacion de elemento 
 
-class admin(Model): # creación de tablas 
+class Admin(Model): # creación de tablas 
     id = AutoField() # llamado a llave primaria
     fullname = CharField(null=False)
     document_type = CharField(null=False)
@@ -46,7 +46,7 @@ class admin(Model): # creación de tablas
     
     class Meta:
         database = database
-        db_table = 'admin' #confirmacion de elemento 
+        db_table = 'Admin' #confirmacion de elemento 
 
 class Database(Model):#Creación de tablas
     id = AutoField() # llamado a llave primaria
@@ -67,7 +67,7 @@ class Database(Model):#Creación de tablas
 class Specialist(Model):#Creación de tablas
      id = AutoField() # llamado a llave primaria
      fullname = CharField()
-     number_document = IntegerField(inque = True)
+     number_document = IntegerField(unique=True)
      email = CharField(index=True, unique=True, null=False)
      phone_number = IntegerField(null=False)
      specialty = CharField(null=False)
@@ -86,12 +86,12 @@ class Hospital(Model): #Creación de tabla
      specialty = CharField(null=False)
      email = CharField(index=True, unique=True, null=False)
      phone_number = IntegerField(null=False)
-     ambulance = IntegerField(full=False)
+     ambulance = IntegerField(null=False)
      
 
      class Meta: 
           database = database #confirmacion de elemento
-          db_table = "Hospital"
+          db_table = "Hospital" 
 
 
 class Health_Centers(Model): #Creación de tabla
@@ -102,7 +102,7 @@ class Health_Centers(Model): #Creación de tabla
      specialty = CharField(null=False)
      email = CharField(index=True, unique=True, null=False)
      phone_number = IntegerField(null=False)
-     ambulance = IntegerField(full=False)
+     ambulance = IntegerField(null=False)
      
 
      class Meta: 
@@ -112,7 +112,7 @@ class Health_Centers(Model): #Creación de tabla
 
 class Medications(Model): #Creación de tabla
      id = AutoField() # llamado a llave primaria
-     geneic_name = CharField(null=False)
+     generic_name = CharField(null=False)
      dose = CharField(null=False)
      price = CharField(null=False)
      contraindications = CharField(null=False)
@@ -121,12 +121,7 @@ class Medications(Model): #Creación de tabla
      class Meta: 
           database = database #confirmacion de elemento
           db_table ="Medications"
-
-
-
-     
-
-
-if __name__ == '__main__':
-        # Conectar a la base de datos
-        database.connect()
+if __name__ == "__main__":
+    database.connect()  # Conectar a la base de datos
+    database.create_tables([Affiliate, Admin, Database, Specialist, Hospital, Health_Centers, Medications])
+    database.close()  # Cerrar la conexión a la base de datos
