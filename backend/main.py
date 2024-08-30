@@ -10,6 +10,7 @@ DB = models
 CD = CRUD
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
+
 async def current_user(token: int = Depends(oauth2_scheme)):
     user = CD.token_oaut(token)
     if not user:
@@ -18,17 +19,21 @@ async def current_user(token: int = Depends(oauth2_scheme)):
         )
     return user
 
+
 @app.post("/login")
 async def login(form: OAuth2PasswordRequestForm = Depends()):
     user = CD.authenticate_affiliate(form.username, form.password)
     if not user:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="El usuario no se ha encontrado")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail="El usuario no se ha encontrado")
 
     return {"session_token": user.document_number, "token_type": "bearer"}
+
 
 @app.get("/information/me")
 async def information(token: int = Depends(current_user)):
     return token
+
 
 @app.delete("/user/delete")
 async def user_delete(token: int = Depends(current_user)):
@@ -40,6 +45,7 @@ async def user_delete(token: int = Depends(current_user)):
             detail="El proceso no se puede completar"
         )
     return {"detail": "El usuario ha sido eliminado"}
+
 
 @app.post("/user/create")
 async def create_user(
@@ -60,11 +66,13 @@ async def create_user(
             birthdate, email, first_number, second_number,
             city, password, membership_type
         )
-        
+
         if not new_user:
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Error al crear el usuario")
-        
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST, detail="Error al crear el usuario")
+
         return {"detail": "El usuario se ha creado con éxito"}
-    
+
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
