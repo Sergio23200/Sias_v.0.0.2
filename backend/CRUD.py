@@ -65,10 +65,10 @@ def delete_admin(email: str):
         return None
 
 
-def update_affiliate(email: str, **kwargs):
+def update_affiliate(document_number: int, **kwargs):
     try:
         # Buscar el afiliado en la base de datos usando el email proporcionado
-        affiliate = Affiliate.get(Affiliate.email == email)
+        affiliate = Affiliate.get(Affiliate.document_number == document_number)
 
         # Iterar sobre los argumentos proporcionados en kwargs
         for key, value in kwargs.items():
@@ -111,12 +111,27 @@ def update_Admin(email: str, **kwargs):
         return None
 
 
-def token_oaut(number_document: str):
+def token_oaut(document_number: str):
     try:
         authenticate = Affiliate.get(
-            Affiliate.document_number == number_document)
+            Affiliate.document_number == document_number)
         if not authenticate:
-            return None
+            authenticate = Admin.get(
+                Admin.document_number == document_number)
+            if not authenticate:
+                return None
+            admin_data = {
+                "fullname": authenticate.fullname,
+                "document_type": authenticate.document_type,
+                "document_number": authenticate.document_number,
+                "birthdate": authenticate.birthdate,
+                "email": authenticate.email,
+                "first_number": authenticate.first_number,
+                "second_number": authenticate.second_number,
+                "city": authenticate.city,
+                "job_title": authenticate.job_title
+            }
+            return admin_data
         affiliate_data = {
             "id": authenticate.id,
             "fullname": authenticate.fullname,
@@ -177,3 +192,4 @@ def delete_medications(generic_name: str):
     if not query_medications:
         return False
     return True
+# funtions admin
