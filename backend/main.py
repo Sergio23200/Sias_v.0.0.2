@@ -170,3 +170,73 @@ async def admin_delete_medicamentos(generic_name: str, token: int = Depends(curr
     token = token["document_number"]
     query = CD.delete_m(generic_name)
     return query
+
+# admin hospitales . 
+@app.post("/admin/send_data_hospital", tags=["funtions admin"])
+async def admin_send_data_hospital(fullname: str, city_id: str,  Address: str, specialty: str, email: str, phone_number: int, ambulance: int, token: int = Depends(current_user())):
+    token = token["document_number"]
+    hospital_query = CD.create_hospital(token, fullname, city_id, Address, specialty, email, phone_number, ambulance )
+    if not hospital_query:
+        raise HTTPException(status,code=status.HTTP_409_CONFLICT, detail="No ha sido posible realizar proceso solicitado , intente nuevamente ")
+    return hospital_query
+
+@app.get("/admin/receive_data_hospital", tags=["funtions admin"])
+async def admin_receive_data_hospital( fullname: str, token: int = Depends(current_user())):
+    token = token["document_number"]
+    hospital_query = CD.receive_hospital(fullname)
+    if not hospital_query:
+        raise HTTPException(status,code=status.HTTP_400_BAD_REQUEST, detail="No ha sido posible realizar proceso solicitado , intente nuevamente ")
+    return hospital_query
+
+@app.put("/admin/update_data_hospital", tags=["funtions admin"])
+async def admin_update_data_hospital(fullname: str, token: int = Depends(current_user())):
+    token = token["document_number"]
+    hospital_query = CD.update_hospital(token, fullname)
+    if not hospital_query:
+        raise HTTPException(status,code=status.HTTP_404_NOT_FOUND, detail="No ha sido posible realizar el proceso de actualizacion , intente nuevamente ")
+    return hospital_query
+
+@app.delete("/admin/delete_data_hospital", tags=["funtions admin"])
+async def admin_delete_data_hospital(fullname: str, token: int = Depends(current_user())):
+    token = token["document_number"]
+    hospital_query = CD.delete_hospital(token, fullname)
+    if not hospital_query:
+        raise HTTPException(status,code=status.HTTP_400_BAD_REQUEST, detail="No ha sido posible eliminar registro indicado , por favor intentelo nuevamente ")
+    return hospital_query
+
+
+# admin centros medicos . 
+
+@app.post("/admin/send_health_center", tags=["funtions admin"])
+async def admin_send_health_center(fullname: str, city_id: str,  Address: str, specialty: str, email: str, phone_number: int, ambulance: int, token: int = Depends(current_user())):
+    token = token["document_number"]
+    center_query = CD.create_health_center(token, fullname, city_id, Address, specialty, email, phone_number, ambulance )
+    if not center_query:
+        raise HTTPException(status,code=status.HTTP_409_CONFLICT, detail="No ha sido posible realizar proceso solicitado , intente nuevamente ")
+    return center_query
+
+@app.get("/admin/receive_health_center", tags=["funtions admin"])
+async def admin_receive_health_center( fullname: str, token: int = Depends(current_user())):
+    token = token["document_number"]
+    center_query = CD.receive_health_center(fullname)
+    if not center_query:
+        raise HTTPException(status,code=status.HTTP_400_BAD_REQUEST, detail="No ha sido posible realizar proceso solicitado , intente nuevamente ")
+    return center_query
+
+@app.put("/admin/update_health_center", tags=["funtions admin"])
+async def admin_update_health_center(fullname: str, token: int = Depends(current_user())):
+    token = token["document_number"]
+    center_query = CD.update_health_center(token, fullname)
+    if not center_query:
+        raise HTTPException(status,code=status.HTTP_404_NOT_FOUND, detail="No ha sido posible realizar el proceso de actualizacion , intente nuevamente ")
+    return center_query
+
+@app.delete("/admin/delete_health_center", tags=["funtions admin"])
+async def admin_delete_health_center(fullname: str, token: int = Depends(current_user())):
+    token = token["document_number"]
+    center_query = CD.delete_health_center(token, fullname)
+    if not center_query:
+        raise HTTPException(status,code=status.HTTP_400_BAD_REQUEST, detail="No ha sido posible eliminar el hospital indicado , por favor intentelo nuevamente ")
+    return center_query
+
+

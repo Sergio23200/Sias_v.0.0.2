@@ -209,3 +209,30 @@ def create_m(document_number: str, medico: Medications):
 
 def read_m(generic_name: str):
     pass
+
+#funtions adm hospital
+def create_hospital(document_number: int, fullname: str, city_id: str,  Address: str, specialty: str, email: str, phone_number: int, ambulance: int ):
+    pass
+
+def receive_hospital(document_number: int, fullname: str):
+    pass
+
+def update_hospital(document_number: int, fullname: str, **keys):
+    pass
+
+def delete_hospital(document_number: int, fullname: str):
+    pass
+
+#funtions adm centros medicos 
+
+def create_health_center(document_number: int, fullname: str, city_id: str,  Address: str, specialty: str, email: str, phone_number: int, ambulance: int ):
+    pass
+
+def receive_health_center(document_number: int, fullname: str):
+    pass
+
+def update_health_center(document_number: int, fullname: str, **keys):
+    pass
+
+def delete_health_center(document_number: int, fullname: str):
+    pass
