@@ -117,8 +117,8 @@ class Health_Centers(Model):  # Creación de tabla
 class Medications(Model):  # Creación de tabla
     id = AutoField()  # llamado a llave primaria
     generic_name = CharField(null=False)
-    dose = CharField(null=False)
-    price = CharField(null=False)
+    dose = IntegerField(null=False)
+    price = IntegerField(null=False)
     contraindications = CharField(null=False)
 
     class Meta:

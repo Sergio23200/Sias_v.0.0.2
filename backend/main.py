@@ -5,6 +5,12 @@ import models
 from typing import Optional
 app = FastAPI()
 
+
+# post = mandar datos
+# put = actualizar datos
+# delete = eliminar datos
+# get = recibir datos
+
 # Definiciones y configuración
 DB = models
 CD = CRUD
@@ -12,8 +18,25 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 
 async def current_user(token: int = Depends(oauth2_scheme)):
+    """
+    declaracion de funcion para la validacion de token actual:
+
+    esta funcion permite por medio de la recoleccion del token validarlo por medio de una funcion importada 
+    en el modulo CRUD
+
+    Agrs:
+        token : int = depens(ouath2_schema)
+
+    returns:
+        dic: un diccionario con los datos del usuario sin la contraseña de usuarior
+
+    Raise:
+        HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="El usuario no está autenticado")
+    """
     user = CD.token_oaut(token)
+
     if not user:
+
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="El usuario no está autenticado"
         )
@@ -22,6 +45,20 @@ async def current_user(token: int = Depends(oauth2_scheme)):
 
 @app.post("/login", tags=["autenticate"])
 async def login(form: OAuth2PasswordRequestForm = Depends()):
+    """
+    creacion de endpoint para la autenticacion:
+
+    por medio de las variables enviadas por medio de los formularios, por medio de la funcion importada en el modulo CRUD
+    con el verificamos si el usuario se esta autenticando como afiliado , como administrador o si no esta en ninguno:
+
+    Agrs:
+        (form: OAuth2PasswordRequestForm = Depends())
+
+    returns:
+        retorno de diccionario con los datos sin contraseña de afiliados o administradores
+    Raise:
+        HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="El usuario no se ha encontrado")
+    """
     user = CD.authenticate_affiliate(form.username, form.password)
     if not user:
         user = CD.authenticete_admin(form.username, form.password)
@@ -29,18 +66,22 @@ async def login(form: OAuth2PasswordRequestForm = Depends()):
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                                 detail="El usuario no se ha encontrado")
         return {"admin_token": user.document_number, "token_type": "bearer"}
+
     return {"affilite_token": user.document_number, "token_type": "bearer"}
 
 
 @app.get("/information/me", tags=["autenticate"])
 async def information(token: int = Depends(current_user)):
+    """creacion de endpoint para el retorno de la informacion:
+    por medio de la dependencia de que creamos con la funcion current_user"""
     return token
 
 # affiliate
 
 
 @app.delete("/user/delete", tags=["CRUD Affiliate"])
-async def user_delete(token: int = Depends(current_user)):
+async def user_delete(token: int = Depends(current_user())):
+
     token = token["document_number"]
     user_drop = CD.delete_affiliate(token)
     if not user_drop:
@@ -99,3 +140,33 @@ async def affiliate_update(
         )
 
     return update_affiliate
+
+# admin
+
+
+@app.delete("/admin/delete_medicacion", tags=["funcions admin"])
+async def admin_delete_medicamentos(generic_name: str, token: int = Depends(current_user())):
+    token = token["document_number"]
+    query = CD.delete_m(token, generic_name)
+    return query
+
+
+@app.put("/admin/delete_medicacion", tags=["funcions admin"])
+async def admin_delete_medicamentos(generic_name: str, dose: int, price: int, contraindications: str, token: int = Depends(current_user())):
+    token = token["document_number"]
+    query = CD.update_m(token, generic_name, dose, price, contraindications)
+    return query
+
+
+@app.post("/admin/delete_medicacion", tags=["funcions admin"])
+async def admin_delete_medicamentos(generic_name: str, dose: int, price: int, contraindications: str, token: int = Depends(current_user())):
+    token = token["document_number"]
+    query = CD.create_m(token, generic_name, dose, price, contraindications)
+    return query
+
+
+@app.get("/admin/delete_medicacion", tags=["funcions admin"])
+async def admin_delete_medicamentos(generic_name: str, token: int = Depends(current_user())):
+    token = token["document_number"]
+    query = CD.delete_m(generic_name)
+    return query

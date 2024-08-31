@@ -193,3 +193,19 @@ def delete_medications(generic_name: str):
         return False
     return True
 # funtions admin
+
+
+def delete_m(document_number: int, generic_name: str):
+    pass
+
+
+def update_m(document_number: str, **keys):
+    pass
+
+
+def create_m(document_number: str, medico: Medications):
+    pass
+
+
+def read_m(generic_name: str):
+    pass
