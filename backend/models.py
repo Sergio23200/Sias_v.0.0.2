@@ -1,5 +1,5 @@
 # importacion de librerias
-from peewee import MySQLDatabase, AutoField, CharField, DateField, Model, IntegerField, TimeField
+from peewee import MySQLDatabase, BooleanField, AutoField, CharField, DateField, Model, IntegerField, TimeField
 import bcrypt
 import datetime  # importacion para menjeo de fechas y hora
 
@@ -22,6 +22,7 @@ class Affiliate(Model):  # creacion de tablas
     gender = CharField(null=False)
     email = CharField(index=True, unique=True, null=False)
     Address = CharField(null=False)
+    Clinical_history = CharField(null=False)
     phone_number = IntegerField(null=False)
     city = CharField(index=True, null=False)
     password = CharField(null=False)
@@ -52,21 +53,22 @@ class Admin(Model):  # creación de tablas
         db_table = 'Admin'  # confirmacion de elemento
 
 
-class Database(Model):  # Creación de tablas
+class medical_appointments(Model):  # Creación de tablas
     id = AutoField()  # llamado a llave primaria
-    affiliate = Affiliate
     appointment_type = CharField(null=False)
-    specialist = CharField(null=False)
+    fullname_affiliate = CharField(null=False)
+    document_number_affiliate = IntegerField(null=False)
+    name_doctor = CharField(null=False)
+    created_by = IntegerField()
     day = DateField()
     hospital_name = CharField(null=False)
-    medications = CharField(null=False)
     Clinical_history = CharField(null=False)
     create_date = DateField(default=datetime.date.today)
     hour = TimeField(null=False)
 
     class Meta:
         database = database  # confirmacion de elemento
-        db_table = 'database'
+        db_table = 'medical_appointments'
 
 
 class Specialist(Model):  # Creación de tablas
@@ -75,9 +77,11 @@ class Specialist(Model):  # Creación de tablas
     number_document = IntegerField(unique=True)
     email = CharField(index=True, unique=True, null=False)
     phone_number = IntegerField(null=False)
+
     specialty = CharField(null=False)
     create_date = DateField(default=datetime.date.today)
     hour = TimeField(null=False)
+    created_by = IntegerField(null=False)
 
     class Meta:
         database = database  # confirmacion de elemento
@@ -93,13 +97,14 @@ class Hospital(Model):  # Creación de tabla
     email = CharField(index=True, unique=True, null=False)
     phone_number = IntegerField(null=False)
     ambulance = IntegerField(null=False)
+    created_by = IntegerField()
 
     class Meta:
         database = database  # confirmacion de elemento
         db_table = "Hospital"
 
 
-class Health_Centers(Model):  # Creación de tabla
+class Ips(Model):  # Creación de tabla
     id = AutoField()  # llamado a llave primaria
     fullname = CharField(null=False)
     city_id = CharField(null=False)
@@ -108,6 +113,7 @@ class Health_Centers(Model):  # Creación de tabla
     email = CharField(index=True, unique=True, null=False)
     phone_number = IntegerField(null=False)
     ambulance = IntegerField(null=False)
+    created_by = IntegerField()
 
     class Meta:
         database = database  # confirmacion de elemento
@@ -120,6 +126,9 @@ class Medications(Model):  # Creación de tabla
     dose = IntegerField(null=False)
     price = IntegerField(null=False)
     contraindications = CharField(null=False)
+    created_by = IntegerField()
+    aviable = BooleanField(default=True)
+    Stocks = IntegerField(null=False)
 
     class Meta:
         database = database  # confirmacion de elemento
@@ -128,6 +137,6 @@ class Medications(Model):  # Creación de tabla
 
 if __name__ == "__main__":
     database.connect()  # Conectar a la base de datos
-    database.create_tables([Affiliate, Admin, Database,
-                           Specialist, Hospital, Health_Centers, Medications])
+    database.create_tables([Affiliate, Admin, medical_appointments,
+                           Specialist, Hospital, Ips, Medications])
     database.close()  # Cerrar la conexión a la base de datos
