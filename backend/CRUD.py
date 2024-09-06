@@ -1,5 +1,5 @@
 from peewee import DoesNotExist
-from fastapi import FastAPI
+from fastapi import HTTPException, status
 from pydantic import BaseModel
 from models import Affiliate, Admin, medical_appointments, Medications, Specialist, Hospital, Ips
 from peewee import IntegrityError, DatabaseError
@@ -7,7 +7,6 @@ import datetime
 import bcrypt
 from fastapi.security import OAuth2PasswordBearer
 
-app = FastAPI()
 oauth2 = OAuth2PasswordBearer(tokenUrl="login")
 
 
@@ -18,6 +17,18 @@ def authenticate_affiliate(email: str, password: str):
         affiliate = Affiliate.get(Affiliate.email == email)
         if bcrypt.checkpw(password.encode(), affiliate.password.encode()):
             return affiliate
+        else:
+            return None
+
+    except Affiliate.DoesNotExist:
+        return None
+
+
+def authenticate_admin(email: str, password: str):
+    try:
+        admin = Admin.get(Admin.email == email)
+        if bcrypt.checkpw(password.encode(), admin.password.encode()):
+            return admin
         else:
             return None
 
@@ -66,9 +77,25 @@ def token_oaut(document_number: str):
 # CRUD  affiliate:
 
 
-def delete_affiliate(token: int):
+def delete_affiliate(email: str):
+    """ 
+    esta funcion fue creada para eliminar registros de la tabla afiliados:
+
+    por medio del token se hace la busqueda del usuario a eliminar y se retorna,
+    si el usuario no existe se retornara flase.
+
+    arg:
+        token: int
+    return:
+        true si el usuario se elimino
+        Flase si el usurio no se elimino
+    except:
+           print(f"Error: {e}")
+        return False
+
+    """
     try:
-        query = Affiliate.delete().where(Affiliate.document_number == token)
+        query = Affiliate.delete().where(Affiliate.email == email)
         rows_deleted = query.execute()
         if rows_deleted > 0:
             return True
@@ -79,43 +106,49 @@ def delete_affiliate(token: int):
         return False
 
 
-def update_affiliate(token: int, **kwargs):
+def update_affiliate(**kwargs):
     try:
         # Buscar el afiliado en la base de datos usando el email proporcionado
-        affiliate = Affiliate.get(Affiliate.document_number == token)
+        affiliate = Affiliate.get(Affiliate.email == kwargs.get('email'))
 
         # Iterar sobre los argumentos proporcionados en kwargs
         for key, value in kwargs.items():
-            # Verificar si el modelo tiene un atributo con el nombre de la clave
             if hasattr(affiliate, key):
-                # Si la clave es 'password', hacer hash de la nueva contraseña
                 if key == 'password':
                     affiliate.password = bcrypt.hashpw(
                         value.encode(), bcrypt.gensalt()).decode()
                 else:
-                    # Para otros campos, simplemente asignar el nuevo valor
                     setattr(affiliate, key, value)
 
         # Guardar los cambios en la base de datos
         affiliate.save()
+        return affiliate
     except:
         return None
 
 
-def create_affilite(affilite: Affiliate):
+def create_affilite(affiliate: Affiliate):
     try:
+        # Hashear la contraseña
         hash_password = bcrypt.hashpw(
-            affilite.password.encode(), bcrypt.gensalt())
-        affilite.password = hash_password
-        affilite.save()
-        return affilite
-    except IntegrityError as e:
-        print(f"error IntegrityError {e}")
-    except DatabaseError as e:
-        print(f"error en la base de datos {e}")
+            affiliate.password.encode(), bcrypt.gensalt())
+        affiliate.password = hash_password
 
+        # Guardar el afiliado en la base de datos
+        affiliate.save()
+        return affiliate
+    except IntegrityError as e:
+        print(f"Error de Integridad: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, detail="Error de integridad de datos.")
+    except DatabaseError as e:
+        print(f"Error en la base de datos: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Error en la base de datos.")
     except Exception as e:
-        print(f"Error desconocio : {e}")
+        print(f"Error desconocido: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Error desconocido.")
 
 # CRUD Admin
 
@@ -136,9 +169,9 @@ def create_admin(admin: Admin):
         print(f"Error desconocio : {e}")
 
 
-def delete_Admin(token: int):
+def delete_Admin(email: str):
     try:
-        query = Admin.delete().where(Admin.document_number == token)
+        query = Admin.delete().where(Admin.email == email)
         rows_deleted = query.execute()
         if rows_deleted > 0:
             return True
@@ -149,25 +182,23 @@ def delete_Admin(token: int):
         return False
 
 
-def update_Admin(email: str, **kwargs):
+def update_Admin(**kwargs):
     try:
         # Buscar el afiliado en la base de datos usando el email proporcionado
-        Admin = Admin.get(Admin.email == email)
+        admin = Admin.get(Admin.email == kwargs.get('email'))
 
         # Iterar sobre los argumentos proporcionados en kwargs
         for key, value in kwargs.items():
-            # Verificar si el modelo tiene un atributo con el nombre de la clave
-            if hasattr(Admin, key):
-                # Si la clave es 'password', hacer hash de la nueva contraseña
+            if hasattr(admin, key):
                 if key == 'password':
-                    Admin.password = bcrypt.hashpw(
+                    admin.password = bcrypt.hashpw(
                         value.encode(), bcrypt.gensalt()).decode()
                 else:
-                    # Para otros campos, simplemente asignar el nuevo valor
-                    setattr(Admin, key, value)
+                    setattr(admin, key, value)
 
         # Guardar los cambios en la base de datos
-        return Admin.save()
+        admin.save()
+        return admin
     except:
         return None
 # CRUD appointments
@@ -239,33 +270,32 @@ def delete_appointments(id: int, token: int):
     except Exception as e:
         print(f"Error desconocio : {e}")
 
+
 # CRUD specialist
 
 
-def create_specialist(token: int, specialist: Specialist):
+def create_specialist(specialist: Specialist):
     try:
-        authenticate = token_oaut(token)
-        if not authenticate:
-            return print("la persona no esta autenticada")
-        new_specialist = specialist
-        return new_specialist.save()
+        new_specialist = specialist.save()  # Guardar el especialista
+        return new_specialist  # Retornar el objeto creado
     except DoesNotExist:
-        print("El afiliado no existe en la base de datos.")
-        return None
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail="El afiliado no existe en la base de datos")
     except IntegrityError as e:
-        print(f"error IntegrityError {e}")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                            detail=f"Error de integridad: {e}")
     except DatabaseError as e:
-        print(f"error en la base de datos {e}")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                            detail=f"Error en la base de datos: {e}")
     except Exception as e:
-        print(f"Error desconocio : {e}")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                            detail=f"Error desconocido: {e}")
 
 
-def update_specialist(token: int, id: int, **kwargs):
+def update_specialist(number_document: int, **kwargs):
     try:
-        authenticate = token_oaut(token)
-        if not authenticate:
-            return print("la persona no esta autenticada")
-        specialist = Specialist.get(Specialist.id == id)
+        specialist = Specialist.get(
+            Specialist.number_document == number_document)
 
         for key, value in kwargs.items():
             if hasattr(specialist, key):
@@ -280,12 +310,9 @@ def update_specialist(token: int, id: int, **kwargs):
         return None
 
 
-def delete_appointments(id: int, token: int):
+def delete_specialst(number_document: int):
     try:
-        authenticate = token_oaut(token)
-        if not authenticate:
-            return print("la persona no esta autenticada")
-        query = medical_appointments.delete().where(medical_appointments.id == id)
+        query = Specialist.delete().where(Specialist.number_document == number_document)
         rows_deleted = query.execute()
         if rows_deleted > 0:
             return True
@@ -304,11 +331,8 @@ def delete_appointments(id: int, token: int):
 # CRUD Hospital
 
 
-def create_Hospital(token: int, hospital: Hospital):
+def create_Hospital(hospital: Hospital):
     try:
-        authenticate = token_oaut(token)
-        if not authenticate:
-            return print("la persona no esta autenticada")
         new_hospital = hospital
         return new_hospital.save()
     except DoesNotExist:
@@ -322,12 +346,9 @@ def create_Hospital(token: int, hospital: Hospital):
         print(f"Error desconocio : {e}")
 
 
-def update_Hospital(token: int, id: int, **kwargs):
+def update_Hospital(fullname: str, **kwargs):
     try:
-        authenticate = token_oaut(token)
-        if not authenticate:
-            return print("la persona no esta autenticada")
-        hospital = Hospital.get(Hospital.id == id)
+        hospital = Hospital.get(Hospital.fullname == fullname)
 
         for key, value in kwargs.items():
             if hasattr(hospital, key):
@@ -342,12 +363,9 @@ def update_Hospital(token: int, id: int, **kwargs):
         return None
 
 
-def delete_hospital(id: int, token: int):
+def delete_hospital(fullname: int):
     try:
-        authenticate = token_oaut(token)
-        if not authenticate:
-            return print("la persona no esta autenticada")
-        query = Hospital.delete().where(Hospital.id == id)
+        query = Hospital.delete().where(Hospital.fullname == fullname)
         rows_deleted = query.execute()
         if rows_deleted > 0:
             return True
@@ -366,11 +384,8 @@ def delete_hospital(id: int, token: int):
 # CRUD IPS
 
 
-def create_Ips(token: int, ips: Ips):
+def create_Ips(ips: Ips):
     try:
-        authenticate = token_oaut(token)
-        if not authenticate:
-            return print("la persona no esta autenticada")
         new_ips = ips
         return new_ips.save()
     except DoesNotExist:
@@ -384,31 +399,8 @@ def create_Ips(token: int, ips: Ips):
         print(f"Error desconocio : {e}")
 
 
-def update_Hospital(token: int, id: int, **kwargs):
+def delete_ips(id: int):
     try:
-        authenticate = token_oaut(token)
-        if not authenticate:
-            return print("la persona no esta autenticada")
-        ips = Ips.get(Ips.id == id)
-
-        for key, value in kwargs.items():
-            if hasattr(ips, key):
-                setattr(ips, key, value)
-
-        ips.save()
-        return ips
-    except DoesNotExist:
-        return None
-    except Exception as e:
-        print(f"Error al actualizar la cita: {e}")
-        return None
-
-
-def delete_ips(id: int, token: int):
-    try:
-        authenticate = token_oaut(token)
-        if not authenticate:
-            return print("la persona no esta autenticada")
         query = Ips.delete().where(Ips.id == id)
         rows_deleted = query.execute()
         if rows_deleted > 0:
@@ -424,6 +416,23 @@ def delete_ips(id: int, token: int):
         print(f"error en la base de datos {e}")
     except Exception as e:
         print(f"Error desconocio : {e}")
+
+
+def update_Ips(fullname: str, **kwargs):
+    try:
+        ips = Ips.get(Ips.fullname == fullname)
+
+        for key, value in kwargs.items():
+            if hasattr(ips, key):
+                setattr(ips, key, value)
+
+        ips.save()
+        return ips
+    except DoesNotExist:
+        return None
+    except Exception as e:
+        print(f"Error al actualizar la cita: {e}")
+        return None
 
 # CRUD Medications
 

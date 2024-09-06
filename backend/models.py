@@ -13,8 +13,8 @@ database = MySQLDatabase(
 )
 
 
-class Affiliate(Model):  # creacion de tablas
-    id = AutoField()  # llamado a llave primaria
+class Affiliate(Model):
+    id = AutoField()
     fullname = CharField(null=False)
     document_type = CharField(null=False)
     document_number = IntegerField(null=False, unique=True)
@@ -23,7 +23,7 @@ class Affiliate(Model):  # creacion de tablas
     email = CharField(index=True, unique=True, null=False)
     Address = CharField(null=False)
     Clinical_history = CharField(null=False)
-    phone_number = IntegerField(null=False)
+    phone_number = IntegerField(null=False)  # Cambiado a CharField
     city = CharField(index=True, null=False)
     password = CharField(null=False)
     membership_type = CharField(null=False)
@@ -31,7 +31,7 @@ class Affiliate(Model):  # creacion de tablas
 
     class Meta:
         database = database
-        db_table = 'Affiliate'  # confirmacion de elemento
+        db_table = 'Affiliate'
 
 
 class Admin(Model):  # creación de tablas
@@ -42,7 +42,6 @@ class Admin(Model):  # creación de tablas
     birthdate = DateField(null=False)
     email = CharField(index=True, unique=True, null=False)
     first_number = CharField(null=False)
-    second_number = IntegerField()
     city = CharField(index=True, null=False)
     password = CharField(null=False)
     job_title = CharField(null=False)
@@ -71,32 +70,30 @@ class medical_appointments(Model):  # Creación de tablas
         db_table = 'medical_appointments'
 
 
-class Specialist(Model):  # Creación de tablas
-    id = AutoField()  # llamado a llave primaria
+class Specialist(Model):
+    id = AutoField()  # Llave primaria
     fullname = CharField(null=False)
     number_document = IntegerField(unique=True)
     email = CharField(index=True, unique=True, null=False)
     phone_number = IntegerField(null=False)
-
     specialty = CharField(null=False)
     create_date = DateField(default=datetime.date.today)
-    hour = TimeField(null=False)
-    created_by = IntegerField(null=False)
+    created_by = IntegerField(null=False)  # Nombre correcto del campo
 
     class Meta:
-        database = database  # confirmacion de elemento
+        database = database  # Confirmación de la base de datos
         db_table = "Specialist"
 
 
 class Hospital(Model):  # Creación de tabla
     id = AutoField()  # llamado a llave primaria
     fullname = CharField(null=False)
-    city_id = CharField(null=False)
+    city = CharField(null=False)
     Address = CharField(null=False)
-    specialty = CharField(null=False)
     email = CharField(index=True, unique=True, null=False)
     phone_number = IntegerField(null=False)
-    ambulance = IntegerField(null=False)
+    ambulance_dispo = IntegerField(null=False)
+    ambulances_on_route = IntegerField()
     created_by = IntegerField()
 
     class Meta:
@@ -107,12 +104,10 @@ class Hospital(Model):  # Creación de tabla
 class Ips(Model):  # Creación de tabla
     id = AutoField()  # llamado a llave primaria
     fullname = CharField(null=False)
-    city_id = CharField(null=False)
+    city = CharField(null=False)
     Address = CharField(null=False)
-    specialty = CharField(null=False)
     email = CharField(index=True, unique=True, null=False)
     phone_number = IntegerField(null=False)
-    ambulance = IntegerField(null=False)
     created_by = IntegerField()
 
     class Meta:
