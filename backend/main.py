@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+
 from fastapi.security import HTTPBearer
 from fastapi import HTTPException, status, Form, Depends
 from datetime import date, datetime
