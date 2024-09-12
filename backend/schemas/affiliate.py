@@ -17,3 +17,4 @@ class Affiliate(BaseModel):
     city:  str = Field()
     password: str = Field()
     membership_type: str = Field()
+

@@ -1,6 +1,5 @@
 # importacion de librerias
 from peewee import MySQLDatabase, BooleanField, AutoField, CharField, DateField, Model, IntegerField, TimeField
-import bcrypt
 import datetime  # importacion para menjeo de fechas y hora
 
 # Configuración de la base de datos
