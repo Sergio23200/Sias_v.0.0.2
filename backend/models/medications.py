@@ -1,18 +1,17 @@
-from config.db import database
-from peewee import AutoField, CharField, BooleanField, Model, IntegerField
-import datetime
+from config.db import Base
+from sqlalchemy import Column, Integer, String, Date, Boolean
+from datetime import datetime
 
 
-class Medications(Model):  # Creación de tabla
-    id = AutoField()  # llamado a llave primaria
-    generic_name = CharField(null=False)
-    dose = IntegerField(null=False)
-    price = IntegerField(null=False)
-    contraindications = CharField(null=False)
-    created_by = IntegerField()
-    aviable = BooleanField(default=True)
-    Stocks = IntegerField(null=False)
+class Medications_model(Base):
+    __tablename__ = "Medications"
 
-    class Meta:
-        database = database  # confirmacion de elemento
-        db_table = "Medications"
+    id = Column(Integer, primary_key=True)
+    generic_name = Column(String)
+    dose = Column(Integer)
+    price = Column(Integer)
+    contraindications = Column(String)
+    created_by = Column(Integer)
+    aviable = Column(Boolean)
+    Stocks = Column(Integer)
+    created_date = Column(Date, default=datetime.utcnow)

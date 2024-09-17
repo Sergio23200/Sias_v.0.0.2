@@ -1,27 +1,22 @@
-from config.db import database
-from peewee import AutoField, CharField, DateField, Model, IntegerField
-import datetime
+from config.db import Base
+from sqlalchemy import Column, Integer, String, Date
+from datetime import datetime
 
 
-class Affiliate(Model):
-    """
+class Affiliate_model(Base):
+    __tablename__ = "Affiliate"
 
-    """
-    id = AutoField()
-    fullname = CharField(null=False)
-    document_type = CharField(null=False)
-    document_number = IntegerField(null=False, unique=True)
-    birthdate = DateField(null=False)
-    gender = CharField(null=False)
-    email = CharField(index=True, unique=True, null=False)
-    Address = CharField(null=False)
-    Clinical_history = CharField(null=False)
-    phone_number = IntegerField(null=False)  # Cambiado a CharField
-    city = CharField(index=True, null=False)
-    password = CharField(null=False)
-    membership_type = CharField(null=False)
-    created_date = DateField(default=datetime.date.today)
-
-    class Meta:
-        database = database
-        db_table = 'Affiliate'
+    id = Column(Integer, primary_key=True)
+    fullname = Column(String)
+    document_type = Column(String)
+    document_number = Column(String)
+    birthdate = Column(Date)
+    Address = Column(String)
+    gender = Column(String)
+    email = Column(String)
+    phone_number = Column(String)
+    city = Column(String)
+    password = Column(String)
+    membership_type = Column(String)
+    Clinical_history = Column(Integer)
+    created_date = Column(Date, default=datetime.utcnow)

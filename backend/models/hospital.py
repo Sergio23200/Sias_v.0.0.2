@@ -1,18 +1,18 @@
-from config.db import database
-from peewee import AutoField, CharField, DateField, Model, IntegerField
+from config.db import Base
+from sqlalchemy import Column, Integer, String, Date
+from datetime import datetime
 
 
-class Hospital(Model):  # Creación de tabla
-    id = AutoField()  # llamado a llave primaria
-    fullname = CharField(null=False)
-    city = CharField(null=False)
-    Address = CharField(null=False)
-    email = CharField(index=True, unique=True, null=False)
-    phone_number = IntegerField(null=False)
-    ambulance_dispo = IntegerField(null=False)
-    ambulances_on_route = IntegerField()
-    created_by = IntegerField()
+class Hospital_model(Base):
+    __tablename__ = "Hospital"
 
-    class Meta:
-        database = database  # confirmacion de elemento
-        db_table = "Hospital"
+    id = Column(Integer, primary_key=True)
+    name_hospital = Column(String)
+    city = Column(String)
+    Address = Column(String)
+    email = Column(String)
+    phone_number = Column(String)
+    ambulance_dispo = Column(Integer)
+    ambulances_on_route = Column(Integer)
+    create_by = Column(Integer)
+    created_date = Column(Date, default=datetime.utcnow)

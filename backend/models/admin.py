@@ -1,21 +1,19 @@
-from config.db import database
-from peewee import AutoField, CharField, DateField, Model, IntegerField
-import datetime
+from config.db import Base
+from datetime import datetime
+from sqlalchemy import Column, Integer, String, Date
 
 
-class Admin(Model):  # creación de tablas
-    id = AutoField()  # llamado a llave primaria
-    fullname = CharField(null=False)
-    document_type = CharField(null=False)
-    document_number = IntegerField(null=False)
-    birthdate = DateField(null=False)
-    email = CharField(index=True, unique=True, null=False)
-    first_number = CharField(null=False)
-    city = CharField(index=True, null=False)
-    password = CharField(null=False)
-    job_title = CharField(null=False)
-    created_date = DateField(default=datetime.date.today)
+class Admin_model(Base):
+    __tablename__ = "Admin"
 
-    class Meta:
-        database = database
-        db_table = 'Admin'  # confirmacion de elemento
+    id = Column(Integer, primary_key=True)
+    fullname = Column(String)
+    document_type = Column(String)
+    document_number = Column(Integer)
+    birthdate = Column(Date)
+    email = Column(String)
+    first_number = Column(String)
+    city = Column(String)
+    password = Column(String)
+    job_title = Column(String)
+    created_date = Column(Date, default=datetime.utcnow)
