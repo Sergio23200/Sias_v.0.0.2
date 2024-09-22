@@ -27,11 +27,11 @@ async def get_all_admin():
 async def update_admin(document_number: int, admin: Admin_update):
     db = Session()
     result = Admin_service(db).Admin_updates(document_number, admin)
-    return JSONResponse(status_code=200, content={"mensage": "EL afiliado ha sido actualizado"})
+    return JSONResponse(status_code=200, content={"mensage": "EL admin ha sido actualizado"})
 
 
 @admin_router.delete("/dalete/admin", tags=["CRUD ADMIN"])
 async def delete_delete(document_number: int):
     db = Session()
     result = Admin_service(db).delete_admin(document_number)
-    return JSONResponse(status_code=200, content={"mensage": "el afiliado ha sido eliminados"})
+    return JSONResponse(status_code=200, content={"mensage": "el admin ha sido eliminados"})
