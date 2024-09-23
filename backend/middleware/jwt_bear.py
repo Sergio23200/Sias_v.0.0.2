@@ -1,6 +1,6 @@
 from fastapi.security import HTTPBearer
 from utils.jwt_manger import validate_token
-from models.Affilate import Affiliate_model
+from services.admin_services import Admin_service
 from config.db import Session
 from services.affiliate_services import Affiliate_service
 from models.Admin import Admin_model
@@ -19,7 +19,8 @@ class JWTBearer(HTTPBearer):
                 db).validate_affilate(email=data["email"])
         except NoResultFound:
             try:
-                validate = Admin_model.get(Admin_model.email == data["email"])
+                validate = Admin_service(
+                    db).validate_admin(email=data["email"])
             except NoResultFound:
                 raise HTTPException(
                     status_code=403, detail="Credenciales inválidas"

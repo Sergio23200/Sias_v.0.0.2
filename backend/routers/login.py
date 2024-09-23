@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 from utils.jwt_manger import create_token
+from services.admin_services import Admin_service
 from services.affiliate_services import Affiliate_service
 from config.db import Session
 from fastapi.responses import JSONResponse
@@ -29,6 +30,28 @@ def login(email: str, password: str):
             "access_token": token,
             "token_type": "bearer",
             "user_type": "affiliate"
+        })
+    else:
+        db = Session()
+
+    validate_affiliate = Admin_service(
+        db).verificate_admin(email, password)
+
+    if validate_affiliate:
+        # Extraemos solo los datos necesarios, evitando atributos no serializables
+        validate_affiliate_dict = {
+            "id": validate_affiliate.id,
+            "email": validate_affiliate.email,
+            # otros campos que sean necesarios
+        }
+
+        # Crear el token
+        token: str = create_token(validate_affiliate_dict)
+
+        return JSONResponse(status_code=200, content={
+            "access_token": token,
+            "token_type": "bearer",
+            "user_type": "admin"
         })
 
     raise HTTPException(

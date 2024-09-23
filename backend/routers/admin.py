@@ -9,14 +9,14 @@ from fastapi import APIRouter, Depends
 admin_router = APIRouter()
 
 
-@admin_router.post("/create/admin", tags=["CRUD ADMIN"])
+@admin_router.post("/create/admin", tags=["CRUD ADMIN"], dependencies=[Depends(JWTBearer())])
 async def create_admin(affiliate: Admin_schema):
     db = Session()
     Admin_service(db).create_Admin(affiliate)
     return JSONResponse(content={"mensage": "el usuario se ha registrado"})
 
 
-@admin_router.get("/all/admin", tags=["CRUD ADMIN"])
+@admin_router.get("/all/admin", tags=["CRUD ADMIN"], dependencies=[Depends(JWTBearer())])
 async def get_all_admin():
     db = Session()
     result = Admin_service(db).get_admin()
@@ -30,7 +30,7 @@ async def update_admin(document_number: int, admin: Admin_update):
     return JSONResponse(status_code=200, content={"mensage": "EL admin ha sido actualizado"})
 
 
-@admin_router.delete("/dalete/admin", tags=["CRUD ADMIN"])
+@admin_router.delete("/dalete/admin", tags=["CRUD ADMIN"], dependencies=[Depends(JWTBearer())])
 async def delete_delete(document_number: int):
     db = Session()
     result = Admin_service(db).delete_admin(document_number)
