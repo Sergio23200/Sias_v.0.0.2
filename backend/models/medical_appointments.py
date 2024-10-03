@@ -4,6 +4,11 @@ from datetime import datetime
 
 
 class Medical_appointments_model(Base):
+    """
+    este es el modelo de base de datos para la tabla de Medical_appointments_model, en el cual 
+    se ven las columnas necesarias y el tipo de datos que se va autilizar, 
+    tambien se daran cuenta cual es la llave primaria
+    """
     __tablename__ = "Medical_appointments"
     id = Column(Integer, primary_key=True)
     appointment_type = Column(String)

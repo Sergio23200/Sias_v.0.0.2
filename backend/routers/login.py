@@ -7,24 +7,32 @@ from fastapi.responses import JSONResponse
 
 login_router = APIRouter()
 
+token_user = {}
+
 
 @login_router.get("/login", tags=["auth"])
 def login(email: str, password: str):
+    """
+    esta funcion permite  validar el tipo de token, tambien
+    puede validar si el token es de tipo usuario o de admin, esto por 
+    medio de la libreria de oaut jwt, tambien crea los token
+    retorna el token si esta todo bien.
+
+    """
     db = Session()
 
     validate_affiliate = Affiliate_service(
         db).vericate_afilate(email, password)
 
     if validate_affiliate:
-        # Extraemos solo los datos necesarios, evitando atributos no serializables
         validate_affiliate_dict = {
             "id": validate_affiliate.id,
             "email": validate_affiliate.email,
-            # otros campos que sean necesarios
         }
 
         # Crear el token
         token: str = create_token(validate_affiliate_dict)
+        token_user["token"] = token
 
         return JSONResponse(status_code=200, content={
             "access_token": token,
@@ -38,16 +46,13 @@ def login(email: str, password: str):
         db).verificate_admin(email, password)
 
     if validate_affiliate:
-        # Extraemos solo los datos necesarios, evitando atributos no serializables
         validate_affiliate_dict = {
             "id": validate_affiliate.id,
             "email": validate_affiliate.email,
-            # otros campos que sean necesarios
         }
 
-        # Crear el token
         token: str = create_token(validate_affiliate_dict)
-
+        token_user["token"] = token
         return JSONResponse(status_code=200, content={
             "access_token": token,
             "token_type": "bearer",

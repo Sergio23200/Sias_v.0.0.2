@@ -4,6 +4,11 @@ from sqlalchemy import Column, Integer, String, Date
 
 
 class Admin_model(Base):
+    """
+    este es el modelo de base de datos para la tabla de admin, en el cual 
+    se ven las columnas necesarias y el tipo de datos que se va autilizar, 
+    tambien se daran cuenta cual es la llave primaria
+    """
     __tablename__ = "Admin"
 
     id = Column(Integer, primary_key=True)

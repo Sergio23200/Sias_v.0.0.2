@@ -7,16 +7,35 @@ class hospìtal_service():
         self.db = db
 
     def get_hospital(self):
+        """
+        esta funcion trear todos los  registro de la base de datos de  hospitales,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+        """
         result = self.db.query(Hospital_model).all()
         return result
 
     def create_hospital(self, ips: Hospital_schema):
+        """
+        esta funcion crea un registro de tipo hospital utilizando el archivo en el paquete de schema,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+        """
         new_hospital = Hospital_model(**ips.dict())
         self.db.add(new_hospital)
         self.db.commit()
         return
 
     def update_hospital(self, name_hospital: int, data: Hospital_update):
+        """
+        esta funcion actualiza un registro de tipo hospital utilizando el archivo en el paquete de schema,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+        """
+
         hospital = self.db.query(Hospital_model).filter(
             Hospital_model.name_hospital == name_hospital).first()
         hospital.email = data.email
@@ -27,6 +46,12 @@ class hospìtal_service():
         return
 
     def delete_hospital(self, name_hospital: str):
+        """
+        esta funcion eliminar un registro de tipo hospital,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara que el usuario ha sido eliminado
+        """
         self.db.query(Hospital_model).filter(
             Hospital_model.name_hospital == name_hospital).delete()
         self.db.commit()

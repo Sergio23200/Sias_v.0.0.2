@@ -4,6 +4,11 @@ from datetime import datetime
 
 
 class Specialist_model(Base):
+    """
+    este es el modelo de base de datos para la tabla de Specialist_model, en el cual 
+    se ven las columnas necesarias y el tipo de datos que se va autilizar, 
+    tambien se daran cuenta cual es la llave primaria
+    """
     __tablename__ = "Specialist"
     id = Column(Integer, primary_key=True)
     fullname = Column(String)

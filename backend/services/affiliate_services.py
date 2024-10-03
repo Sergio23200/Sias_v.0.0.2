@@ -8,15 +8,27 @@ class Affiliate_service():
         self.db = db
 
     def get_afiliate(self):
+        """
+        esta funcion crea un registro de tipo afiliado utilizando el archivo en el paquete de schema,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los afiliados  tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+        """
         result = self.db.query(Affiliate_model).all()
         return result
 
-    def get_affiliates_filter(self, document_number):
+    def get_affiliates_filter(self, id: int):
         result = self.db.query(Affiliate_model).filter(
-            Affiliate_model.document_number == document_number)
+            Affiliate_model.id == id)
         return result
 
     def create_Affiliate(self, affiliate: Affiliate_schema):
+        """
+        esta funcion trear todos los  registro de la base de datos de  afiliado
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los afiliados tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+        """
         hash_password = bcrypt.hashpw(
             affiliate.password.encode(), bcrypt.gensalt())
         affiliate.password = hash_password
@@ -25,9 +37,15 @@ class Affiliate_service():
         self.db.commit()
         return
 
-    def Affiliate_update(self, document_number: int, data: Affiliate_schema):
+    def Affiliate_update(self, id: int, data: Affiliate_schema):
+        """
+        esta funcion actualiza un registro de tipo afiliadoutilizando el archivo en el paquete de schema,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los afiliado tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+        """
         affiliate = self.db.query(Affiliate_model).filter(
-            Affiliate_model.document_number == document_number).first()
+            Affiliate_model.id == id).first()
         affiliate.email = data.email
         affiliate.Address = data.Address
         affiliate.phone_number = data.phone_number
@@ -40,9 +58,15 @@ class Affiliate_service():
         self.db.commit()
         return
 
-    def delete_affilate(self, document_number: int):
+    def delete_affilate(self, id: int):
+        """
+        esta funcion eliminar un registro de tipo admin,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara que el usuario ha sido eliminado
+        """
         self.db.query(Affiliate_model).filter(
-            Affiliate_model.document_number == document_number).delete()
+            Affiliate_model.id == id).delete()
         self.db.commit()
         return
 
@@ -63,4 +87,4 @@ class Affiliate_service():
         if result is None:
             return None
         else:
-            return None
+            return result["email"]

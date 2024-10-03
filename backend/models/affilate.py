@@ -5,6 +5,11 @@ from datetime import datetime
 
 class Affiliate_model(Base):
     __tablename__ = "Affiliate"
+    """
+    este es el modelo de base de datos para la tabla de affiliate, en el cual 
+    se ven las columnas necesarias y el tipo de datos que se va autilizar, 
+    tambien se daran cuenta cual es la llave primaria
+    """
 
     id = Column(Integer, primary_key=True)
     fullname = Column(String)
