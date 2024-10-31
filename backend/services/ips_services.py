@@ -1,4 +1,4 @@
-from schemas.Ips_schema import Ips_schema, Ips_update
+from schemas.Ips_schema import Ips_schema, Ips_update, ips_filter_schema
 from models.Ips import Ips_model
 
 
@@ -15,6 +15,38 @@ class ips_service():
         """
         result = self.db.query(Ips_model).all()
         return result
+
+    def get_ips_filter(self, valor: ips_filter_schema):
+        """
+        esta funcion trear todos los  registro de la base de datos de  afiliado, segun el criterio en que este se filtre ,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los afiliados tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+        """
+        if valor.id != "":
+            result = self.db.query(Ips_model), filter(
+                Ips_model.id == valor)
+            return result
+        elif valor.name_hospital != "":
+            result = self.db.query(Ips_model), filter(
+                Ips_model.name_hospital == valor)
+            return result
+        elif valor.city != "":
+            result = self.db.query(Ips_model), filter(
+                Ips_model.city == valor)
+            return result
+        elif valor.Address != "":
+            result = self.db.query(Ips_model), filter(
+                Ips_model.Address == valor)
+            return result
+        elif valor.email != "":
+            result = self.db.query(Ips_model), filter(
+                Ips_model.email == valor)
+            return result
+        elif valor.phone_number != "":
+            result = self.db.query(Ips_model), filter(
+                Ips_model.phone_number == valor)
+            return result
 
     def create_ips(self, ips: Ips_schema):
         """

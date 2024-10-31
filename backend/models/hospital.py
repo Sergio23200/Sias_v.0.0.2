@@ -11,12 +11,12 @@ class Hospital_model(Base):
     """
     __tablename__ = "Hospital"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, unique=True)
     name_hospital = Column(String)
     city = Column(String)
-    Address = Column(String)
-    email = Column(String)
-    phone_number = Column(String)
+    Address = Column(String, unique=True)
+    email = Column(String, unique=True)
+    phone_number = Column(String, unique=True)
     ambulance_dispo = Column(Integer)
     ambulances_on_route = Column(Integer)
     create_by = Column(Integer)

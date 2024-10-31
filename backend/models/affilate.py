@@ -11,14 +11,14 @@ class Affiliate_model(Base):
     tambien se daran cuenta cual es la llave primaria
     """
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     fullname = Column(String)
     document_type = Column(String)
-    document_number = Column(String)
+    document_number = Column(String, unique=True)
     birthdate = Column(Date)
     Address = Column(String)
     gender = Column(String)
-    email = Column(String)
+    email = Column(String, unique=True)
     phone_number = Column(String)
     city = Column(String)
     password = Column(String)

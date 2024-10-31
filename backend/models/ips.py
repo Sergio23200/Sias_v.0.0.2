@@ -11,11 +11,12 @@ class Ips_model(Base):
     """
     __tablename__ = "Ips"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, unique=True)
     name_hospital = Column(String)
     city = Column(String)
-    Address = Column(String)
-    email = Column(String)
+    Address = Column(String, unique=True)
+    email = Column(String, unique=True)
     create_by = Column(Integer)
-    phone_number = Column(String)
+    phone_number = Column(String, unique=True)
+    create_by: int = Column(String)
     created_date = Column(Date, default=datetime.utcnow)

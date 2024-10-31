@@ -11,12 +11,12 @@ class Admin_model(Base):
     """
     __tablename__ = "Admin"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, autoincrement=True, primary_key=True)
     fullname = Column(String)
     document_type = Column(String)
-    document_number = Column(Integer)
+    document_number = Column(Integer, unique=True)
     birthdate = Column(Date)
-    email = Column(String)
+    email = Column(String, unique=True)
     first_number = Column(String)
     city = Column(String)
     password = Column(String)

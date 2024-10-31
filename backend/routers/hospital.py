@@ -3,6 +3,7 @@ from config.db import Session
 from middleware.jwt_bear import JWTBearer
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
+from middleware.jwt_bear import validate_token
 from services.hospital_service import hospìtal_service
 from fastapi import APIRouter, Depends
 
@@ -10,14 +11,17 @@ hospital_router = APIRouter()
 
 
 @hospital_router.post("/create/hospital", tags=["CRUD HOSPITAL"], dependencies=[Depends(JWTBearer())])
-async def create_hospital(hospital: Hospital_schema):
+async def create_hospital(hospital: Hospital_schema, token: str = Depends(JWTBearer())):
     """
     esta funcion crea un registro de tipo hospital utilizando el archivo en el paquete de schema,
     con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
     seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
     retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
     """
+    payload = validate_token(token)
+    id = payload.get("id")
     db = Session()
+    hospital.create_by = id
     hospìtal_service(db).create_hospital(hospital)
     return JSONResponse(content={"mensage": "el hospital se ha registrado"})
 

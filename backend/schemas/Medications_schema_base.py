@@ -39,3 +39,19 @@ class Medications_user(BaseModel):
     """
     user_money: float = Field(..., description="Amount of money the user has")
     Stocks: int = Field(..., description="Amount of stocks the user holds")
+
+
+class medicatios_filter_schema(BaseModel):
+
+    """
+
+    esta funcion crea un registro de tipo medications utilizando el archivo en el paquete de schema,
+    con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+    seguridad ya que los afiliados  tienen varios permisos, luego de valiadar, si el token no es correcto
+    retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado 
+           
+    """
+
+    id: Optional[int] = None
+    generic_name: Optional[str] = Field()
+    price: Optional[int] = Field()

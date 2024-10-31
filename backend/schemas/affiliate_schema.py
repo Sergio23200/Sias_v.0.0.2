@@ -37,3 +37,15 @@ class affilate_update(BaseModel):
     city:  str = Field()
     password: str = Field()
     membership_type: str = Field()
+
+
+class filter_afiliate_schema(BaseModel):
+    """
+    con esta clase se permite ver las opciones por las cuales se puede filtar,
+    con esto se pasa para el registro y asi se hace la busqueda
+    """
+    id: Optional[int] = Field(default="")
+    document_number: Optional[int] = Field(default="")
+    email: Optional[str] = Field(default="")
+    Clinical_history: Optional[int] = Field(default="")
+    city:  Optional[str] = Field(default="")

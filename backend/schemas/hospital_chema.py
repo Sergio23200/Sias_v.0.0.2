@@ -31,3 +31,18 @@ class Hospital_update(BaseModel):
     phone_number: str = Field()
     ambulance_dispo: str = Field()
     ambulances_on_route: int = Field()
+
+
+class hospital_filter_schema(BaseModel):
+    """
+    esta funcion crea un registro de tipo medications utilizando el archivo en el paquete de schema,
+    con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+    seguridad ya que los afiliados  tienen varios permisos, luego de valiadar, si el token no es correcto
+    retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+    """
+    id: Optional[int] = Field()
+    name_hospital: Optional[str] = Field()
+    city: Optional[str] = Field()
+    Address: Optional[str] = Field()
+    email: Optional[str] = Field()
+    phone_number: Optional[str] = Field()

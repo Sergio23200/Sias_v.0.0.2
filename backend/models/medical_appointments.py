@@ -10,7 +10,7 @@ class Medical_appointments_model(Base):
     tambien se daran cuenta cual es la llave primaria
     """
     __tablename__ = "Medical_appointments"
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     appointment_type = Column(String)
     fullname_affiliate = Column(String)
     document_number_affiliate = Column(Integer)

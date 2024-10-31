@@ -1,4 +1,4 @@
-from schemas.hospital_chema import Hospital_schema, Hospital_update
+from schemas.hospital_chema import Hospital_schema, Hospital_update, hospital_filter_schema
 from models.Hospital import Hospital_model
 
 
@@ -15,6 +15,38 @@ class hospìtal_service():
         """
         result = self.db.query(Hospital_model).all()
         return result
+
+    def get_hospital_filter(self, valor: hospital_filter_schema):
+        """
+        esta funcion trear todos los  registro de la base de datos de  afiliado, segun el criterio en que este se filtre ,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los afiliados tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+        """
+        if valor.id != "":
+            result = self.db.query(Hospital_model), filter(
+                Hospital_model.id == valor)
+            return result
+        elif valor.name_hospital != "":
+            result = self.db.query(Hospital_model), filter(
+                Hospital_model.name_hospital == valor)
+            return result
+        elif valor.city != "":
+            result = self.db.query(Hospital_model), filter(
+                Hospital_model.city == valor)
+            return result
+        elif valor.Address != "":
+            result = self.db.query(Hospital_model), filter(
+                Hospital_model.Address == valor)
+            return result
+        elif valor.email != "":
+            result = self.db.query(Hospital_model), filter(
+                Hospital_model.email == valor)
+            return result
+        elif valor.phone_number != "":
+            result = self.db.query(Hospital_model), filter(
+                Hospital_model.phone_number == valor)
+            return result
 
     def create_hospital(self, ips: Hospital_schema):
         """

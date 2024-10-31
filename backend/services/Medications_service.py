@@ -1,4 +1,4 @@
-from schemas.Medications_schema_base import Medications_schema, Medications_update, Medications_user
+from schemas.Medications_schema_base import Medications_schema, Medications_update, Medications_user, medicatios_filter_schema
 from models.Medications import Medications_model
 from fastapi.responses import JSONResponse
 
@@ -6,6 +6,26 @@ from fastapi.responses import JSONResponse
 class Medications_service():
     def __init__(self, db) -> None:
         self.db = db
+
+    def get_medications_filter(self, valor: medicatios_filter_schema):
+        """
+        esta funcion trear todos los  registro de la base de datos de  afiliado, segun el criterio en que este se filtre ,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los afiliados tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+        """
+        if valor.id != "":
+            result = self.db.query(Medications_model), filter(
+                Medications_model.id == valor)
+            return result
+        elif valor.generic_name != "":
+            result = self.db.query(Medications_model), filter(
+                Medications_model.generic_name == valor)
+            return result
+        elif valor.price != "":
+            result = self.db.query(Medications_model), filter(
+                Medications_model.price == valor)
+            return result
 
     def get_medications(self):
         """

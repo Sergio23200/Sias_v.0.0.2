@@ -9,6 +9,7 @@ from models.Medical_appointments import Medical_appointments_model
 from models.Admin import Admin_model
 from models.Affilate import Affiliate_model
 from models.Hospital import Hospital_model
+from models.base_medicamento_user import base_medications_model
 from models.Ips import Ips_model
 from models.Specialist import Specialist_model
 from models.Medications import Medications_model

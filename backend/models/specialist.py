@@ -10,11 +10,11 @@ class Specialist_model(Base):
     tambien se daran cuenta cual es la llave primaria
     """
     __tablename__ = "Specialist"
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True,  autoincrement=True)
     fullname = Column(String)
-    number_document = Column(Integer)
-    email = Column(String)
-    phone_number = Column(String)
+    number_document = Column(Integer, unique=True)
+    email = Column(String, unique=True)
+    phone_number = Column(String, unique=True)
     specialty = Column(String)
-    ccreated_date = Column(Date, default=datetime.utcnow)
+    created_date = Column(Date, default=datetime.utcnow)
     created_by = Column(Integer)

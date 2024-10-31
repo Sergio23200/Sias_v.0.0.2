@@ -9,9 +9,10 @@ class base_medications_model(Base):
     se ven las columnas necesarias y el tipo de datos que se va autilizar, 
     tambien se daran cuenta cual es la llave primaria
     """
-    __tablename__ = "Medications"
+    __tablename__ = "Medications_base_user"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     generic_name = Column(String)
-    affiliate = Column(Date, default=datetime.utcnow)
+    affiliate = Column(String)
+    create_date = Column(Date, default=datetime.utcnow)
     Stocks = Column(Integer)

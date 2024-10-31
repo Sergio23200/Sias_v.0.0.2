@@ -1,9 +1,12 @@
 from schemas.Medications_schema_base import Medications_schema, Medications_update, Medications_user
+from schemas.medications_user_schema import Medications_user_schema
+from services.medications_user_services import Medications_user_service
+from services.Medications_service import Medications_service
 from config.db import Session
 from fastapi.responses import JSONResponse
 from middleware.jwt_bear import JWTBearer
 from fastapi.encoders import jsonable_encoder
-from services.Medications_service import Medications_service
+
 from fastapi import APIRouter, Depends
 
 medications_router = APIRouter()
@@ -70,5 +73,11 @@ async def user_medication(data: Medications_user, generic_name: str):
     retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
     """
     db = Session()
+    medication = Medications_user_schema(
+        generic_name=generic_name,
+        dose=data["dose"],
+
+    )
+    Medications_user_service(db).create_medications()
     result = Medications_service(db).user_medications(generic_name, data)
     return result

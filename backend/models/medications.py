@@ -10,10 +10,10 @@ class Medications_model(Base):
     tambien se daran cuenta cual es la llave primaria
     """
 
-    __tablename__ = "Medications"
+    __tablename__ = "Medications_stock"
 
     id = Column(Integer, primary_key=True)
-    generic_name = Column(String)
+    generic_name = Column(String, unique=True)
     dose = Column(Integer)
     price = Column(Integer)
     contraindications = Column(String)

@@ -29,3 +29,15 @@ class Specialist_update(BaseModel):
     email: str = Field()
     phone_number: str = Field()
     specialty: str = Field()
+
+
+class Specialist_filter(BaseModel):
+    """
+    con esta clase se permite ver las opciones por las cuales se puede filtar,
+    con esto se pasa para el registro y asi se hace la busqueda
+    """
+    id: Optional[int] = None
+    fullname: str = Field()
+    email: str = Field()
+    phone_number: str = Field()
+    specialty: str = Field()
