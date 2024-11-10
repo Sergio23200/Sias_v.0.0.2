@@ -23,39 +23,39 @@ class hospìtal_service():
         seguridad ya que los afiliados tienen varios permisos, luego de valiadar, si el token no es correcto
         retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
         """
-        if valor.id != "":
-            result = self.db.query(Hospital_model), filter(
-                Hospital_model.id == valor)
+        if valor.id != None:
+            result = self.db.query(Hospital_model).filter(
+                Hospital_model.id == valor.id).all()
             return result
-        elif valor.name_hospital != "":
-            result = self.db.query(Hospital_model), filter(
-                Hospital_model.name_hospital == valor)
+        elif valor.name_hospital != None:
+            result = self.db.query(Hospital_model).filter(
+                Hospital_model.name_hospital == valor.name_hospita).all()
             return result
-        elif valor.city != "":
-            result = self.db.query(Hospital_model), filter(
-                Hospital_model.city == valor)
+        elif valor.city != None:
+            result = self.db.query(Hospital_model).filter(
+                Hospital_model.city == valor.city).all()
             return result
-        elif valor.Address != "":
-            result = self.db.query(Hospital_model), filter(
-                Hospital_model.Address == valor)
+        elif valor.Address != None:
+            result = self.db.query(Hospital_model).filter(
+                Hospital_model.Address == valor.Address).all()
             return result
-        elif valor.email != "":
-            result = self.db.query(Hospital_model), filter(
-                Hospital_model.email == valor)
+        elif valor.email != None:
+            result = self.db.query(Hospital_model).filter(
+                Hospital_model.email == valor.email).all()
             return result
-        elif valor.phone_number != "":
-            result = self.db.query(Hospital_model), filter(
-                Hospital_model.phone_number == valor)
+        elif valor.phone_number != None:
+            result = self.db.query(Hospital_model).filter(
+                Hospital_model.phone_number == valor.phone_number).all()
             return result
 
-    def create_hospital(self, ips: Hospital_schema):
+    def create_hospital(self, hospital: Hospital_schema):
         """
         esta funcion crea un registro de tipo hospital utilizando el archivo en el paquete de schema,
         con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
         seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
         retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
         """
-        new_hospital = Hospital_model(**ips.dict())
+        new_hospital = Hospital_model(**hospital.dict())
         self.db.add(new_hospital)
         self.db.commit()
         return
@@ -86,5 +86,17 @@ class hospìtal_service():
         """
         self.db.query(Hospital_model).filter(
             Hospital_model.name_hospital == name_hospital).delete()
+        self.db.commit()
+        return
+
+    def vec_name_hospital(self, name_hospital: str):
+        """
+        esta funcion eliminar un registro de tipo hospital,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara que el usuario ha sido eliminado
+        """
+        self.db.query(Hospital_model).filter(
+            Hospital_model.name_hospital == name_hospital).all()
         self.db.commit()
         return

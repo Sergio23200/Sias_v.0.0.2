@@ -18,6 +18,6 @@ class Medications_model(Base):
     price = Column(Integer)
     contraindications = Column(String)
     created_by = Column(Integer)
-    aviable = Column(Boolean)
+    aviable = Column(Boolean, default=True)
     Stocks = Column(Integer)
     created_date = Column(Date, default=datetime.utcnow)

@@ -10,7 +10,6 @@ class Specialist_schema(BaseModel):
     tambien se especifica el tipo de dato que se necesita
     """
 
-    id: Optional[int] = None
     fullname: str = Field()
     number_document: int = Field()
     email: str = Field()
@@ -31,13 +30,15 @@ class Specialist_update(BaseModel):
     specialty: str = Field()
 
 
-class Specialist_filter(BaseModel):
+class specialistr_filter_schema(BaseModel):
     """
     con esta clase se permite ver las opciones por las cuales se puede filtar,
     con esto se pasa para el registro y asi se hace la busqueda
     """
-    id: Optional[int] = None
-    fullname: str = Field()
-    email: str = Field()
-    phone_number: str = Field()
-    specialty: str = Field()
+
+    id: Optional[int] = Field(default="")
+    fullname: Optional[str] = Field(default="")
+    number_document: Optional[str] = Field(default="")
+    email: Optional[str] = Field(default="")
+    phone_number: Optional[str] = Field(default="")
+    specialty: Optional[str] = Field(default="")

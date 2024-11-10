@@ -38,6 +38,7 @@ class admin_filter_schema(BaseModel):
     con esta clase se permite ver las opciones por las cuales se puede filtar,
     con esto se pasa para el registro y asi se hace la busqueda
     """
+    id: Optional[str] = Field(default="")
     fullname: Optional[str] = Field(default="")
     document_number:  Optional[int] = Field(default="")
     email:  Optional[str] = Field(default="")

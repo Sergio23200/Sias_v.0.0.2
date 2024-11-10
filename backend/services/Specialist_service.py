@@ -1,4 +1,4 @@
-from schemas.Specialist_schemas import Specialist_schema, Specialist_update
+from schemas.Specialist_schemas import Specialist_schema, Specialist_update, specialistr_filter_schema
 from models.Specialist import Specialist_model
 
 
@@ -15,6 +15,38 @@ class specialist_service():
         """
         result = self.db.query(Specialist_model).all()
         return result
+
+    def get_specialist_filter(self, valor: specialistr_filter_schema):
+        """
+        esta funcion trear todos los  registro de la base de datos de  afiliado, segun el criterio en que este se filtre ,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los afiliados tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+        """
+        if valor.id != None:
+            result = self.db.query(Specialist_model).filter(
+                Specialist_model.id == valor.id).all()
+            return result
+        elif valor.fullname != None:
+            result = self.db.query(Specialist_model).filter(
+                Specialist_model.fullname == valor.fullname)
+            return result
+        elif valor.number_document != None:
+            result = self.db.query(Specialist_model).filter(
+                Specialist_model.number_document == valor.number_document).all()
+            return result
+        elif valor.email != None:
+            result = self.db.query(Specialist_model).filter(
+                Specialist_model.email == valor.email).all()
+            return result
+        elif valor.phone_number != None:
+            result = self.db.query(Specialist_model).filter(
+                Specialist_model.phone_number == valor.phone_number)
+            return result
+        elif valor.specialty != None:
+            result = self.db.query(Specialist_model).filter(
+                Specialist_model.specialty == valor.specialty).all()
+            return result
 
     def create_specialist(self, specialist: Specialist_schema):
         """
@@ -52,5 +84,11 @@ class specialist_service():
         """
         self.db.query(Specialist_model).filter(
             Specialist_model.document_number == document_number).delete()
+        self.db.commit()
+        return
+
+    def verif_name(self, fullname: str):
+        self.db.query(Specialist_model).filter(
+            Specialist_model.fullname == fullname).all()
         self.db.commit()
         return

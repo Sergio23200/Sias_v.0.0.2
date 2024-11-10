@@ -29,6 +29,26 @@ class Medications_user_service():
         self.db.commit()
         return
 
+    def get_medications_filter_user(self, valor: Medications_user_filter_schema):
+        """
+        esta funcion trear todos los  registro de la base de datos de  afiliado, segun el criterio en que este se filtre ,
+        con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
+        seguridad ya que los afiliados tienen varios permisos, luego de valiadar, si el token no es correcto
+        retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
+        """
+        if valor.id != "":
+            result = self.db.query(base_medications_model), filter(
+                base_medications_model.id == valor)
+            return result
+        elif valor.generic_name != "":
+            result = self.db.query(base_medications_model), filter(
+                base_medications_model.generic_name == valor)
+            return result
+        elif valor.fullname_user != "":
+            result = self.db.query(base_medications_model), filter(
+                base_medications_model.fullname_users == valor)
+            return result
+
     def delete_medications_user(self, generic_name: str):
         """
         esta funcion eliminar un registro de tipo medications,

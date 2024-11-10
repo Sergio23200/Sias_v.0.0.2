@@ -14,17 +14,17 @@ class Medications_service():
         seguridad ya que los afiliados tienen varios permisos, luego de valiadar, si el token no es correcto
         retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
         """
-        if valor.id != "":
-            result = self.db.query(Medications_model), filter(
-                Medications_model.id == valor)
+        if valor.id != None:
+            result = self.db.query(Medications_model).filter(
+                Medications_model.id == valor.id).all()
             return result
-        elif valor.generic_name != "":
-            result = self.db.query(Medications_model), filter(
-                Medications_model.generic_name == valor)
+        elif valor.generic_name != None:
+            result = self.db.query(Medications_model).filter(
+                Medications_model.generic_name == valor.generic_name).all()
             return result
-        elif valor.price != "":
-            result = self.db.query(Medications_model), filter(
-                Medications_model.price == valor)
+        elif valor.price != None:
+            result = self.db.query(Medications_model).filter(
+                Medications_model.price == valor.price).all()
             return result
 
     def get_medications(self):

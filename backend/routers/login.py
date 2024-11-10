@@ -7,8 +7,6 @@ from fastapi.responses import JSONResponse
 
 login_router = APIRouter()
 
-token_user = {}
-
 
 @login_router.get("/login", tags=["auth"])
 def login(email: str, password: str):
@@ -32,7 +30,6 @@ def login(email: str, password: str):
 
         # Crear el token
         token: str = create_token(validate_affiliate_dict)
-        token_user["token"] = token
 
         return JSONResponse(status_code=200, content={
             "access_token": token,
@@ -52,7 +49,6 @@ def login(email: str, password: str):
         }
 
         token: str = create_token(validate_affiliate_dict)
-        token_user["token"] = token
         return JSONResponse(status_code=200, content={
             "access_token": token,
             "token_type": "bearer",

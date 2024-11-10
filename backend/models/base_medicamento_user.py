@@ -14,5 +14,4 @@ class base_medications_model(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     generic_name = Column(String)
     affiliate = Column(String)
-    create_date = Column(Date, default=datetime.utcnow)
     Stocks = Column(Integer)

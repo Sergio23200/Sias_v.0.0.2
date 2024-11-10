@@ -23,29 +23,29 @@ class ips_service():
         seguridad ya que los afiliados tienen varios permisos, luego de valiadar, si el token no es correcto
         retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
         """
-        if valor.id != "":
-            result = self.db.query(Ips_model), filter(
-                Ips_model.id == valor)
+        if valor.id != None:
+            result = self.db.query(Ips_model).filter(
+                Ips_model.id == valor.id).all()
             return result
-        elif valor.name_hospital != "":
-            result = self.db.query(Ips_model), filter(
-                Ips_model.name_hospital == valor)
+        elif valor.name_hospital != None:
+            result = self.db.query(Ips_model).filter(
+                Ips_model.name_hospital == valor.name_hospital).all()
             return result
-        elif valor.city != "":
-            result = self.db.query(Ips_model), filter(
-                Ips_model.city == valor)
+        elif valor.city != None:
+            result = self.db.query(Ips_model).filter(
+                Ips_model.city == valor.city).all()
             return result
-        elif valor.Address != "":
-            result = self.db.query(Ips_model), filter(
-                Ips_model.Address == valor)
+        elif valor.Address != None:
+            result = self.db.query(Ips_model).filter(
+                Ips_model.Address == valor.Address).all()
             return result
-        elif valor.email != "":
-            result = self.db.query(Ips_model), filter(
-                Ips_model.email == valor)
+        elif valor.email != None:
+            result = self.db.query(Ips_model).filter(
+                Ips_model.email == valor.email).all()
             return result
-        elif valor.phone_number != "":
-            result = self.db.query(Ips_model), filter(
-                Ips_model.phone_number == valor)
+        elif valor.phone_number != None:
+            result = self.db.query(Ips_model).filter(
+                Ips_model.phone_number == valor.phone_number).all()
             return result
 
     def create_ips(self, ips: Ips_schema):

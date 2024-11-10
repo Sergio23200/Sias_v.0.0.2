@@ -25,29 +25,25 @@ class Affiliate_service():
         seguridad ya que los afiliados tienen varios permisos, luego de valiadar, si el token no es correcto
         retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
         """
-        if valor.fullname != "":
-            result = self.db.query(Affiliate_model), filter(
-                Affiliate_model.fullname == valor)
+        if valor.id != None:
+            result = self.db.query(Affiliate_model).filter(
+                Affiliate_model.id == valor.id).all()
             return result
-        elif valor-id != "":
-            result = self.db.query(Affiliate_model), filter(
-                Affiliate_model.id == valor)
+        elif valor.document_number != None:
+            result = self.db.query(Affiliate_model).filter(
+                Affiliate_model.document_number == valor.document_number).all()
             return result
-        elif valor.document_number != "":
-            result = self.db.query(Affiliate_model), filter(
-                Affiliate_model.document_number == valor)
+        elif valor.email != None:
+            result = self.db.query(Affiliate_model).filter(
+                Affiliate_model.email == valor.email).all()
             return result
-        elif valor.email != "":
-            result = self.db.query(Affiliate_model), filter(
-                Affiliate_model.email == valor)
+        elif valor.city != None:
+            result = self.db.query(Affiliate_model).filter(
+                Affiliate_model.city == valor.city).all()
             return result
-        elif valor.city != "":
-            result = self.db.query(Affiliate_model), filter(
-                Affiliate_model.city == valor)
-            return result
-        elif valor.Clinical_history != "":
-            result = self.db.query(Affiliate_model), filter(
-                Affiliate_model.Clinical_history == valor)
+        elif valor.Clinical_history != None:
+            result = self.db.query(Affiliate_model).filter(
+                Affiliate_model.Clinical_history == valor.Clinical_history).all()
             return result
 
     def create_Affiliate(self, affiliate: Affiliate_schema):
@@ -98,6 +94,16 @@ class Affiliate_service():
             Affiliate_model.id == id).delete()
         self.db.commit()
         return
+
+    def return_date(self, email: str):
+        result = self.db.query(Affiliate_model).filter(
+            Affiliate_model.email == email).first()
+        return result
+
+    def verificate_doc(self, document_number: int):
+        result = self.db.query(Affiliate_model).filter(
+            Affiliate_model.document_number == document_number).first()
+        return result
 
     def vericate_afilate(self, email: str, password: str):
         result = self.db.query(Affiliate_model).filter(

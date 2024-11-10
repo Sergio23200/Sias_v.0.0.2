@@ -10,10 +10,8 @@ class Medications_user_schema(BaseModel):
     """
 
     generic_name: str = Field()
-    fullname_user: str = Field()
-    dose: int = Field()
-    created_by: str = Field()
-    aviable: bool = Field()
+    Stocks: int = Field()
+    affiliate: str = Field()
 
 
 class Medications_user_filter_schema(BaseModel):

@@ -9,8 +9,6 @@ class Hospital_schema(BaseModel):
     esto con el fin para evitar errores al momento de insertar registros en la base de datos, 
     tambien se especifica el tipo de dato que se necesita
     """
-
-    id: Optional[int] = None
     name_hospital: str = Field()
     city: str = Field()
     Address: str = Field()

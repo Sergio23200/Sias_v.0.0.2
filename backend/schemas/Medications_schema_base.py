@@ -8,13 +8,11 @@ class Medications_schema(BaseModel):
     esto con el fin para evitar errores al momento de insertar registros en la base de datos, 
     tambien se especifica el tipo de dato que se necesita
     """
-    id: Optional[int] = None
     generic_name: str = Field()
     dose: int = Field()
     price: int = Field()
     contraindications: str = Field()
     created_by: str = Field()
-    aviable: bool = Field()
     Stocks: int = Field()
 
 
@@ -37,21 +35,17 @@ class Medications_user(BaseModel):
     esto con el fin para evitar errores al momento de insertar registros en la base de datos, 
     tambien se especifica el tipo de dato que se necesita
     """
-    user_money: float = Field(..., description="Amount of money the user has")
-    Stocks: int = Field(..., description="Amount of stocks the user holds")
+    user_money: int = Field()
+    Stocks: int = Field()
 
 
 class medicatios_filter_schema(BaseModel):
 
     """
-
-    esta funcion crea un registro de tipo medications utilizando el archivo en el paquete de schema,
-    con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
-    seguridad ya que los afiliados  tienen varios permisos, luego de valiadar, si el token no es correcto
-    retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado 
-           
+    con esta clase se permite ver las opciones por las cuales se puede filtar,
+    con esto se pasa para el registro y asi se hace la busqueda
     """
 
-    id: Optional[int] = None
-    generic_name: Optional[str] = Field()
-    price: Optional[int] = Field()
+    id: Optional[int] = Field(default="")
+    generic_name: Optional[str] = Field(default="")
+    price: Optional[int] = Field(default="")

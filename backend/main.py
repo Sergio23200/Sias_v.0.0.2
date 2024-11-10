@@ -21,6 +21,7 @@ from routers.hospital import hospital_router
 from routers.login import login_router
 from routers.ips import ips_router
 from routers.medications import medications_router
+from routers.appointments import appointments_router
 
 app = FastAPI()
 app.title = "DOCUMENTACION DEL PROYECTO SIAS"
@@ -33,4 +34,5 @@ app.include_router(specialist_router)
 app.include_router(medications_router)
 app.add_middleware(ErrorHandler)
 app.include_router(login_router)
+app.include_router(appointments_router)
 Base.metadata.create_all(bind=engine)
