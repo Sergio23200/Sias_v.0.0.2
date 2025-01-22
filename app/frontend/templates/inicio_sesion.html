@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='/style/style_sesion.css') }}">
+    <title>INICIO SESION</title>
+  </head>
+<body>
+  <header>
+    <!--MENU_HAMBURGUESA-->
+    <div class="menu-container">
+      <button class="menu-icon" onclick="toggleMenu()">☰</button> <!-- ícono del menú -->
+      <div class="menuOptions" id="menuOptions">
+          <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Contactos</a></li>
+              <li><a href="#">Registrarse</a></li>
+          </ul>
+      </div>
+    </div>
+    <!--BUSCADOR-->
+    <div class="search_container_padre">
+      <input type="text" id="searchInput" class="search"
+      placeholder="Buscar.." >
+    </div>
+  </header>
+  <!--PARTE_FOMULARIO-->
+  <div class="login-contenedor">
+    <h1 class="titulo">Iniciar Sesión</h1>
+    <form id="login_Form" action="/login/" method="post">
+        <div class="form-group">
+          <!--seleccion documento-->
+          <div class="contenedor_seleccion">
+          <label for="tipo_documento">Tipo de Documento</label>
+          </div>
+          <select id="tipoDocumento" name="tipo_documento" required>
+            <option value="">Seleccionar</option>
+              <option value="CC">Cédula de Ciudadanía</option>
+              <option value="TI">Tarjeta de Identidad</option>
+              <option value="PAS">Pasaporte</option>
+            </select>
+            <span id="tipo_documento_incorrecto" class="error-message"></span>
+          
+            <!--ingreso numero de documento-->
+            <div class="form-group">
+              <div class="contenedor_seleccion">
+              <label for="documentNumber">Número de Documento</label>
+            </div>
+              <input type="text" id="documento" name="numero_documento" placeholder="número de documento" required maxlength="10">
+              <span id="documentoIncorrecto" class="error-message"></span>
+          </div>
+          <!--CONTRASEÑA-->
+          <div class="form-group">
+            <div class="contenedor_seleccion">
+            <label for="contraseña" class="label">Contraseña</label>
+          </div>
+            <input
+              type="password"
+              id="contraseña"
+              name="contraseña"
+              required maxlength="8"
+              placeholder="********"
+            />
+            <span id="contraseñaIncorrecta" class="error-message"></span>
+          </div>
+          <div class="registro-container">
+            <!--ancla a pagina de registro/colocar url pagina-->
+            <div class="regitro">
+          <a href="#">Registrate Aquí</a>
+        </div>
+        <div class="restaurar_contraseña">
+          <a href="#">olvido su contraseña</a>
+          </div>
+        </div>
+          <!--TERMINOS_CONDICIONES-->
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">Acepta terminos y condiciones</label>
+      </div>
+      <span id="falta_terminos_y_condiciones" class="error-message"></span>
+      <!--BOTON-->
+      <button type="submit" class="boton">INGRESAR</button>
+    </form>
+      
+    </div>
+
+    <!-- <script src="{{ url_for('static', path='/js/logic_sesion.js')}}"></script> -->
+</body>
+</html>
