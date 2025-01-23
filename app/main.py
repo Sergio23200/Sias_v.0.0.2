@@ -14,6 +14,7 @@ from models.Ips import Ips_model
 from models.Specialist import Specialist_model
 from models.Medications import Medications_model
 
+from routers.test import test_router
 from routers.specialist import specialist_router
 from routers.admin import admin_router
 from routers.affiliate import affiliate_router
@@ -36,6 +37,7 @@ app.include_router(specialist_router)
 app.include_router(medications_router)
 app.add_middleware(ErrorHandler)
 app.include_router(login_router)
+app.include_router(test_router)
 app.include_router(appointments_router)
 Base.metadata.create_all(bind=engine)
 
