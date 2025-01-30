@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='/style/style_paginaConocenos.css') }}" />
+    <title>Conócenos</title>
+</head>
+<body>
+     <!--MENU_HAMBURGUESA-->
+ 
+    <header> 
+    </div>
+        <h1>Nuestra EPS</h1>
+        <nav>
+            <a href="#mision">Misión</a>
+            <a href="#vision">Visión</a>
+            <a href="#valores">Valores</a>
+        </nav>
+        <div class="menu-container">
+            <button class="menu-icon" onclick="toggleMenu()">♥</button> <!-- ícono del menú -->
+            <div class="menuOptions" id="menuOptions">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Contactos</a></li>
+                    <li><a href="#">Registrarse</a></li>
+                </ul>
+            </div>
+    </header>
+
+    <section class="hero">
+        <h2>Conócenos</h2>
+        <p>Somos una entidad que brinda servicios de atención  integrales y alta calidad , enfocándonos siempre en el bienestar y satisfacción de todos nuestros usuarios . Tenemos un enfoque claro que abarca todo el tema de prevención y cuidado de la salud , contribuyendo asi al bienestar de la comunidad centrándonos en el paciente y en cada uno de nuestros profesionales cuyo objetivo es tener profesionales altamente calificados 
+    </section>
+
+    <div class="contenedor">
+        <section id="mision" class="grid">
+            <div class="card">
+                <img src="{{ url_for('static', path='/img/mision.png ') }}" 
+                alt="Logo mision"
+                width="5%" >
+                <div class="card-content">
+                    <h3>Misión</h3>
+                    <p>Garantizar servicios de salud integrales y de calidad, promoviendo una vida sana y plena.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', path='/img/vision.jpg ') }}" 
+                alt="Logo vision" >
+                <div class="card-content">
+                    <h3>Visión</h3>
+                    <p>Ser reconocidos como la eps lider en atencion integral  sostenible en el sistema de salud del pais , enfocandonos siempre en la excelencia de cada servicio brindado,aspiramos ser un ejemlo a seguir con la conviccion de ser mejor cada dia .</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', path='/img/servicios.jpg ') }}" 
+                alt="servicios" >
+                <div class="card-content">
+                    <h3>Nuestros servicios</h3>
+                    <p>Contamos con servicios de prevencion , atencion de primera instancia y especializada ,hospitales y clinicas , herramientas digitales.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="{{ url_for('static', path='/js/logic_paginaConocenos.js')}}"></script> 
+    <footer>
+        <p>&copy; 2025 SIAS , derechos reservados.</p>
+    </footer>
+</body>
+</html>

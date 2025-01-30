@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', path='/style/style_ordenMedicamentos') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', path='/style/style_ordenMedicamentos.css') }}" />
     <title>ORDEN MEDICAMENTOS</title>
 </head>
 <body>
     <!-- Encabezado -->
     <header>
-      <img src="{{ url_for('static', path='/img/Logo.png ') }}" 
-      alt="Logo SIAS" >
+      <img src="{{ url_for('static', path='/img/logo.png ') }}" 
+      alt="SIAS" >
+
       <nav>
         <ul>
-          <li class="pagina_inicio"><a href="./Pagina_principal.html">Pagina inicio</a></li><!--organizar url de pagina principal-->
+          <li class="pagina_inicio"><a href="./Pagina_principal.html">Pagina inicio</a></li>
+          <!--colocar enlace-->
         </ul>
       </nav>
     </header>
@@ -49,7 +51,7 @@
 
         <!--Numero de documento-->
         <label for="documento">Número de identificación:</label>
-        <input type="text" id="documento" name="documento" placeholder="Ingresa tu documento" required>
+        <input type="text" id="documento" name="documento" placeholder="Ingresa tu documento" required maxlength="10">
         <!--manejo errores -->
         <span id="numero_documento_incorrecto" class="error-message"></span>  
         
@@ -70,7 +72,7 @@
   
         <label for="medicamentos">Ingrese orden de medicamento :</label>
         <input type="text" id="medicamentos" name="medicamentos"
-       placeholder="Orden N-" required></textarea>
+       placeholder="Orden N-" required maxlength="10"></textarea>
 
         <span id="orden_error" class="error-message"></span>
             </div>
@@ -87,4 +89,3 @@
     <script src="{{ url_for('static', path='/js/logic_ordenMedicamentos.js')}}"></script> 
 </body>
 </html>
-

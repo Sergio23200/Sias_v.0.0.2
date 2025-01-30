@@ -18,28 +18,40 @@
         </ul>
     </div>
 </div>
-<!--BUSCADOR-->
-<div class="search_container_padre">
-    <input type="text" id="searchInput" class="search"
-    placeholder="Buscar.." >
+
 </header>
   <body>
     <!--FORMULARIO-->
     <div class="form-contenedor">
       <h1 class="titulo">Registrarse</h1>
       <div class="contenedor_seleccion">
-      <form id="register_form">
+        <!--metodo post para envio formulario-->
+      <form action="DIRECCION DEL SERVIDOR" method = "POST" id="register_form">
+        <!-- Nombre Completo -->
+        <div class="form-contenedor">
+          <label for="fullName">Nombre Completo</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Nombre / Apellidos"
+            required
+          />
+          <span id="fullNameError" class="error-message"></span>
+        </div>
+        
         <!-- Tipo de documento -->
         <div class="form-contenedor">
           <label for="documentType">Tipo de Documento</label>
           <select id="documentType" name="documentType" required>
-            <option value="">Seleccionar</option>
+            <option id="seleccionar" value="">Seleccionar</option>
             <option value="CC">Cédula de Ciudadanía</option>
             <option value="TI">Tarjeta de Identidad</option>
             <option value="PAS">Pasaporte</option>
           </select>
         </div>
     </div>
+    <span id="documentTypeError" class="error-message"></span>
         <!-- Número de documento -->
         <div class="contenedor_seleccion">
         <div class="form-contenedor">
@@ -52,14 +64,8 @@
             required
             maxlength="10"
           />
-        </div>
-    </div>
-
-        <!-- Fecha de nacimiento -->
-        <div class="contenedor_seleccion">
-        <div class="form-contenedor">
-          <label for="birthDate">Fecha de Nacimiento</label>
-          <input type="date" id="birthDate" name="birthDate" required />
+           <!--Manejo de errores numero documento -->
+          <span id="documentNumberError" class="error-message"></span>
         </div>
     </div>
 
@@ -74,6 +80,8 @@
             placeholder="ejemplo@correo.com"
             required
           />
+           <!--Manejo de errores correo-->
+          <span id="emailError" class="error-message"></span>
         </div>
     </div>
 
@@ -89,23 +97,127 @@
             required
             maxlength="10"
           />
+           <!--Manejo de errores celular -->
+          <span id="phoneError" class="error-message"></span>
         </div>
     </div>
+    <!-- Género -->
+    <div class="contenedor_seleccion">
+    <div class="form-contenedor">
+      <label for="gender">Género</label>
+      <select id="gender" name="gender" required>
+        <option value="">Seleccionar</option>
+        <option value="M">Masculino</option>
+        <option value="F">Femenino</option>
+        <option value="O">Otro</option>
+      </select>
+       <!-- manejo errores genero -->
+      <span id="genderError" class="error-message"></span>
+    </div>
+  </div>
 
-        <!-- Acepta términos y condiciones -->
-        <div class="form-contenedor">
-          <input type="checkbox" id="terms" name="terms" required />
-          <label for="terms"
-            >
-            <a href="#" target="_blank">Acepto los términos y condiciones</a></label
-          >
-        </div>
+
+     <!-- Ciudad -->
+     <div class="contenedor_seleccion">
+     <div class="form-contenedor">
+      <label for="city">Ciudad de residencia</label>
+      <input
+        type="text"
+        id="city"
+        name="city"
+        placeholder="Ciudad"
+        required
+      />
+      <!-- manejo errores ciudad  -->
+      <span id="cityError" class="error-message"></span>
+    </div>
+  </div>
+    <!-- Dirección -->
+    <div class="contenedor_seleccion">
+    <div class="form-contenedor">
+      <label for="address">Dirección</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        placeholder="cll/cr # xx -xx"
+        required
+      />
+      <!-- manejo errores DIRECCION-->
+      <span id="addressError" class="error-message"></span>
+    </div>
+  </div>
+    <!-- Membresía -->
+    <div class="contenedor_seleccion">
+    <div class="form-contenedor">
+      <label for="membership">Membresía</label>
+      <select id="membership" name="membership" required>
+        <option value="">Seleccionar</option>
+        <option value="beneficiario">Beneficiario</option>
+        <option value="contributivo">Contributivo</option>
+      </select>
+       <!-- manejo membresia-->
+      <span id="membershipError" class="error-message"></span>
+    </div>
+  </div>
+
+    <!-- Número de Identificación Historial Clínico -->
+    <div class="contenedor_seleccion">
+    <div class="form-contenedor">
+      <label for="clinicalHistoryId"> Historial Clínico</label>
+      <input
+        type="text"
+        id="clinicalHistoryId"
+        name="clinicalHistoryId"
+        placeholder="Ejemplo: 123456"
+        maxlength="15"
+        required
+      />
+      <!-- manejo errores historial clinico-->
+      <span id="clinicalHistoryIdError" class="error-message"></span>
+    </div>
+  </div>
+
+  <!-- Fecha de nacimiento -->
+<div class="contenedor_seleccion">
+  <div class="form-contenedor">
+    <label for="birthDate" class="labelBirtdate">Fecha de Nacimiento</label>
+    <input type="date" id="birthDate" name="birthDate" required />
+  </div>
+</div>
+<!--Manejo de errores fecha nacimiento -->
+<span id="birthDateError" class="error-message"></span>
+
+    <!--CONTRASEÑA-->
+<div class="form-group">
+  <div class="contenedor_seleccion">
+  <label for="contraseña" class="label">Contraseña</label>
+</div>
+  <input
+    type="password"
+    id="contraseña"
+    name="contraseña"
+    required maxlength="8"
+    placeholder="********"
+  />
+  <!-- error campo vacio contraseña -->
+  <span id="contraseñaError" class="error-message"></span>
+</div>
+
+
+        <!--TERMINOS_CONDICIONES-->
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">Acepta terminos y condiciones</label>
+      </div>
+    <!--Manejo de errores terminos condiciones -->
+    <span id="termsError" class="error-message"></span>
 
         <!-- Botón de registro -->
         <button type="submit" class="button">REGISTRAR</button>
       </form>
     </div>
 
-    <script src="{{ url_for('static', path='/js/logic_registro.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/logic_registro.js')}}"></script> 
   </body>
 </html>

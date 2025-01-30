@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirmación</title>
+    <style>
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: hsl(200, 76%, 15%);
+        margin: 0;
+        font-family: 'Arial', sans-serif; }
+ 
+     /* Contenedor general de la confirmación */
+     .confirmation-container {
+        background-color: hwb(229 78% 15%);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+        margin: 20px;
+      }
+
+    h1{
+        font-size: 2rem;
+        color: hsl(240, 65%, 22%);
+        margin-bottom: 20px;
+    }
+    strong{
+        font-weight: bold;
+        color: hsl(240, 65%, 22%);
+        
+    }
+
+    /* Estilos para los párrafos */
+    p {
+        font-size: 1.2rem;
+        color: hsl(204, 89%, 11%);
+        margin: 10px 0;
+        line-height: 1.6;
+    }
+    /* Estilo para los contenedores de datos */
+    span {
+        font-style: italic;
+        color: hsl(210, 50%, 40%);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        padding: 2px 5px; /* Añadir espacio alrededor del texto */
+        border-radius: 4px; /* Bordes redondeados */
+    }
+
+    /* Agregar un espacio entre los párrafos */
+    p {
+        margin-bottom: 15px;
+    }
+
+    /* Estilos para la responsividad */
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+    
+
+     
+      </style>
+  </head>
+  <body>
+    <div class="confirmation-container">
+      <h1>Confirmación de los datos ingresados</h1>
+      <p><strong>Nombre:</strong> <span id="confirmNombre"></span></p>
+      <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+      <p><strong>Tipo de Documento:</strong> <span id="confirmTipoDocumento"></span></p>
+      <p><strong>Número de Documento:</strong> <span id="confirmDocumento"></span></p>
+      <p><strong>Medicamentos:</strong> <span id="confirmMedicamentos"></span></p>
+    </div>
+
+    <script>
+      // Obtener los datos del sessionStorage y mostrarlos
+      document.getElementById("confirmNombre").textContent = localStorage.getItem("nombre");
+      document.getElementById("confirmEmail").textContent = localStorage.getItem("email");
+      document.getElementById("confirmTipoDocumento").textContent = localStorage.getItem("tipoDocumento");
+      document.getElementById("confirmDocumento").textContent = localStorage.getItem("documento");
+      document.getElementById("confirmMedicamentos").textContent = localStorage.getItem("medicamentos");
+    </script>
+  </body>
+</html>

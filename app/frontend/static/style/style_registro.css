@@ -5,10 +5,11 @@
 }
 
 body {
-  background-image: url("/static/img/fondo-inicio-sesion.png");
+  background-image: url(./imagenes/fondo-inicio-sesion.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  width: 100%;
 }
 
 header {
@@ -27,9 +28,8 @@ header {
 
 .menu-icon {
   color: white;
-  font-size: 24px;
-  margin-left: 100%;
-  background: none;
+  font-size: 24px;  
+  background: transparent;
   border: none;
   cursor: pointer;
 }
@@ -53,12 +53,13 @@ header {
 
 .menuOptions ul li {
   padding: 20px;
+  
 }
 
 .menuOptions ul li a {
   color: white;
   text-decoration: none;
-  display: block;
+  
 }
 
 .menuOptions ul li:hover {
@@ -74,6 +75,8 @@ header {
   padding: 0.5%;
   border-radius: 8px;
   width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .titulo {
@@ -82,9 +85,10 @@ header {
   margin: 1%;
   color: #3f7fc2;
 }
-
 /*estilos formulario*/
 #contraseña {
+  align-items: center;
+  justify-content: center;
   padding: 2%;
   background-color: rgba(243, 239, 239, 0.875);
   border: 1px solid hsl(0, 14%, 90%);
@@ -94,13 +98,48 @@ header {
 
 #documentType {
   padding: 2%;
+  margin: 2%;
   background-color: rgba(243, 239, 239, 0.875);
   border: 1px solid hsl(0, 14%, 90%);
   border-radius: 4px;
   font-size: 14px;
   color: hwb(0 59% 40%);
+  width: 95%;
+  height: 100%;
+
 }
 
+#gender{
+  padding: 2%;
+  background-color: rgba(243, 239, 239, 0.875);
+  border: 1px solid hsl(0, 14%, 90%);
+  border-radius: 4px;
+  font-size: 14px;
+  color: hwb(0 59% 40%);
+  width: 95%;
+  height: 100%;
+}
+
+#membership{
+  padding: 2%;
+  background-color: rgba(243, 239, 239, 0.875);
+  border: 1px solid hsl(0, 14%, 90%);
+  border-radius: 4px;
+  font-size: 14px;
+  color: hwb(0 59% 40%);
+  width: 95%;
+  height: 100%;
+}
+
+select {
+  width: 100%;  /* Asegura que el select ocupe el 100% del ancho disponible en el contenedor */
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  justify-content: center;
+  text-align: center;
+}
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -111,7 +150,7 @@ input[type="contraseña"] select {
   padding: 2%;
   background-color: rgba(243, 239, 239, 0.875);
   border: 1px solid hsl(0, 14%, 90%);
-  color: hwb(0 75% 24%);
+  color: hwb(0 59% 40%);
   margin: 0.5% auto; /* Espaciado uniforme */
 }
 
@@ -120,6 +159,7 @@ input[type="checkbox"] {
   width: 5%;
 }
 
+/*estilo para los formularios -letra exterior*/
 .contenedor_seleccion {
   justify-content: center;
   text-align: center;
@@ -127,21 +167,14 @@ input[type="checkbox"] {
   font-size: 100%;
   margin-bottom: 5px;
   color: #aaaaaa;
+  width: 20%;
 }
 
-.form-contenedor {
-  justify-content: center;
-  align-items: center;
-}
 
 /*modifica texto y terminos y condiciones*/
 .form-group {
   margin-bottom: 1%;
   color: rgb(157, 151, 151);
-}
-
-#birthDate {
-  margin-top: 5%;
 }
 
 /*estilo boton registro*/
@@ -180,6 +213,7 @@ a:hover {
   text-decoration: underline;
 }
 
+
 @media screen and (max-width: 600px) {
   header {
     flex-direction: column-reverse;
@@ -187,7 +221,15 @@ a:hover {
   }
 
   .titulo {
-    margin-top: 5%;
+    margin-top: 5%; 
+  }
+
+  .button{width: 10%;
+  }
+
+  .contenedor_seleccion{
+    width: 50%;
+
   }
 
   body {
@@ -195,8 +237,6 @@ a:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh;
   }
   .button {
     width: 30%;
@@ -212,6 +252,7 @@ a:hover {
   }
 }
 
+
 @media screen and (max-width: 1024px) {
   .button {
     width: 10%;
@@ -224,6 +265,11 @@ a:hover {
 
   .labelBirtdate {
     margin-top: 5%;
+  }
+
+  .contenedor_seleccion{
+    width: 25%;
+
   }
 }
 @media screen and (max-width: 768px) {

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Términos y Condiciones - EPS Salud</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='/style/style_terminosCondiciones.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h1>Términos y Condiciones</h1>
+        <img src="{{ url_for('static', path='/img/logo.png ') }}" alt="SIAS" />
+      </div>
+    </header>
+
+    <main>
+      <section class="contenido">
+        <h2>Bienvenido a EPS SURA, te acompaña a donde vayas.</h2>
+        <div class="accordion">
+          <div class="accordion-item" id="item1">
+            <h3 class="accordion-header" onclick="toggleAccordion('item1')">
+              1. Introducción
+            </h3>
+            <p class="accordion-content">
+              Por favor, lee cuidadosamente nuestros términos y condiciones
+              antes de utilizar nuestros servicios. Estos se aplican a todos los
+              servicios proporcionados por EPS Salud. Al utilizar nuestros
+              servicios, aceptas cumplir con ellos.
+            </p>
+          </div>
+
+          <div class="accordion-item" id="item2">
+            <h3 class="accordion-header" onclick="toggleAccordion('item2')">
+              2. Información Recopilada
+            </h3>
+            <p class="accordion-content">
+              Recopilamos información personal y médica de nuestros usuarios
+              para proporcionar servicios de salud adecuados y cumplir con todos
+              los requisitos .
+            </p>
+          </div>
+
+          <div class="accordion-item" id="item3">
+            <h3 class="accordion-header" onclick="toggleAccordion('item3')">
+              3. Uso de la Información
+            </h3>
+            <p class="accordion-content">
+              La información recopilada será utilizada exclusivamente para
+              mejorar la atención médica de cada uno de nuestros usuarios.
+            </p>
+          </div>
+
+          <div class="accordion-item" id="item4">
+            <h3 class="accordion-header" onclick="toggleAccordion('item4')">
+              4. Responsabilidad de los Usuarios
+            </h3>
+            <p class="accordion-content">
+              El usuario es responsable de mantener la confidencialidad de sus
+              credenciales y de notificar cualquier acceso no autorizado a su
+              cuenta.
+            </p>
+          </div>
+
+          <div class="accordion-item" id="item5">
+            <h3 class="accordion-header" onclick="toggleAccordion('item5')">
+              5. Modificaciones
+            </h3>
+            <p class="accordion-content">
+              EPS Salud se reserva el derecho de modificar estos términos en
+              cualquier momento. Las modificaciones serán publicadas en esta
+              página y tendrán efecto inmediato.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 SIAS. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', path='/js/logic_terminosCondiciones.js')}}"></script> 
+  </body>
+</html>

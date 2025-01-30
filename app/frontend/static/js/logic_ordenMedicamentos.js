@@ -138,4 +138,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+//funcion para redireccionar a otra pagina HTML
+function saveData() {
+  localStorage.setItem('nombre', nombreValido);
+  localStorage.setItem('email', tipoDocumentoValido);
+  localStorage.setItem('documento', documentoValido);
+  localStorage.setItem('documento', emailValido);
+  localStorage.setItem('documento', medicamentosValidos);
+
+  // Redirigir a la página de confirmación
+  window.location.href = "mensajeConfirmacionMedicamentos.html";
+}
 
