@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medios de Contacto - EPS Salud</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='/style/style_mediosDeContacto.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="{{ url_for('static', path='/img/Logo.png ') }}"
+          alt="Logo SIAS"
+        />
+        <h1>Medios de Contacto</h1>
+      </div>
+    </header>
+    <!--cars con cada medio -->
+    <section id="contact-cards">
+      <div class="card" onclick="toggleCard('telefono')">
+        <img
+          src="{{ url_for('static', path='/img/lineaDeAtencion.jpg ') }}"
+          alt="Logo linea de atencion"
+          width="100%"
+        />
+        <h3>Teléfono</h3>
+        <p id="telefono" class="card-info">Haz clic para ver más...</p>
+      </div>
+      <div class="card" onclick="toggleCard('correo')">
+        <img
+          src="{{ url_for('static', path='/img/pqrs.jpg ') }}"
+          alt="Logo pqrs"
+          width="100%"
+        />
+        <h3>Envianos tus PQRS</h3>
+        <p id="correo" class="card-info">Haz clic para ver más...</p>
+      </div>
+      <div class="card" onclick="toggleCard('social')">
+        <img
+          src="{{ url_for('static', path='/img/redesSociales.png ') }}"
+          alt="Logo redes"
+          width="100%"
+        />
+        <h3>Redes Sociales</h3>
+        <p id="social" class="card-info">Haz clic para ver más...</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 SIAS| Todos los derechos reservados</p>
+    </footer>
+
+    <script src="{{ url_for('static', path='/js/logic_mediosDeContacto.js')}}"></script> 
+  </body>
+</html>
