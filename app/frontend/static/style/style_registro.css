@@ -1,0 +1,303 @@
+* {
+  font-family: Arial, sans-serif;
+  padding: 0%;
+  margin: 0%;
+}
+
+body {
+  background-image: url(./imagenes/fondo-inicio-sesion.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+header {
+  background-color: #3f7fc2;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*menu hamburguesa para que al desplegar no se coloque encima del icono*/
+.menu-container {
+  position: relative;
+}
+
+.menu-icon {
+  color: white;
+  font-size: 24px;  
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.menuOptions {
+  display: none;
+  position: absolute;
+  top: 40px;
+  background-color: #60c2f7;
+  color: blue;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.menuOptions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuOptions ul li {
+  padding: 20px;
+  
+}
+
+.menuOptions ul li a {
+  color: white;
+  text-decoration: none;
+  
+}
+
+.menuOptions ul li:hover {
+  background-color: hsl(252, 58%, 40%);
+}
+
+/*formulario contendor principal*/
+.form-contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5%;
+  border-radius: 8px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo {
+  text-align: center;
+  font-weight: 500;
+  margin: 1%;
+  color: #3f7fc2;
+}
+/*estilos formulario*/
+#contraseña {
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+  background-color: rgba(243, 239, 239, 0.875);
+  border: 1px solid hsl(0, 14%, 90%);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#documentType {
+  padding: 2%;
+  margin: 2%;
+  background-color: rgba(243, 239, 239, 0.875);
+  border: 1px solid hsl(0, 14%, 90%);
+  border-radius: 4px;
+  font-size: 14px;
+  color: hwb(0 59% 40%);
+  width: 95%;
+  height: 100%;
+
+}
+
+#gender{
+  padding: 2%;
+  background-color: rgba(243, 239, 239, 0.875);
+  border: 1px solid hsl(0, 14%, 90%);
+  border-radius: 4px;
+  font-size: 14px;
+  color: hwb(0 59% 40%);
+  width: 95%;
+  height: 100%;
+}
+
+#membership{
+  padding: 2%;
+  background-color: rgba(243, 239, 239, 0.875);
+  border: 1px solid hsl(0, 14%, 90%);
+  border-radius: 4px;
+  font-size: 14px;
+  color: hwb(0 59% 40%);
+  width: 95%;
+  height: 100%;
+}
+
+select {
+  width: 100%;  /* Asegura que el select ocupe el 100% del ancho disponible en el contenedor */
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  justify-content: center;
+  text-align: center;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="contraseña"] select {
+  all: unset;
+  width: 90%;
+  padding: 2%;
+  background-color: rgba(243, 239, 239, 0.875);
+  border: 1px solid hsl(0, 14%, 90%);
+  color: hwb(0 59% 40%);
+  margin: 0.5% auto; /* Espaciado uniforme */
+}
+
+input[type="checkbox"] {
+  margin-top: 2%;
+  width: 5%;
+}
+
+/*estilo para los formularios -letra exterior*/
+.contenedor_seleccion {
+  justify-content: center;
+  text-align: center;
+  margin: 0.5%;
+  font-size: 100%;
+  margin-bottom: 5px;
+  color: #aaaaaa;
+  width: 20%;
+}
+
+
+/*modifica texto y terminos y condiciones*/
+.form-group {
+  margin-bottom: 1%;
+  color: rgb(157, 151, 151);
+}
+
+/*estilo boton registro*/
+
+.button {
+  width: 10%;
+  padding: 10px;
+  background-color: hsl(211, 50%, 52%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #205c9d;
+}
+
+/* terminos y condiciones */
+
+.form-group form-check {
+  display: flex;
+}
+
+/*estilo error mensaje al ingresar campos incorrectos*/
+.error-message {
+  color: red;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+@media screen and (max-width: 600px) {
+  header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .titulo {
+    margin-top: 5%; 
+  }
+
+  .button{width: 10%;
+  }
+
+  .contenedor_seleccion{
+    width: 50%;
+
+  }
+
+  body {
+    background-image: url(./imagenes/fondo-inicio-sesion.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .button {
+    width: 30%;
+    font-size: 70%;
+    margin-top: 5%;
+  }
+  #birthDate {
+    margin-top: 5%;
+  }
+
+  .labelBirtdate {
+    margin-top: 5%;
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .button {
+    width: 10%;
+    font-size: 70%;
+    margin-top: 2%;
+  }
+  #birthDate {
+    margin-top: 5%;
+  }
+
+  .labelBirtdate {
+    margin-top: 5%;
+  }
+
+  .contenedor_seleccion{
+    width: 25%;
+
+  }
+}
+@media screen and (max-width: 768px) {
+  .button {
+    width: 30%;
+    font-size: 70%;
+    margin-top: 2%;
+  }
+  #birthDate {
+    margin-top: 5%;
+  }
+
+  .labelBirtdate {
+    margin-top: 5%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .button {
+    width: 30%;
+    font-size: 70%;
+    margin-top: 5%;
+  }
+  #birthDate {
+    margin-top: 5%;
+  }
+
+  .labelBirtdate {
+    margin-top: 5%;
+  }
+}

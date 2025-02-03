@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POLITICAS</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='/style/style_politicaPrivacidad.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <img
+        src="{{ url_for('static', path='/img/logo.png ') }}"
+        alt="SIAS"
+        width="10%"
+      />
+      <div class="logo">
+        <h1>NUESTRAS POLITICAS DE PRIVACIDAD</h1>
+      </div>
+      <div class="nav">
+        <nav>
+          <ul>
+            <!--validar enlace anclas-->
+            <li><a href="./Pagina_principal.html">Home</a></li>
+            <li><a href="./registro.html">Registro</a></li>
+            <li><a href="./inicio_sesion.html">Inicio </a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="introduccion">
+      <h2>Introducción</h2>
+      <p>
+        Bienvenido a la página de políticas de privacidad de la eps. Aquí
+        explicamos cómo recopilamos, usamos y protegemos tu información.Nos
+        comprometemos contigo cuyo fin es respetar siempre tu privacidad de
+        forma segura , queremos asegurarnos de que tengas una experiencia segura
+        y confiable al interactuar con nosotros.
+      </p>
+    </section>
+
+    <section id="informacion">
+      <h2>Información Recopilada</h2>
+      <p>
+        Obtenemos toda la información personal cuando te registras, de forma
+        segura , la informacion que podemos recopilar incluye : Nombre completo
+        , Numero de documento , Fecha de nacimiento , Genero , Direccion de
+        residencia , Numero de contacto , Email ,Historial medico , membresia ,
+        etc .
+      </p>
+    </section>
+
+    <section id="uso">
+      <h2>Uso de la Información</h2>
+      <p>
+        La información recopilada se utiliza para poder brindarte cada uno de
+        nuestros servicios con el fin de que sea una experiencia segura ,
+        eficiente , rapida , sencilla , prodas acceder con la informacion
+        proporcionada a citas medicas , medicamentos a domicilio ,etc .
+      </p>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>
+        Si tienes alguna pregunta sobre nuestras políticas de privacidad,
+        contactanos a alguno de nuestros canales de atencion. <a href=""></a>
+      </p>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 SIAS. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', path='/js/logic_politicaPrivacidad.js')}}"></script> 
+  </body>
+</html>

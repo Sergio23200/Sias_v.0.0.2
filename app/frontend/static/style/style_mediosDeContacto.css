@@ -1,0 +1,138 @@
+/* Reset de margenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo general del cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f8ff;
+    color: #333;
+}
+
+/* Estilo para el encabezado */
+header {
+    background-color: #007bb5;  /* Color de fondo atractivo (azul EPS) */
+    color: #ffffff;  /* Texto blanco */
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);  /* Sombra sutil */
+    border-bottom: 4px solid #005f8a;  /* Borde inferior sutil */
+    animation: fadeIn 1.5s ease-in-out;  /* Animación de aparición */
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos del logo */
+header img {
+    width: 20%; /* Tamaño adecuado para el logo */
+    transition: transform 0.3s ease-in-out;  /* Efecto al pasar el mouse */
+}
+
+/* Efecto al pasar el mouse sobre el logo */
+header img:hover {
+    transform: rotate(20deg); /* Efecto de rotación del logo */
+}
+
+/* Título */
+header h1 {
+    font-size: 2.5rem;
+    padding-bottom: 0.5%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);  /* Sombra de texto */
+    animation: textGlow 1.5s ease-in-out infinite alternate;  /* Efecto de resplandor en el texto */
+}
+
+/* Animación de resplandor en el texto */
+@keyframes textGlow {
+    0% { text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2), 0 0 25px #00d4ff, 0 0 5px #00d4ff; }
+    100% { text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2), 0 0 20px #fff, 0 0 15px #00d4ff; }
+}
+
+header.logo {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: logoAnimation 1.5s ease-in-out 0.5s forwards; /* Animación de logo */
+}
+
+/* Animación del logo */
+@keyframes logoAnimation {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Estilo para las tarjetas de contacto */
+#contact-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.card-info {
+    color: #007bb5;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.card-info.hidden {
+    opacity: 0;
+}
+
+/* Estilo de footer */
+footer {
+    background-color: hsl(199, 85%, 23%);
+    color: white;
+    text-align: center;
+    padding: 0.5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Media Queries para hacer la página responsive */
+@media (max-width: 768px) {
+    #contact-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}

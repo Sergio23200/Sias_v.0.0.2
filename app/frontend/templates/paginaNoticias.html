@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias EPS Salud</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style/style_paginaNoticias.css') }}" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', path='/img/logo.png ') }}" 
+            alt="SIAS" >
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Inicio sesion</a></li>
+                <li><a href="#">Conocenos</a></li>
+                <li><a href="#">Contactanos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="carousel">
+        <div class="carousel-container">
+            <div class="carousel-item" id="item1">
+                <img src="{{ url_for('static', path='/img/imgControlPrenatalNoticias.jpg ') }}" 
+                alt="Noticia carrusel 1" >
+                <div class="carousel-caption">
+                    <h3>Vacunas Disponibles para Todos</h3>
+                    <p>La EPS Salud ofrece nuevas opciones de vacunas para sus afiliados. Infórmate aquí.</p>
+                </div>
+            </div>
+            <div class="carousel-item" id="item2">
+                <img src="{{ url_for('static', path='/img/imgControlCancerNoticias.jpg ') }}" 
+                alt="Noticia carrusel 2" >
+                <div class="carousel-caption">
+                    <h3>Chequeos Médicos Preventivos</h3>
+                    <p>Consulta nuestros servicios de chequeo médico preventivo para mantenerte saludable.</p>
+                </div>
+            </div>
+            <div class="carousel-item" id="item3">
+                <img src="{{ url_for('static', path='/img/saludInfantil.png ') }}" 
+                alt="Noticia carrusel 3" >
+                <div class="carousel-caption">
+                    <h3>Nuevo Plan de Salud Infantil</h3>
+                    <p>Presentamos el nuevo plan de salud para niños. Conoce todos los beneficios.</p>
+                </div>
+            </div>
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </section>
+
+    <section class="news-list">
+        <h2>Noticias Recientes</h2>
+        <div class="news-card">
+            <img src="{{ url_for('static', path='/img/prevencionInfantil2.jpg ') }}" 
+            alt="Noticia 1" >
+            <h3>Nuevo Plan de Salud Infantil</h3>
+            <p>Conoce los beneficios de nuestro nuevo plan de salud infantil, diseñado para proteger a los más pequeños.Para cualquier informacion acercarse a un punto de informacion mas cercano o contactanos por medio de nuestros canales de atencion</p>
+        </div>
+        <div class="news-card">
+            <img src="{{ url_for('static', path='/img/imgChequeoNoticias.png ') }}" 
+            alt="Noticia 2" >
+            <h3>Chequeos Médicos Preventivos</h3>
+            <p>Realiza tu chequeo médico preventivo anual. ¡Tu salud es lo más importante!</p>
+        </div>
+        <div class="news-card">
+            <img src="{{ url_for('static', path='/img/vacunacion2.jpg ') }}" 
+            alt="Noticia 3" >
+            <h3>Vacunas Disponibles para Todos</h3>
+            <p>Consulta las nuevas vacunas disponibles en nuestra EPS para proteger tu salud , pronto en el país se dará inicio a una nueva temporada de vacunacion . Estar atentos . </p>
+        </div>
+        <div class="news-card">
+            <img src="{{ url_for('static', path='/img/imgEnfermedadesRespiratoriasNoticias.jpg ') }}" 
+            alt="Noticia 4" >
+            <h3>Aumentan hospitalizaciones por enfermedades respiratorias</h3>
+            <p>En los ultimos dias los casos por enfermedades graves estan aumentando en el país , las bajas/altas temperaturas en el país son factor importante para contraer estas enfermedades, la OMS indica que aproximadamente se espera 3,9millones de muertes anuales por infecciones respiratorias agudas   </p>
+        </div>
+        <div class="news-card">
+            <img src="{{ url_for('static', path='/img/controlPrenatal.jpg ') }}" 
+            alt="Noticia 5" >
+            <h3>Importancia del control prenatal</h3>
+            <p>El control prenatal es clave para tener un parto sin riesgos ni complicaciones1. Según el Manual Ministerio de Salud 2008, el objetivo general del control prenatal es controlar la evolución de la gestación, fomentar estilos de vida saludables, prevenir complicaciones, diagnosticar y tratar oportunamente la patología, derivar a niveles de mayor complejidad cuando corresponda, y preparar a la madre, su pareja y familia, física y psíquicamente para el parto y nacimiento </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 EPS Salud. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', path='/js/logic_paginaNoticias.js')}}"></script> 
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+* {
+  font-family: Arial, sans-serif;
+  padding: 0%;
+  margin: 0%;
+}
+
+body {
+  background-image: url("/static/img/imgFondoInicioSesion.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+header {
+  background-color: #3f7fc2;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu-icon {
+  color: white;
+  font-size: 30px;
+  margin-left: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menuOptions {
+  display: none;
+  position: absolute;
+  top: 40px;
+  background-color: #60c2f7;
+  color: blue;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.menuOptions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuOptions ul li {
+  padding: 10px;
+}
+
+.menuOptions ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.menuOptions ul li:hover {
+  background-color: hsl(252, 58%, 40%);
+}
+
+/*estilos para el boton buscar*/
+
+.search_container_padre {
+  background-color: #e8e6e6;
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 2%;
+}
+
+.search {
+  flex: 1;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  outline: none;
+  background-color: transparent;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin: 0.5%;
+  color: #3f7fc2;
+}
+
+/*estilos parte formulario*/
+.login-contenedor {
+  justify-content: center;
+  text-align: center;
+  padding: 2%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(165, 162, 162, 0.1);
+  width: 100%;
+}
+
+.contenedor_seleccion {
+  margin: 1%;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  all: unset;
+  width: 25%;
+  padding: 1%;
+  background-color: rgba(243, 239, 239, 0.875);
+  border: 1px solid hsl(0, 14%, 90%);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input[type="password"] {
+  margin-top: 0.5%;
+}
+
+input[type="checkbox"] {
+  margin-right: 1%;
+}
+
+/*Terminos y condiciones-contraseña */
+.form-group {
+  margin-bottom: 1%;
+  color: rgb(157, 151, 151);
+}
+/*estilo error mensaje al ingresar campos incorrectos*/
+.error-message {
+  color: red;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*estios registrate aqui-olvido contraseña*/
+
+.registro-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 1%;
+}
+
+/*estilo olvido contraseña*/
+.restaurar_contraseña {
+  padding-left: 5%;
+}
+
+/*estilos hiperviculos*/
+.registro-container a {
+  display: inline-flex;
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/*estilo evento de regitrarse-olvido contraseña*/
+.registro-container a:hover {
+  text-decoration: underline;
+}
+
+/*estilo boton*/
+.boton {
+  width: 20%;
+  padding: 1%;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background-color: rgb(70, 150, 237);
+}
+
+@media screen and (max-width: 600px) {
+  .login-contenedor {
+    padding: 15px;
+  }
+
+  .titulo {
+    font-size: 18px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  select,
+  .boton {
+    font-size: 50%;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .search_container_padre {
+    width: 30%;
+  }
+}

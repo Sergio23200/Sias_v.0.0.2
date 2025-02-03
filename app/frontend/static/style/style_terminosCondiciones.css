@@ -1,0 +1,164 @@
+/* General body style */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;  /* Fondo suave */
+}
+
+/* Header styles */
+header {
+    background-color: #005f8a;  /* Fondo azul oscuro (común en EPS) */
+    color: white;  /* Texto blanco */
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);  /* Sombra sutil */
+    border-bottom: 4px solid #007bb5;  /* Borde azul brillante */
+    animation: headerSlideIn 1.5s ease-out;  
+}
+
+/* Animación de deslizamiento del header */
+@keyframes headerSlideIn {
+    0% { transform: translateY(-50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+header h1 {
+    display: flex;
+    font-size: 2.5rem;
+    margin: 10px 0;
+}
+
+header .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: logoAnimation 1s ease-out; /* Animación del logo */
+}
+
+@keyframes logoAnimation {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Estilos del logo */
+header img {
+    width: 120px;  /* Tamaño del logo */
+    height: auto;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease-in-out;  /* Efecto de transformación */
+}
+
+/* Efecto hover sobre el logo */
+header img:hover {
+    transform: rotate(15deg);  /* Rotación suave del logo */
+}
+
+/* Título del header */
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);  /* Sombra suave para el título */
+    animation: textGlow 2s infinite alternate;  /* Efecto de resplandor en el texto */
+}
+
+/* Animación del resplandor del título */
+@keyframes textGlow {
+    0% { text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 0 0 15px #00d4ff; }
+    100% { text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 0 0 20px #ffffff, 0 0 15px #00d4ff; }
+}
+
+header img {
+    display: flex;
+    width: 15%;
+    margin-bottom: 10px;
+}
+
+/* Main content */
+main {
+    padding: 40px 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #007bb5;
+    text-align: center;
+}
+
+/* Accordion styles */
+.accordion {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    background-color: #ffffff;
+    border: 1px solid #007bb5;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.accordion-header {
+    background-color: #007bb5;
+    color: white;
+    font-size: 1.25rem;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #005f8a;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+footer {
+    background-color: hsl(199, 84%, 27%);
+    color: white;
+    text-align: center;
+    padding: 2px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    header img {
+        width: 30%;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .accordion-item {
+        margin-bottom: 15px;
+    }
+}
