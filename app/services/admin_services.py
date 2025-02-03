@@ -2,6 +2,7 @@ from schemas.admin_schema import Admin_schema, Admin_update, admin_filter_schema
 from fastapi.responses import JSONResponse
 import bcrypt
 from models.Admin import Admin_model
+from schemas.login_schema import login_schema_sign_up
 
 
 class Admin_service():
@@ -98,19 +99,20 @@ class Admin_service():
         self.db.commit()
         return
 
-    def verificate_admin(self, document_number: str, password: str, tipoDocumento: str):
+    def verificate_admin(self, login_schema_sign_up: login_schema_sign_up):
         """
         esta funcion es para verificar si  registro  es de tipo admin,
         con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
         seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
+
         retorna un error, pero si si, verifica los datos y sin son validos retornara que el usuario ha sido eliminado
         """
         result = self.db.query(Admin_model).filter(
-            Admin_model.document_number == document_number).first()
+            Admin_model.document_number == login_schema_sign_up.document_number).first()
         if result is None:
             return None
 
-        if bcrypt.checkpw(password.encode(), result.password):
+        if bcrypt.checkpw(login_schema_sign_up.password.encode(), result.password) and result.document_type == login_schema_sign_up.document_type:
             return result
         else:
             return None
