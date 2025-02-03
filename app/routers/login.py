@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, status, Form
+from fastapi import APIRouter, HTTPException, status, Form, Depends, Body
 from utils.jwt_manger import create_token
 from services.admin_services import Admin_service
 from services.affiliate_services import Affiliate_service
@@ -6,30 +6,37 @@ from config.db import Session
 from fastapi import Request
 from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
+from schemas.login_schema import login_schema_sign_up
+
+from middleware.jwt_bear import JWTBearer
 
 login_router = APIRouter()
 template = Jinja2Templates(directory=("frontend"))
 
 
-@ login_router.get("/index", tags=["auth"])
+@ login_router.get("/", tags=["auth"])
 def login_sesion(request: Request):
     return template.TemplateResponse("templates/inicio_sesion.html", {"request": request})
 
 
+@login_router.get("/inicio", tags=["pagina_principal"], dependencies=[Depends(JWTBearer())])
+def pagina_principal(request: Request):
+    return template.TemplateResponse("templates/pagina_principal.html", {"request": request})
+
+
 @login_router.post("/login/", tags=["auth"], )
-def login(tipo_documento: str = Form(...), numero_documento: int = Form(...), contraseña: str = Form(...)):
+def login(login_schema: login_schema_sign_up = Body(...)):
     """
     esta funcion permite  validar el tipo de token, tambien
     puede validar si el token es de tipo usuario o de admin, esto por
     medio de la libreria de oaut jwt, tambien crea los token
     retorna el token si esta todo bien.
 
+
     """
     db = Session()
-
     validate_affiliate = Affiliate_service(
-        db).vericate_afilate(document_type=tipo_documento, document_number=numero_documento, password=contraseña)
-
+        db).vericate_afilate(login_schema_sign_up=login_schema)
     if validate_affiliate:
         validate_affiliate_dict = {
             "id": validate_affiliate.id,
@@ -47,7 +54,7 @@ def login(tipo_documento: str = Form(...), numero_documento: int = Form(...), co
         db = Session()
 
     validate_affiliate = Admin_service(
-        db).verificate_admin(tipoDocumento=tipo_documento, document_number=numero_documento, password=contraseña)
+        db).verificate_admin(login_schema_sign_up=login_schema)
 
     if validate_affiliate:
         validate_affiliate_dict = {
