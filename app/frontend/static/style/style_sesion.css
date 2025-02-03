@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url("/static/img/fondo-inicio-sesion.png");
+  background-image: url("/static/img/imgFondoInicioSesion.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
