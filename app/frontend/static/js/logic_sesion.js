@@ -1,6 +1,5 @@
-// Validación del formulario de inicio de sesión
 document
-  .getElementById("login_Form")
+  .getElementById("loginForm") // Asegúrate de que el ID es correcto en tu HTML
   .addEventListener("submit", function (event) {
     event.preventDefault(); // Prevenir el envío del formulario antes de hacer la validación
 
@@ -8,70 +7,50 @@ document
     const tipoDocumento = document.getElementById("tipoDocumento").value;
     const numeroDocumento = document.getElementById("documento").value;
     const contraseña = document.getElementById("contraseña").value;
-
     const rememberMe = document.getElementById("rememberMe");
 
-    // Variables del DOM PARA RECUPERACION DE CONTRASEÑA
-    const forgotPasswordLink = document.getElementById("forgotPasswordLink");
-    const forgotPasswordForm = document.getElementById("forgotPasswordForm");
-    const recoverPasswordBtn = document.getElementById("recoverPasswordBtn");
-    const emailInput = document.getElementById("email");
-    const recoveryMessage = document.getElementById("recoveryMessage");
-    const cancelRecoveryLink = document.getElementById("cancelRecoveryLink");
+    let valid = true; // Bandera para saber si todas las validaciones pasaron
 
     // Validar el tipo de documento
-    if (tipoDocumento === "CC") {
-      console.log("Tipo de documento: Cédula de Ciudadanía");
-    } else if (tipoDocumento === "TI") {
-      console.log("Tipo de documento: Tarjeta de Identidad");
-    } else if (tipoDocumento === "PAS") {
-      console.log("Tipo de documento: Pasaporte");
-    } else {
-      alert("Por favor, selecciona un tipo de documento");
-      return;
-    }
-
     if (tipoDocumento == "seleccionar") {
       document.getElementById("tipo_documento_incorrecto").textContent =
         "Debe seleccionar tipo de documento";
-      return;
+      valid = false;
     } else {
       document.getElementById("tipo_documento_incorrecto").textContent = "";
-      console.log(tipoDocumento);
     }
 
-    //Aceptacion de terminos y condiciones
+    // Aceptación de términos y condiciones
     if (!rememberMe.checked) {
       document.getElementById("falta_terminos_y_condiciones").textContent =
-        "Debe aceptar terminos y condiciones para continuar";
-      return;
+        "Debe aceptar términos y condiciones para continuar";
+      valid = false;
     } else {
       document.getElementById("falta_terminos_y_condiciones").textContent = "";
-      console.log(rememberMe);
     }
 
     // Validar el número de documento
-    if (numeroDocumento.length < 10 || numeroDocumento.length > 10) {
+    if (numeroDocumento.length !== 10) {
       document.getElementById("documentoIncorrecto").textContent =
-        "Número de documento inválido";
-      return;
+        "Número de documento inválido (debe tener 10 dígitos)";
+      valid = false;
     } else {
-      document.getElementById("documentoIncorrecto").textContent = ""; // Limpiar mensaje de error si es válido
-      console.log(numeroDocumento);
+      document.getElementById("documentoIncorrecto").textContent = "";
     }
 
     // Validar la contraseña
     if (contraseña.length < 8) {
       document.getElementById("contraseñaIncorrecta").textContent =
-        "Recordar que la contraseña debe tener 8 digitos ";
-      return;
+        "La contraseña debe tener al menos 8 caracteres";
+      valid = false;
     } else {
-      document.getElementById("contraseñaIncorrecta").textContent = ""; // Limpiar mensaje de error si es válido
-      console.log(contraseña);
+      document.getElementById("contraseñaIncorrecta").textContent = "";
     }
 
-    // si el proceso de inicio de sesion es exitoso
-    // Aquí podrías agregar el código para enviar el formulario o realizar una acción posterior
+    // Si todas las validaciones pasan, enviar el formulario
+    if (valid) {
+      document.getElementById("loginForm").submit();
+    }
   });
 
 //funcion para manejo de menu hamburguesa
@@ -83,8 +62,3 @@ function toggleMenu() {
     menu.style.display = "block"; // Muestra el menú si está oculto
   }
 }
-
-console.log(tipoDocumento);
-console.log(numeroDocumento);
-console.log(contraseña);
-console.log(rememberMe);
