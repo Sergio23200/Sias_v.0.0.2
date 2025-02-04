@@ -1,7 +1,8 @@
 * {
   font-family: Arial, sans-serif;
-  padding: 0%;
-  margin: 0%;
+  margin: 0;
+  padding: 0;
+
 }
 
 body {
@@ -9,7 +10,12 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+body {
   width: 100%;
+  max-width: 100vw; /* Limita el ancho máximo */
+  overflow-x: hidden; /* Evita el desbordamiento */
 }
 
 header {
@@ -28,10 +34,10 @@ header {
 .menu-icon {
   color: white;
   font-size: 30px;
-  margin-left: 100%;
   background: none;
   border: none;
   cursor: pointer;
+  margin-left: 100%;
 }
 
 .menuOptions {
@@ -109,6 +115,7 @@ h1 {
 
 input[type="text"],
 input[type="password"],
+input[type="email"],
 select {
   all: unset;
   width: 25%;
@@ -125,6 +132,15 @@ input[type="password"] {
 
 input[type="checkbox"] {
   margin-right: 1%;
+}
+
+#email{ 
+  width: 25%;
+  padding: 1%;
+  background-color: rgba(243, 239, 239, 0.875);
+  border: 1px solid hsl(0, 14%, 90%);
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 /*Terminos y condiciones-contraseña */
@@ -170,11 +186,11 @@ input[type="checkbox"] {
 }
 
 /*estilo boton*/
-.boton {
-  width: 20%;
+button{ 
+  width: 10%;
   padding: 1%;
   background-color: #0056b3;
-  color: white;
+  color: #3f7fc2;
   border: none;
   border-radius: 15px;
   font-size: 16px;
@@ -185,27 +201,133 @@ input[type="checkbox"] {
   background-color: rgb(70, 150, 237);
 }
 
-@media screen and (max-width: 600px) {
-  .login-contenedor {
-    padding: 15px;
-  }
+/*para tablets*/
+@media (max-width: 768px ) or (max-width: 480px ) { 
 
   .titulo {
-    font-size: 18px;
+    font-size: 30px;
+    padding: 5%;
   }
+
 
   input[type="text"],
   input[type="password"],
   select,
   .boton {
-    font-size: 50%;
+    font-size: 70%;
+    padding: 3%;
+    margin: 2%;
+  }
+
+  #email{
+    width: 30%;
+    font-size: 70%;
   }
 
   .form-group {
     margin-bottom: 10px;
   }
 
-  .search_container_padre {
+  .search_container_padre{
     width: 30%;
   }
+
+  body {
+      background-image: url("/static/img/imgFondoInicioSesion.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      
+    }
+
+}
+
+@media (min-width: 300px) {
+
+  body {
+    background-image: url("/static/img/imgFondoInicioSesion.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+
+  .boton{
+    width: 30%;
+    color: #0056b3;
+  }
+
+}
+
+
+.forgot-password-form {
+  display: none;
+  background: linear-gradient(135deg, #6e8efb, hsl(224, 63%, 80%));
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: 50px auto;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+
+#botones-recup-contraseña {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+  width: 25%;
+  margin: 1%;
+  margin-left: 38%;
+}
+
+.titulo-recup-contraseña {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.label-recup-contraseña{
+  color: white;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Campo de entrada */
+input[type="email"] {
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+input[type="email"]:focus {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.boton {
+  flex: 1;
+  background: #2c3c8b;
+  color: hsl(228, 19%, 95%);
+  border: none;
+  padding: 10px;
+  border-radius:20%;
+  width: 10%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton:hover {
+  background: #5e9ae8cc;
+  transform: scale(1.05);
 }

@@ -10,3 +10,4 @@ class login_schema_sign_up(BaseModel):
     tipo_documento: str = Field(required=True)
     email: str = Field(required=True)
     password: str = Field(required=True)
+
