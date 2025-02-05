@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', path='/style/style_paginaPrincipal.css') }}">
+    <title>PAGINA PRINCIPAL</title>
+  </head>
+  <main>
+    <header>
+      <div class="contenedor-padre-header">
+        <img src="{{ url_for('static', path='/img/imgLogoSias.png ') }}" alt="logo" width="10%" >
+      <div class="titulo">
+      <h1>BIENVENIDO</h1>
+    </div>
+      <div class="header-button">
+        <a href="./paginaConocenos.html" id="boton-menu" class="button">CONOCENOS</a>
+      </div>
+    </div>
+    </header>
+    <section class="carrusel">
+      <div class="carrusel-contenedor">
+        <div class="carrusel-slide">
+          <img src="{{ url_for('static', path='/img/img1CarruselPaginaPrincipal.jpg ') }}" alt="Carrusel1" >
+          <div class="carrusel-texto">
+            <h2>Atención Médica de Calidad</h2>
+            <p>Accede a servicios de salud con solo un clic.</p>
+            <a href="./inicio_sesion.html" class="enlace_inicio">inicio sesíon</a>
+          </div>
+        </div>
+    
+        <div class="carrusel-slide">
+          <img src="{{ url_for('static', path='/img/img2CarruselPaginaPrincipal.jpeg ') }}" alt="Carrusel2" >
+          <div class="carrusel-texto">
+            <h2>Solicita tus Citas Médicas</h2>
+            <p>Agenda y gestiona tus citas desde nuestra plataforma.</p><!--colocar ruta de citas deisy-->
+            <a href="./agendamientoDeCitas" class="enlace_inicio" >Agenda tus citas</a>
+          </div>
+        </div>
+    
+        <div class="carrusel-slide">
+          <img src="{{ url_for('static', path='/img/img3CarruselPaginaPrincipal.png ') }}" alt="Carrusel3">
+          <div class="carrusel-texto">
+            <h2>Solicita Medicamentos</h2>
+            <p>Pide tus medicamentos sin salir de casa.</p>
+            <a href="./ordenMedicamentos.html" class="enlace_inicio" >Solicita tus medicamentos</a>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Controles del carrusel -->
+      <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">&#10094;</button>
+      <button class="carrusel-btn next" onclick="moverCarrusel(1)">&#10095;</button>
+    </section>
+  
+<!--seccion nuestros servicios --->
+  <div class="contenedor-padre-servicios">
+    <section class="contenedor1-cajas">
+      <!-- Contenedor de la imagen -->
+      <div class="contenedor1-caja-img">
+        <img src="{{ url_for('static', path='/img/imgPaginaPrincipalNuestrosServicios.jpg ') }}" alt="Servicio" width="100%" class="imagen_1"/>
+      </div>
+      <!-- Contenedor del texto -->
+      <div class="contenedor1-caja-texto">
+        <h1 class="contenedor1-caja1-titulo">NUESTROS SERVICIOS</h1>   
+        <p id="parrafo-1">
+          Realiza de forma fácil y rápida tus procesos con la EPS, encontrando
+          de manera segura soluciones virtuales a tu alcance con el fin de
+          brindar una mejor experiencia de usuario.
+        </p>
+      </div>
+    </section>
+  </div>
+<!--preguntas de interes-->
+<div class="contenedor_preguntas">
+  <section class="contenedor3-cajas">
+    <h2 class="contenedor1-caja3-titulo">INFORMACIÓN DE INTERÉS</h2>
+  </section>
+
+  <section class="contenedor3-cajas">
+    <div class="cajas">
+      <!-- Artículo 1 -->
+      <article class="lista-articulo">
+        <div class="contenedor1-caja-img">
+          <img src="{{ url_for('static', path='/img/imgSignoPaginaPrincipal.jpg ') }}" alt="preguntas"  width="50%" >
+        </div>
+        <div class="contenedor1-caja-texto">
+          <div class="contenedor1-cajas-interna">
+            <span class="estilo-lista">01</span>
+            <h5 class="lista-titulo">
+              ¿Debo estar registrado/a para acceder a los servicios que brinda la página?
+            </h5>
+          </div>
+          <p class="contenedor1-caja-interna-texto">
+            R/: Sí, para acceder a nuestros servicios debes realizar el registro de usuario una sola vez.
+          </p>
+        </div>
+      </article>
+
+      <!-- Artículo 2 -->
+      <article class="lista-articulo">
+        <div class="contenedor1-caja-img">
+          <img src="{{ url_for('static', path='/img/imgSignoPaginaPrincipal.jpg ') }}" alt="preguntas"  width="50%" >
+        </div>
+        <div class="contenedor1-caja-texto">
+          <div class="contenedor1-cajas-interna">
+            <span class="estilo-lista">02</span>
+            <h5 class="lista-titulo">
+              ¿Puedo consultar, cancelar o asignar citas médicas?
+            </h5>
+          </div>
+          <p class="contenedor1-caja-interna-texto">
+            R/: Sí, para acceder a nuestros servicios debes realizar el registro de usuario una sola vez.
+          </p>
+        </div>
+      </article>
+
+      <!-- Artículo 3 -->
+      <article class="lista-articulo">
+        <div class="contenedor1-caja-img">
+          <img src="{{ url_for('static', path='/img/imgSignoPaginaPrincipal.jpg ') }}" alt="preguntas"  width="50%" >
+        </div>
+        <div class="contenedor1-caja-texto">
+          <div class="contenedor1-cajas-interna">
+            <span class="estilo-lista">03</span>
+            <h5 class="lista-titulo">
+              ¿Cómo solicito una cita médica?
+            </h5>
+          </div>
+          <p class="contenedor1-caja-interna-texto">
+            R/: Para solicitar una cita médica solo debes realizar el registro, iniciar sesión y dar clic en el enlace de "Cita Médica" en la página principal.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+
+    <!--experiencias de usuarios-->
+    <section class="contenedor2">
+        <h2 class="titulo-articulos">EXPERIENCIAS DE USUARIOS</h2>
+        <article class="articulos">
+            <div class="articulo-caja esconder-mobile">
+         <div class="img1">
+                <div class="articulo-imagen">
+                  <img src="{{ url_for('static', path='/img/imgTestimonio1PagPrincipal.png ') }}" alt="testiomonio1"  width="30% " >
+                </div>
+                <div class="articulo-nombre">
+                    <h4>Sofia J</h4>
+                </div>
+                <div class="font-parrafo ">
+                    <p>
+                        “Estoy agradecida con todo el equipo medico y la forma en como esta pagina facilita mis cosas , debido al trabajo me queda poco tiempo para todo y gracias a este espacio tengo todas mis diligencias de salud al alcance de mi mano ”
+                    </p>
+                </div>
+            </div>
+            </div>
+            <div class="articulo-caja">
+                <div class="img1">
+                <div class="articulo-imagen">
+                  <img src="{{ url_for('static', path='/img/imgTestimonio2PaginaPrincipal.png ') }}" alt="testiomonio2" width="30% ">
+                </div>
+                <div class="articulo-nombre">
+                    <h4>Carlos A.</h4>
+                </div>
+                <div class="font-parrafo ">
+                    <p>
+                        “que maravilla poder hacer todas las diligencias medicas desde una pagina web , pude agendar mis citas de forma rapida y sencilla , es facil de usar incluso para personas que no tengan mucho conocimiento en tecnologia ”
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="articulo-caja esconder-mobile">
+                <div class="img1">
+                <div class="articulo-imagen">
+                  <img src="{{ url_for('static', path='/img/imgTestimonio3PagPrincipal.png ') }}" alt="testiomonio3" width="30% ">
+                </div>
+                <div class="articulo-nombre">
+                    <h4>Adriana R</h4>
+                </div>  
+                <div class="font-parrafo ">
+                    <p>
+                        “Esta plataforma es muy facil de usar , desde mi trabajo logre realizar la gestion de mis medicamentos ,sin tener que hacer largas filas o esperas en cola, sin duda es un gran avance para mejorar la experiencia a todos los usuarios”
+                    </p>
+                </div>
+            </div>
+            </div>
+        </article>
+        <!-- Video dinámico y responsive -->
+        <div class="video-container">
+          <h3>Descubre más sobre nuestra plataforma</h3>
+          <iframe src="https://www.youtube.com/embed/HkjVU8RFnaQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </main>
+    <section class="pre-footer">
+        <h3 class="pre-footer-texto">SIAS , EL PLACER DE ESTAR CONTIGO.</h3>
+        <div class="pre-footer-button">
+            <a href="#" class="button-blanco">CONOCENOS</a>
+        </div>
+    </section>
+        <footer>
+      <nav id="menu">
+        <ul class="contenedor-li">
+          <li><a href="#">Politicas de privacidad</a></li>
+          <li><a href="#">Medios de comunicacion</a></li>
+          <li><a href="#">Terminos y condiciones</a></li>
+          <li><a href="#">Noticias</a></li>
+        </ul>
+      </nav>
+            </div>
+            <div class="text-align-center">
+              <form action="https://www.google.com" method="get">
+                  <input class="input" id="search" type="text" name="Update in your inbox.."
+                      placeholder="Busqueda..." />
+                  <a href="#" type="submit" class="button" id="boton-ir">IR</a>
+              </form>
+          </div>
+          </div>
+        </div>
+        </footer>
+        <script src="{{ url_for('static', path='/js/logic_paginaPrincipal.js')}}"></script>
+  </body>
+</html>

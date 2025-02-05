@@ -9,7 +9,7 @@
 <body>
     <!-- Encabezado -->
     <header>
-      <img src="{{ url_for('static', path='/img/logo.png ') }}" 
+      <img src="{{ url_for('static', path='/img/imgLogoSias.png ') }}" 
       alt="SIAS" >
 
       <nav>
@@ -30,7 +30,7 @@
     <section id="solicitud" class="formulario">
       <h2>Solicitud de Medicamentos</h2>
       <!--metodo post para envio formulario-->
-    <form action="DIRECCION DEL SERVIDOR" method = "POST" id="form-medicamentos">
+    <form action="http://127.0.0.1:8000" method = "POST" id="form-medicamentos">
         <label for="nombre">Nombre completo:</label>
         <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
      <!--manejo errores -->
