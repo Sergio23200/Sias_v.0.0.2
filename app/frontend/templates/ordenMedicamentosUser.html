@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='/style/style_ordenMedicamentosUser.css') }}" />
+    <title>ORDEN MEDICAMENTOS/users</title>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+      <img src="{{ url_for('static', path='/img/imgLogoSias.png ') }}" alt="logo sias " >
+      <nav>
+        <ul>
+          <li class="pagina_inicio"><a href="./Pagina_principal.html">Pagina inicio</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+    <!-- segundo fondo  -->
+    <section class="hero">
+      <h1>Ordena tus medicamentos</h1>
+      <p>Fácil, rápido y desde casa.</p>
+    </section>
+  
+    <!-- Formulario para solicitud de medicamentos -->
+    <section id="solicitud" class="formulario">
+      <h2>Solicitud de Medicamentos</h2>
+      <!--metodo post para envio formulario-->
+    <form action="http://127.0.0.1:8000/api/ordenes/" method = "POST" id="form-medicamentos">
+        <!--orden medicamentos-->
+        <label for="medicamentos">Ingrese orden de medicamento :</label>
+        <input type="text" id="medicamentos" name="medicamentos"
+       placeholder="Orden N-" required maxlength="10"></textarea>
+
+        <span id="orden_error" class="error-message"></span>
+            </div>
+        <!-- Correo electrónico -->
+        <div class="contenedor_seleccion">
+            <div class="form-contenedor">
+              <label for="email">Confirmar correo Electrónico :</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="ejemplo@correo.com"
+                required
+              />
+               <!--Manejo de errores correo-->
+              <span id="emailError" class="error-message"></span>
+            </div>
+
+            <!-- direccion -->
+        <div class="contenedor_seleccion">
+            <div class="form-contenedor">
+              <label for="email">Confirmar dirección entrega : </label>
+              <input
+                type="text"
+                id="direccion"
+                name="direccion"
+                placeholder="cll/cr # xx -xx"
+                required
+              />
+               <!--Manejo de errores correo-->
+              <span id="direccion_error" class="error-message"></span>
+            </div>
+
+        <button class="boton" type="submit">Enviar</button>
+      </form>
+    </section>
+  
+    <!-- Pie de página -->
+    <footer>
+      <p>&copy; 2025 SIAS, derechos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', path='/js/logic_ordenMedicamentosUser.js')}}"></script>
+</body>
+</html>

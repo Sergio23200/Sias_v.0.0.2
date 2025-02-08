@@ -1,0 +1,149 @@
+ /* Estilos generales para reiniciar todo por defecto */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #eaf3fc;
+    color: #2a3d66;
+  }
+
+/*estilos parte azul*/
+  header {
+    background-color: #1e3a66;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  header img {
+    max-width: 6%;
+    animation: girar 8s linear infinite; /* Animación infinita */
+}
+  
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15%;
+  }
+
+  nav ul li {
+    display: inline-block;
+  }
+
+  nav ul li a {
+  text-decoration: none;
+  color: rgb(198, 198, 201);
+  font-size: 1.2rem;
+  position: relative;
+  padding: 10px 15px;
+  display: inline-block;
+  transition: color 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: #f1c40f;
+  }
+
+  .hero {
+    background-color: #4285f4;
+    color: white;
+    text-align: center;
+    padding:1%;
+  }
+/*animacion para el logo de inicio */
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+
+  .hero a {
+    background-color: #f1c40f;
+    color: #1e3a66;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .hero a:hover {
+    background-color: #d4ac0d;
+  }
+
+  .formulario {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .formulario h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1e3a66;
+  }
+
+  .formulario label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+  }
+
+  .formulario input, .formulario textarea, .formulario select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+ 
+  /*estilos para el boton enviar */
+  .formulario .boton {
+    display: block;
+    margin: 20px auto; 
+    width: 20%;
+    background-color: #007bff; 
+    color: white; 
+    font-size:100%; 
+    padding: 2%;
+    border:#1e3a66 ; 
+    border-radius: 10%; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animación suave */
+  }
+
+  .formulario button:hover {
+    background-color: #3367d6;
+  }
+
+  footer {
+    background-color: #1e3a66;
+    color: white;
+    text-align: center;
+    padding: 10px 15%;
+    margin-top: 40px;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }

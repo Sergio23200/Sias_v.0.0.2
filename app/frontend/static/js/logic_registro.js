@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (historial_clinico.value.trim() === "") {
         throw new Error("El campo dirección es obligatorio.");
       }
-      if (historial_clinico.value.length < 5 || direccion.value.length > 15) {
+      if (historial_clinico.value.length < 5 || historial_clinico.value.length > 15) {
         throw new Error("El historial clinico debe tener entre 5 y 8 caracteres.");
       }
       return true;
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (contraseña.value.trim() === "") {
         throw new Error("El campo dirección es obligatorio.");
       }
-      if (contraseña.value.length < 5 || direccion.value.length > 10) {
+      if (contraseña.value.length < 5 || contraseña.value.length > 10) {
         throw new Error("La contraseña debe tener entre 5 y 10 caracteres.");
       }
       return true;
@@ -261,7 +261,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Validar el formulario al enviar
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault(); // Evita el envío automático
+
     const validaciones = [
       validarNombre(),
       validarTipoDocumento(),
@@ -280,10 +282,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Si alguna validación falla, se previene el envío
     if (!validaciones.every((validacion) => validacion)) {
-      event.preventDefault();
+       return; // Si hay errores, no se envía el formulario de registro
+    }
+     // Crear objeto JSON con los datos del formulario
+     const datosJSON = {
+      nombre: nombre.value.trim(),
+      tipo_documento: tipo_documento.value.trim(),
+      numero_documento: numero_documento.value.trim(),
+      email: email.value.trim(),
+      telefono: telefono.value.trim(),
+      genero: genero.value.trim(),
+      ciudad: ciudad.value.trim(),
+      direccion: direccion.value.trim(),
+      membresia: membresia.value.trim(),
+      historial_clinico: historial_clinico.value.trim(),
+      fecha_nacimiento: fecha_nacimiento.value.trim(),
+      contraseña: contraseña.value.trim(),
+    };
+    
+    console.log("Datos enviados:", datosJSON);
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/registro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datosJSON),
+      });
+      if (!response.ok) throw new Error("Error al enviar los datos ingresados.");
+      const data = await response.json();
+      console.log("Respuesta del servidor:", data);
+      alert("Se realizo el registro exitosamente");
+      window.location.href = "inicio_sesion.html"; //redirige a  la pagina inicio de sesion 
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      alert("Hubo un problema con el registro.");
     }
   });
 });
-
-
-/*para pruebas antes del return console.log("Nombre válido:", nombre.value); // Mostrar en consola si es válido */
