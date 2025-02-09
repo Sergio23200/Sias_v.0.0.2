@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ url_for('static', path='/style/style_paginaPrincipal.css') }}">
-    <title>PAGINA PRINCIPAL</title>
+    <title>HOME</title>
   </head>
   <main>
     <header>
       <div class="contenedor-padre-header">
-        <img src="{{ url_for('static', path='/img/imgLogoSias.png ') }}" alt="logo" width="10%" >
+        <img src="{{ url_for('static', path='/img/imgLogoSias.png ') }}" alt="logo" class="header-logo"  >
       <div class="titulo">
       <h1>BIENVENIDO</h1>
     </div>
@@ -54,23 +54,33 @@
     </section>
   
 <!--seccion nuestros servicios --->
-  <div class="contenedor-padre-servicios">
-    <section class="contenedor1-cajas">
-      <!-- Contenedor de la imagen -->
-      <div class="contenedor1-caja-img">
-        <img src="{{ url_for('static', path='/img/imgPaginaPrincipalNuestrosServicios.jpg ') }}" alt="Servicio" width="100%" class="imagen_1"/>
-      </div>
-      <!-- Contenedor del texto -->
-      <div class="contenedor1-caja-texto">
-        <h1 class="contenedor1-caja1-titulo">NUESTROS SERVICIOS</h1>   
-        <p id="parrafo-1">
-          Realiza de forma fácil y rápida tus procesos con la EPS, encontrando
-          de manera segura soluciones virtuales a tu alcance con el fin de
-          brindar una mejor experiencia de usuario.
-        </p>
-      </div>
-    </section>
-  </div>
+<div class="contenedor-padre-servicios">
+  <section class="contenedor1-cajas">
+    <!-- Contenedor de la imagen -->
+    <div class="contenedor1-caja-img">
+      <img src="{{ url_for('static', path='/img/imgPaginaPrincipalNuestrosServicios.jpg ') }}" alt="Servicio" class="imagen_1"/>
+      <img src="{{ url_for('static', path='/img/imgNuestrosServicios2.jpg ') }}" alt="Servicio" class="imagen_1"/>
+      <img src="{{ url_for('static', path='/img/imgDomicilioMedicamentosPagPrincipal.jpg ') }}" alt="Servicio" class="imagen_1"/>
+      <img src="{{ url_for('static', path='/img/imgNuestrosServiciosPagPrincipal3.jpg ') }}" alt="Servicio" class="imagen_1"/>
+    </div>
+    <!-- Contenedor del texto -->
+    <div class="contenedor1-caja-texto">
+      <h1 class="contenedor1-caja1-titulo">NUESTROS SERVICIOS</h1>
+      <p id="parrafo-1">
+        Realiza de forma fácil y rápida tus procesos con la EPS, encontrando de manera segura soluciones virtuales a tu alcance con el fin de brindar una mejor experiencia de usuario, de la siguiente manera : 
+      </p>
+      
+      <ul class="lista-servicios">
+        <li>✅ Agenda tus Medicamentos desde casa.</li>
+        <li>✅ Seguridad y Confidencialidad.</li>
+        <li>✅ Solicita, cancela o reprograma tus citas.</li>
+        <li>✅ 100% Digital: Evita filas y trámites presenciales.</li>
+        <li>✅ Acceso 24/7: Gestiona tu salud en cualquier momento.</li>
+        <li>✅ Fácil de Usar: Interfaz intuitiva para todas las edades.</li>
+      </ul>
+    </div>
+  </section>
+</div>
 <!--preguntas de interes-->
 <div class="contenedor_preguntas">
   <section class="contenedor3-cajas">
@@ -212,14 +222,17 @@
       </nav>
             </div>
             <div class="text-align-center">
-              <form action="https://www.google.com" method="get">
-                  <input class="input" id="search" type="text" name="Update in your inbox.."
-                      placeholder="Busqueda..." />
-                  <a href="#" type="submit" class="button" id="boton-ir">IR</a>
+              <form onsubmit="buscarPalabra(event)">
+                  <input class="input" id="search" type="text" placeholder="Buscar en la página..." />
+                  <button type="submit" class="button" id="boton-ir">IR</button>
               </form>
           </div>
           </div>
         </div>
+  <!-- Icono fijo en la página -->
+<a href="RUTA CHATBOOT" target="_blank" class="icono-fijo">
+  <img src="{{ url_for('static', path='/img/imgTelegram.png ') }}" alt="Servicio" />
+</a>
         </footer>
         <script src="{{ url_for('static', path='/js/logic_paginaPrincipal.js')}}"></script>
   </body>

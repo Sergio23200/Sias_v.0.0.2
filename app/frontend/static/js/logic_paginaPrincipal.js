@@ -3,15 +3,28 @@ const botonBuscar = document.getElementById("boton-ir");
 const barraBusqueda = document.getElementById("search");
 
 // Acción al hacer clic en el botón de búsqueda
-botonBuscar.addEventListener("click", (e) => {
-    e.preventDefault(); // Evita que el enlace recargue la página
-    const query = barraBusqueda.value.trim(); // Obtén el valor de la barra de búsqueda
-    if (query) {
-      alert(`Buscando: ${query}`); // Muestra un mensaje con la búsqueda
-    } else {
-      alert("Por favor, escribe algo para buscar."); // Mensaje si la barra está vacía
-    }
+function buscarPalabra(event) {
+  event.preventDefault(); // Evita que la página se recargue
+  let palabra = document.getElementById("search").value.trim();
+  if (palabra === "") return;
+
+  // Remover resaltado previo
+  let elementosResaltados = document.querySelectorAll(".resaltado");
+  elementosResaltados.forEach(el => el.classList.remove("resaltado"));
+  
+  let regex = new RegExp("(" + palabra + ")", "gi");
+  let encontrado = false;
+
+  document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, li, span, div").forEach(el => {
+      if (el.textContent.match(regex)) {
+          el.innerHTML = el.innerHTML.replace(regex, "<span class='resaltado'>$1</span>");
+          if (!encontrado) {
+              encontrado = true;
+              el.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+      }
   });
+}
 
 
   let indice = 0;

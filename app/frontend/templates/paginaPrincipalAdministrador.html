@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administradores</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style/style_PagPrincipalAdmin.css') }}">
+</head>
+<body>
+    <header>
+        <div class="img-container">
+            <img src="{{ url_for('static', path='/img/imgLogoSias.png ') }}" alt="logo" >
+        </div>
+        <h1>Panel de Administración</h1>
+    </header>
+    
+    <main class="contenedor">
+        <!-- Carrusel a la izquierda -->
+        <section class="carrusel">
+            <div class="carrusel-container">
+                <div class="carrusel-slide">
+                    <img src="{{ url_for('static', path='/img/imgCarrucelAdmin.jpg ') }}" alt="carrusel1" >
+                </div>
+                <div class="carrusel-slide">
+                    <img src="{{ url_for('static', path='/img/img1CarruselPaginaPrincipal.jpg ') }}" alt="carrusel1" >
+                </div>
+                <div class="carrusel-slide">
+                    <img src="{{ url_for('static', path='/img/img2CarruselPaginaPrincipal.jpeg ') }}" alt="carrusel1" >
+                </div>
+                <div class="carrusel-slide">
+                    <img src="{{ url_for('static', path='/img/imgNuestrosServiciosPagPrincipal.jpg ') }}" alt="carrusel1" >
+                </div>
+                <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">&#10094;</button>
+                <button class="carrusel-btn next" onclick="moverCarrusel(1)">&#10095;</button>
+            </div>
+        </section>
+    
+        <!-- Contenido de perfil y opciones a la derecha -->
+        <div class="contenido">
+            <section class="perfil">
+                <img src="{{ url_for('static', path='/img/imgPaginaAdmin.jpg ') }}" alt="avatarPerfil" width="30%" >
+                <h2 id="admin-name">Nombre del Administrador</h2>
+                <p id="admin-email">Correo: admin@example.com</p>
+                <p id="admin-role">Rol: Administrador</p>
+                <button id="edit-profile">Editar Perfil</button>
+            </section>
+    
+            <section class="opciones">
+                <h3>Opciones de Administración</h3>
+                <ul>
+                    <li class="items-li"><a href="#">Agendar citas afiliados</a></li>
+                    <li class="items-li" ><a href="#">Agendamiento órdenes</a></li>
+                    <li class="items-li"><a href="#" id="cerrar-sesion">Cerrar Sesión</a></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 SIAS. derechos reservados.</p>
+    </footer>
+    <script src="{{ url_for('static', path='/js/logic_paginaPrincipalAdministrador.js')}}"></script>
+</body>
+</html>
