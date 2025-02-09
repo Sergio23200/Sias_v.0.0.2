@@ -31,7 +31,7 @@
   <!--PARTE_FOMULARIO-->
   <div class="login-contenedor">
     <h1 class="titulo">Iniciar Sesión</h1>
-    <form id="loginForm" action="/login/" method="post">
+    <form id="loginForm" action="/login/" method="POST">
         <div class="form-group">
           <!--seleccion documento-->
           <div class="contenedor_seleccion">
@@ -53,6 +53,15 @@
               <input type="text" id="documento" name="numero_documento" placeholder="número de documento" required maxlength="10">
               <span id="documentoIncorrecto" class="error-message"></span>
           </div>
+
+          <!--ingreso email-->
+          <div class="form-group">
+            <div class="contenedor_seleccion">
+            <label for="email" >Correo electronico</label>
+          </div>
+            <input type="email" id="email" name="email" placeholder="usuario@gmail.com" required>
+            <span id="email_incorrecto" class="error-message"></span>
+        </div>
           <!--CONTRASEÑA-->
           <div class="form-group">
             <div class="contenedor_seleccion">

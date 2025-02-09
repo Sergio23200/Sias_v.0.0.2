@@ -1,0 +1,735 @@
+* {
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  background-color: rgb(204, 222, 240);
+}
+
+.contenedor-padre-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1%;
+  background: linear-gradient(135deg, #0056b3, hwb(212 62% 10%));
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.5s ease-in-out;
+}
+
+/* Estilos generales para el h1 */
+.titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: hsl(188, 70%, 90%);
+  text-transform: uppercase;
+}
+/* Efecto al pasar el mouse */
+h1:hover {
+  text-shadow: 0px 0px 15px hsla(189, 75%, 77%, 0.8);
+  transition: all 0.4s ease-in-out;
+}
+.button {
+  padding: 10px;
+  background: #ffcc00;
+  color: #0056b3;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 86, 179, 0.2);
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out,
+    box-shadow 0.3s;
+}
+
+.button:hover {
+  background: #ffaa00;
+  transform: scale(1.05);
+  box-shadow: 0 6px 35px #8485874d;
+}
+
+/*  Logo */
+.header-logo {
+  max-width: 70vh;
+  transition: transform 0.3s ease-in-out;
+}
+
+.header-logo:hover {
+  transform: scale(1.8);
+}
+/*  Estilos generales para todo el carrusel */
+.carrusel {
+  position: relative;
+  width: 100%;
+  max-width: 80%;
+  margin: auto;
+  overflow: hidden; /* Oculta el contenido que se desborda */
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px hsla(207, 77%, 74%, 0.302);
+}
+
+/* Contenedor del carrusel */
+.carrusel-contenedor {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/*Estilos de cada slide */
+.carrusel-slide {
+  min-width: 100%; /* Cada imagen ocupa 100% del viewport */
+  position: relative;
+  width: 300%;
+}
+
+.carrusel-slide img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/*  Texto sobre la imagen del carrusel*/
+.carrusel-texto {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  background: rgba(0, 86, 179, 0.8);
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.carrusel-texto h2 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.carrusel-texto p {
+  font-size: 16px;
+}
+
+/* Botones del carrusel */
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 86, 179, 0.8);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 24px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.carrusel-btn:hover {
+  background: hsl(211, 35%, 64%);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.enlace_inicio {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #ffcc00;
+  color: #0056b3;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.enlace_inicio:hover {
+  background: #ffaa00;
+  transform: scale(1.05);
+}
+
+/***** Estilos de Nuestros servicios ********/
+.contenedor-padre-servicios {
+  width: 100%;
+  margin: 5%;
+}
+.contenedor1-cajas {
+  display: flex;
+  flex-direction: row; /* Alineación horizontal de imagen y texto */
+  gap: 20px; /* Espacio entre imagen y texto */
+  justify-content: center; /* Centra los elementos */
+  align-items: center; /* Centra verticalmente los elementos */
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo para que no se expanda demasiado */
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para la imagen */
+.contenedor1-caja-img {
+  flex: 1; /* Ocupa el espacio restante */
+  max-width: 45%; /* Limita el tamaño máximo de la imagen */
+}
+
+.imagen-servicio {
+  width: 100%; /* Hace que la imagen ocupe todo el contenedor */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el texto */
+.contenedor1-caja-texto {
+  flex: 1; /* Ocupa el espacio restante */
+  max-width: 45%; /* Limita el tamaño máximo del texto */
+  text-align: justify;
+}
+
+.contenedor1-caja1-titulo {
+  font-family: "Be Vietnam", sans-serif;
+  font-weight: 700;
+  font-size: 2rem; /* Ajusta el tamaño según sea necesario */
+  color: #232851;
+  margin-bottom: 15px;
+}
+
+#parrafo-1 {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+}
+/*******estilo informacion de interes******/
+/* Contenedor principal */
+.contenedor_preguntas {
+  margin: 0 25%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.contenedor3-cajas {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 5vh;
+  font-weight: 700;
+  color: #232851;
+}
+
+/* Título de la sección */
+.contenedor1-caja3-titulo {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: rgb(235, 239, 242);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, hsl(204, 76%, 19%), hsl(202, 71%, 77%));
+  padding: 5px 20px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+/* Artículos (cada pregunta) */
+.lista-articulo {
+  display: flex;
+  background-color: #fff;
+  padding: 2%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  gap: 15px;
+}
+.estilo-lista {
+  font-size: 1em;
+  font-weight: bold;
+  color: #f39c12;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.contenedor1-caja-img {
+  flex-basis: 40%;
+  max-width: 40%;
+}
+
+.img_pregunta {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.lista-titulo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.contenedor1-caja-interna-texto {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  line-height: 1.7;
+  text-align:inherit;
+  margin-top: 10px;
+  letter-spacing: 0.5px; /* Aumentar ligeramente el espaciado */
+}
+
+/**********estilo experiencia de usuarios*********/
+/*estilo contenedor pare experiencia usuario*/
+.articulo-caja {
+  background: white;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+.contenedor2 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 5% 15% 5% 15%;
+}
+
+.contenedor1-cajas2:hover .imagen_1 {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.contenedor1-cajas:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.articulos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.articulo-caja:hover {
+  transform: translateY(-10px);
+}
+
+.articulo-nombre {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Be Vietnam";
+  font-weight: 700;
+  font-size: 16px;
+  color: #3f4868;
+}
+
+.font-parrafo {
+  font-size: 14px;
+  color: #555;
+}
+
+.titulo-articulos{
+  justify-content: center;
+  text-align:center;
+  font-size: 5vh;
+  font-weight: 600;
+  margin-bottom: 5%;
+  color:hsl(240, 90%, 27%) ;
+}
+
+/*videos*/
+.video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10% auto 2%;
+  max-width: 100%;
+  background: linear-gradient(135deg, #1e3c72, rgb(132, 178, 251));
+  padding: 1%;
+  border-radius: 2%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.video-container h3 {
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 2%;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.video-container iframe {
+  width: 100vh;
+  max-width: 100%;
+  height: 55vh;
+  border-radius: 10px;
+}
+
+/*estilos pre-footer*/
+.pre-footer {
+  background-color: rgb(42, 82, 121);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.pre-footer h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  color: hsl(215, 19%, 82%);
+}
+
+/* Botón Conócenos */
+.pre-footer-button .button-blanco {
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 10px 20px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pre-footer .pre-footer-button .button-blanco:hover {
+  background-color: white;
+  color: #003366;
+}
+/*footer*/
+
+footer {
+  background-color: #003366;
+  color: white;
+  padding: 30px 20px;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  position: relative;
+}
+
+#menu {
+  margin: 20px 0;
+}
+
+#menu .contenedor-li {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#menu .contenedor-li li {
+  margin: 0;
+}
+
+#menu .contenedor-li li a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+#menu .contenedor-li li a:hover {
+  color: #ff9900; /* Color de hover */
+}
+
+/* Formulario de búsqueda */
+.text-align-center {
+  margin-top: 20px;
+}
+
+.text-align-center form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.text-align-center .input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 300px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+.text-align-center .input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 153, 0, 0.6);
+}
+.text-align-center .button {
+  padding: 10px 20px;
+  background-color: #ff9900;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.text-align-center .button:hover {
+  background-color: #e68a00; /* Hover efecto para el botón */
+}
+
+/* Para tablets (pantallas medianas) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  /* Estilo para pantallas de tabletas */
+  .contenedor-padre-header {
+    flex-direction: column; /* Asegura que el header se acomode en columna */
+    align-items: center;
+    text-align: center;
+  }
+
+  .carrusel-slide {
+    height: 300px; /* Ajustar la altura de los slides */
+  }
+
+  .contenedor1-cajas {
+    flex-direction: column; /* En pantallas más pequeñas, los elementos se organizan en columna */
+    gap: 10px;
+  }
+
+  .contenedor-padre-servicios {
+    width: 90%;
+  }
+
+  .contenedor1-caja-img img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .contenedor2 {
+    display: block;
+    gap: 20px;
+  }
+}
+
+/* Para dispositivos móviles (pantallas pequeñas) */
+@media (max-width: 767px) {
+  /* Estilos para móviles */
+  .contenedor-padre-header {
+    padding: 2%;
+    flex-direction: column; /* Organizar los elementos en columna */
+    align-items: center;
+  }
+
+  .header-logo {
+    max-width: 80%; /* Asegura que el logo no sea demasiado grande */
+    width: 20%;
+  }
+
+  .carrusel-slide {
+    height: 200px; /* Ajustar la altura de los slides */
+  }
+
+  .contenedor1-caja-img img {
+    width: 100%;
+    height: auto;
+  }
+
+  .contenedor1-cajas {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .contenedor-padre-servicios {
+    width: 100%;
+  }
+
+  .contenedor1-caja-texto {
+    padding: 15px;
+  }
+
+  .video-container iframe {
+    width: 100%;
+    height: 200px;
+  }
+
+  .articulo-caja {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .articulo-nombre,
+  .font-parrafo {
+    font-size: 14px; /* Reducir el tamaño de la fuente para pantallas pequeñas */
+  }
+
+  .pre-footer {
+    font-size: 14px;
+  }
+}
+
+/* Para dispositivos con pantallas muy pequeñas (smartphones más pequeños) */
+@media (max-width: 480px) {
+  /* Ajustes para pantallas muy pequeñas */
+  .titulo h1 {
+    font-size: 1rem;
+    margin-bottom: 15%;
+  }
+
+  .header-logo {
+    width: 25%;
+  }
+
+  .header-button {
+    margin-bottom: 5%;
+  }
+
+  .contenedor1-caja1-titulo {
+    font-size: 1.5rem;
+  } 
+
+  .contenedor1-caja-texto p {
+    font-size: 1rem; /* Ajustar tamaño del texto en pantallas pequeñas */
+  }
+
+  .carrusel-texto h2 {
+    font-size: 1.2rem;
+  }
+
+  .carrusel-texto p {
+    font-size: 0.9rem;
+  }
+
+  .articulo-caja {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .articulo-nombre {
+    font-size: 12px;
+  }
+
+  .font-parrafo {
+    font-size: 12px;
+  }
+
+  .contenedor1-caja-img {
+    max-width: 80%;
+    margin-top: 5%;
+  }
+
+  .contenedor1-caja-texto {
+    max-width: 90%;
+  }
+
+  .video-container iframe {
+    height: 160px;
+  }
+
+  .contenedor3-cajas {
+    width: 100%;
+    padding: 10px; /* Añadir un poco de espacio a los bordes */
+  }
+
+   /* Ajustar cada artículo */
+   .lista-articulo {
+    width: 100%; /* Hacer que cada tarjeta ocupe todo el ancho */
+    padding: 10px; /* Agregar un poco de espacio interior */
+    box-sizing: border-box; /* Asegurarse de que el padding no afecte el ancho */
+    margin-bottom: 15px; /* Separar cada artículo */
+    display: flex;
+    flex-direction: column; /* Apilar imagen y texto */
+  }
+
+  /* Imagen dentro de cada artículo */
+  .contenedor1-caja-img {
+    width: 100%; /* Hacer que la imagen ocupe todo el ancho */
+    padding: 0; /* Eliminar padding adicional */
+    margin-bottom: 10px; /* Separar la imagen del texto */
+  }
+  .img_pregunta {
+    width: 100%; /* La imagen se adapta al ancho completo del contenedor */
+    height: auto; /* Mantener la relación de aspecto de la imagen */
+  }
+
+  /* Ajustar el texto y otros elementos */
+  .contenedor1-caja-texto {
+    width: 100%; /* Asegurarse de que ocupe todo el ancho */
+    padding: 0 10px; /* Agregar algo de espacio alrededor del texto */
+    word-wrap: break-word; /* Permite que las palabras largas se dividan */
+    letter-spacing: normal;
+    overflow-wrap: break-word; 
+  }
+
+  .contenedor1-cajas-interna {
+    display: flex;
+    flex-direction: column; /* Apilar número y título verticalmente */
+    align-items: center; /* Centrar los elementos */
+    text-align: center; /* Centrar el texto */
+  }
+
+  .estilo-lista {
+    font-size: 16px; /* Ajustar el tamaño del título */
+    margin-bottom: 10px; /* Separar el título del texto */
+  }
+
+  .lista-titulo {
+    font-size: 15px; /* Reducir el tamaño de la fuente */
+    text-align: center; /* Centrar el título */
+    
+  }
+
+ .titulo-articulos{
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 5%;
+  color: #1e3c72;
+ }
+  .contenedor1-caja3-titulo{
+    justify-content: center;
+    text-align: justify;
+    font-size: 70%;
+    margin: 0 ;
+  }
+
+  footer {
+    padding: 15px;
+  }
+
+  .contenedor-li {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contenedor-li li {
+    margin: 10px 0;
+  }
+
+  .input {
+    width: 50%;
+  }
+ #search{
+  width: 40%;
+
+}
+  .button {
+    margin-top: 2px;
+    width: 20%;
+  }
+}

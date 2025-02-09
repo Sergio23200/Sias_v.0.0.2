@@ -8,4 +8,8 @@ template = Jinja2Templates(directory=("frontend"))
 
 @ test_router.get("/test", tags=["auth"])
 def login_sesion(request: Request):
+<<<<<<< HEAD
     return template.TemplateResponse("templates/mensajeConfirmacionMedicamentos.html", {"request": request})
+=======
+    return template.TemplateResponse("templates/ordenMedicamentosAdmin.html", {"request": request})
+>>>>>>> caro_main
