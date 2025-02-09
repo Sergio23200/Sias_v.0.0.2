@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi import HTTPException
 import bcrypt
 from models.Affilate import Affiliate_model
+from schemas.login_schema import login_schema_sign_up
 
 
 class Affiliate_service():
@@ -107,13 +108,14 @@ class Affiliate_service():
             Affiliate_model.document_number == document_number).first()
         return result
 
-    def vericate_afilate(self, document_type: str, document_number: str, password: str):
+    def vericate_afilate(self, login_schema_sign_up: login_schema_sign_up):
         result = self.db.query(Affiliate_model).filter(
-            Affiliate_model.document_number == document_number).first()
+            Affiliate_model.document_number == login_schema_sign_up.document_number).first()
         if result is None:
+
             return None
 
-        if bcrypt.checkpw(password.encode(), result.password) and result.document_type == document_type:
+        if bcrypt.checkpw(login_schema_sign_up.password.encode(), result.password) and result.document_type == login_schema_sign_up.document_type:
             return result
         else:
             return None

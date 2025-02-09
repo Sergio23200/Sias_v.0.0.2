@@ -3,6 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI
 from config.db import engine, Base
 from middleware.error_handler import ErrorHandler
+from starlette.responses import JSONResponse
 
 
 from models.Medical_appointments import Medical_appointments_model
@@ -43,3 +44,11 @@ Base.metadata.create_all(bind=engine)
 
 
 app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
+
+
+@app.exception_handler(Exception)
+async def validation_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=500,
+        content={"message": f"An unexpected error occurred: {str(exc)}"},
+    )
