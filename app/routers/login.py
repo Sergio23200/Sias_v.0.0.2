@@ -1,74 +1,57 @@
-from fastapi import APIRouter, HTTPException, status, Form, Depends, Body
+from fastapi import APIRouter, HTTPException, status, Form, Request
+from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.templating import Jinja2Templates
 from utils.jwt_manger import create_token
 from services.admin_services import Admin_service
 from services.affiliate_services import Affiliate_service
 from config.db import Session
-from fastapi import Request
-from fastapi.responses import JSONResponse
-from fastapi.templating import Jinja2Templates
 from schemas.login_schema import login_schema_sign_up
 
-from middleware.jwt_bear import JWTBearer
-
 login_router = APIRouter()
-template = Jinja2Templates(directory=("frontend"))
+template = Jinja2Templates(directory="frontend")
 
 
-@ login_router.get("/", tags=["auth"])
+@login_router.get("/", tags=["auth"])
 def login_sesion(request: Request):
     return template.TemplateResponse("templates/inicio_sesion.html", {"request": request})
 
 
-@login_router.get("/inicio", tags=["pagina_principal"], dependencies=[Depends(JWTBearer())])
-def pagina_principal(request: Request):
-    return template.TemplateResponse("templates/pagina_principal.html", {"request": request})
-
-
-@login_router.post("/login/", tags=["auth"], )
-def login(login_schema: login_schema_sign_up = Body(...)):
+@login_router.post("/login/", tags=["auth"])
+def login(document_type: str = Form(...),
+          document_number: str = Form(...),
+          password: str = Form(...)):
     """
-    esta funcion permite  validar el tipo de token, tambien
-    puede validar si el token es de tipo usuario o de admin, esto por
-    medio de la libreria de oaut jwt, tambien crea los token
-    retorna el token si esta todo bien.
-
-
+    Valida las credenciales del usuario, genera un token JWT y redirige a la página principal.
+    El token se almacena en una cookie HTTPOnly por seguridad.
     """
+    login_schema = login_schema_sign_up(document_type=document_type,
+                                        document_number=document_number,
+                                        password=password)
     db = Session()
-    validate_affiliate = Affiliate_service(
-        db).vericate_afilate(login_schema_sign_up=login_schema)
-    if validate_affiliate:
-        validate_affiliate_dict = {
-            "id": validate_affiliate.id,
-            "email": validate_affiliate.email,
-        }
 
-        token: str = create_token(validate_affiliate_dict)
+    # Verificar si es un afiliado
+    validate_user = Affiliate_service(db).vericate_afilate(
+        login_schema_sign_up=login_schema)
+    user_type = "affiliate" if validate_user else None
 
-        return JSONResponse(status_code=200, content={
-            "access_token": token,
-            "token_type": "bearer",
-            "user_type": "affiliate"
-        })
-    else:
-        db = Session()
+    # Si no es afiliado, verificar si es un administrador
+    if not validate_user:
+        validate_user = Admin_service(db).verificate_admin(
+            login_schema_sign_up=login_schema)
+        user_type = "admin" if validate_user else None
 
-    validate_affiliate = Admin_service(
-        db).verificate_admin(login_schema_sign_up=login_schema)
+    if validate_user:
+        user_data = {"id": validate_user.id, "email": validate_user.email}
+        token: str = create_token(user_data)
 
-    if validate_affiliate:
-        validate_affiliate_dict = {
-            "id": validate_affiliate.id,
-            "email": validate_affiliate.email,
-        }
+        # Crear una respuesta de redirección y almacenar el token en cookies
+        response = RedirectResponse(url="/inicio", status_code=302)
+        response.set_cookie(key="access_token", value=token,
+                            httponly=True, secure=True, samesite="Lax")
 
-        token: str = create_token(validate_affiliate_dict)
-        return JSONResponse(status_code=200, content={
-            "access_token": token,
-            "token_type": "bearer",
-            "user_type": "admin"
-        })
+        return response
 
+    # Si no se encuentra el usuario
     raise HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="El usuario no está registrado"

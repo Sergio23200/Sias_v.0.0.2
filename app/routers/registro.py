@@ -6,6 +6,6 @@ registro_router = APIRouter()
 template = Jinja2Templates(directory=("frontend"))
 
 
-@ registro_router.get("/registro", tags=["auth"])
-def login_sesion(request: Request):
-    return template.TemplateResponse("templates/", {"request": request})
+@registro_router.get("/registro", tags=["auth"])
+def registro(request: Request):
+    return template.TemplateResponse("templates/registro.html", {"request": request})

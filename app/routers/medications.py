@@ -5,7 +5,7 @@ from services.affiliate_services import Affiliate_service
 from services.Medications_service import Medications_service
 from services.admin_services import Admin_service
 from config.db import Session
-from middleware.jwt_bear import validate_token
+from utils.jwt_manger import validate_token
 from typing import Optional
 from fastapi.responses import JSONResponse
 from middleware.jwt_bear import JWTBearer

@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 from services.admin_services import Admin_service
 from middleware.jwt_bear import JWTBearer
 from fastapi.encoders import jsonable_encoder
-from middleware.jwt_bear import validate_token
+from utils.jwt_manger import validate_token
 from typing import Optional
 from services.ips_services import ips_service
 from fastapi import APIRouter, Depends, Query

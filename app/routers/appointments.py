@@ -10,7 +10,8 @@ from datetime import date
 from config.db import Session
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
-from middleware.jwt_bear import JWTBearer, validate_token
+from utils.jwt_manger import validate_token
+from middleware.jwt_bear import JWTBearer
 
 appointments_router = APIRouter()
 db = Session()

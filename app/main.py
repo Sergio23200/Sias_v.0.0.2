@@ -16,6 +16,7 @@ from models.Specialist import Specialist_model
 from models.Medications import Medications_model
 
 from routers.test import test_router
+from routers.pagina_inicio import pagina_inicio_router
 from routers.specialist import specialist_router
 from routers.admin import admin_router
 from routers.affiliate import affiliate_router
@@ -31,6 +32,7 @@ app.title = "DOCUMENTACION DEL PROYECTO SIAS"
 app.version = "0.0.1"
 app.include_router(registro_router)
 app.include_router(affiliate_router)
+app.include_router(pagina_inicio_router)
 app.include_router(hospital_router)
 app.include_router(ips_router)
 app.include_router(admin_router)
@@ -44,11 +46,3 @@ Base.metadata.create_all(bind=engine)
 
 
 app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
-
-
-@app.exception_handler(Exception)
-async def validation_exception_handler(request, exc):
-    return JSONResponse(
-        status_code=500,
-        content={"message": f"An unexpected error occurred: {str(exc)}"},
-    )

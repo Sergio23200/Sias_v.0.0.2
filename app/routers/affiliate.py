@@ -6,13 +6,14 @@ from typing import Optional
 from fastapi.encoders import jsonable_encoder
 from services.affiliate_services import Affiliate_service
 from fastapi import APIRouter, Depends, HTTPException, Query
-from middleware.jwt_bear import JWTBearer, validate_token
+from utils.jwt_manger import validate_token
+from middleware.jwt_bear import JWTBearer
 affiliate_router = APIRouter()
 
 db = Session()
 
 
-@affiliate_router.post("/create/affiliate", tags=["CRUD AFILADOS"])
+@affiliate_router.get("/create/affiliate", tags=["CRUD AFILADOS"])
 async def create_affiliate(affiliate: Affiliate_schema):
     """
     esta funcion crea un registro de tipo afiliado utilizando el archivo en el paquete de schema,

@@ -37,7 +37,7 @@
           <div class="contenedor_seleccion">
           <label for="tipo_documento">Tipo de Documento</label>
           </div>
-          <select id="tipoDocumento" name="tipo_documento" required>
+          <select id="tipoDocumento" name="document_type" required>
             <option value="">Seleccionar</option>
               <option value="CC">Cédula de Ciudadanía</option>
               <option value="TI">Tarjeta de Identidad</option>
@@ -50,19 +50,10 @@
               <div class="contenedor_seleccion">
               <label for="documentNumber">Número de Documento</label>
             </div>
-              <input type="text" id="documento" name="numero_documento" placeholder="número de documento" required maxlength="10">
+              <input type="text" id="documento" name="document_number" placeholder="número de documento" required maxlength="10">
               <span id="documentoIncorrecto" class="error-message"></span>
           </div>
 
-          <!--ingreso email-->
-          <div class="form-group">
-            <div class="contenedor_seleccion">
-            <label for="email" >Correo electronico</label>
-          </div>
-            <input type="email" id="email" name="email" placeholder="usuario@gmail.com" required>
-            <span id="email_incorrecto" class="error-message"></span>
-        </div>
-          <!--CONTRASEÑA-->
           <div class="form-group">
             <div class="contenedor_seleccion">
             <label for="contraseña" class="label">Contraseña</label>
@@ -70,7 +61,7 @@
             <input
               type="password"
               id="contraseña"
-              name="contraseña"
+              name="password"
               required maxlength="12"
               minlength="6"
               placeholder="******"
@@ -80,7 +71,7 @@
           <div class="registro-container">
             <!--ancla a pagina de registro/colocar url pagina-->
             <div class="regitro">
-          <a href="#">Registrate Aquí</a>
+          <a href="/registro">Registrate Aquí</a>
         </div>
         <div class="restaurar_contraseña">
           <a href="#">olvido su contraseña</a>
@@ -98,6 +89,6 @@
       
     </div>
 
-  <script src="{{ url_for('static', path='/js/logic_sesion.js')}}"></script>
+  <!-- <script src="{{ url_for('static', path='/js/logic_sesion.js')}}"></script> -->
 </body>
 </html>

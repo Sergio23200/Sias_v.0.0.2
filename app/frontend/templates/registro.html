@@ -26,7 +26,7 @@
       <h1 class="titulo">Registrarse</h1>
       <div class="contenedor_seleccion">
         <!--metodo post para envio formulario-->
-      <form action="http://127.0.0.1:8000" method = "POST" id="register_form">
+      <form action="/create/affiliate" method = "GET" id="register_form">
         <!-- Nombre Completo -->
         <div class="form-contenedor">
           <label for="fullName">Nombre Completo</label>
@@ -34,7 +34,7 @@
             type="text"
             id="fullName"
             name="fullName"
-            placeholder="Nombre / Apellidos"
+            placeholder="Nombre completo"
             required
           />
           <span id="fullNameError" class="error-message"></span>

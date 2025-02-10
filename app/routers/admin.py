@@ -2,7 +2,8 @@ from schemas.admin_schema import Admin_schema, Admin_update, admin_filter_schema
 from services.admin_services import Admin_service
 from config.db import Session
 from typing import Optional
-from middleware.jwt_bear import JWTBearer, validate_token
+from utils.jwt_manger import validate_token
+from middleware.jwt_bear import JWTBearer
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi import APIRouter, Depends, Query

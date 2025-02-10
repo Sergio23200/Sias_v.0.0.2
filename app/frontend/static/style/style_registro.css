@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url(./imagenes/fondo-inicio-sesion.png);
+  background-image: url("/static/img/imgFondoInicioSesion.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,7 +28,7 @@ header {
 
 .menu-icon {
   color: white;
-  font-size: 24px;  
+  font-size: 24px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -53,13 +53,11 @@ header {
 
 .menuOptions ul li {
   padding: 20px;
-  
 }
 
 .menuOptions ul li a {
   color: white;
   text-decoration: none;
-  
 }
 
 .menuOptions ul li:hover {
@@ -106,10 +104,9 @@ header {
   color: hwb(0 59% 40%);
   width: 95%;
   height: 100%;
-
 }
 
-#gender{
+#gender {
   padding: 2%;
   background-color: rgba(243, 239, 239, 0.875);
   border: 1px solid hsl(0, 14%, 90%);
@@ -120,7 +117,7 @@ header {
   height: 100%;
 }
 
-#membership{
+#membership {
   padding: 2%;
   background-color: rgba(243, 239, 239, 0.875);
   border: 1px solid hsl(0, 14%, 90%);
@@ -132,7 +129,7 @@ header {
 }
 
 select {
-  width: 100%;  /* Asegura que el select ocupe el 100% del ancho disponible en el contenedor */
+  width: 100%; /* Asegura que el select ocupe el 100% del ancho disponible en el contenedor */
   padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -169,7 +166,6 @@ input[type="checkbox"] {
   color: #aaaaaa;
   width: 20%;
 }
-
 
 /*modifica texto y terminos y condiciones*/
 .form-group {
@@ -213,7 +209,6 @@ a:hover {
   text-decoration: underline;
 }
 
-
 @media screen and (max-width: 600px) {
   header {
     flex-direction: column-reverse;
@@ -221,15 +216,15 @@ a:hover {
   }
 
   .titulo {
-    margin-top: 5%; 
+    margin-top: 5%;
   }
 
-  .button{width: 10%;
+  .button {
+    width: 10%;
   }
 
-  .contenedor_seleccion{
+  .contenedor_seleccion {
     width: 50%;
-
   }
 
   body {
@@ -252,7 +247,6 @@ a:hover {
   }
 }
 
-
 @media screen and (max-width: 1024px) {
   .button {
     width: 10%;
@@ -267,9 +261,8 @@ a:hover {
     margin-top: 5%;
   }
 
-  .contenedor_seleccion{
+  .contenedor_seleccion {
     width: 25%;
-
   }
 }
 @media screen and (max-width: 768px) {
