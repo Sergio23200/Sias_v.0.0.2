@@ -8,4 +8,4 @@ template = Jinja2Templates(directory=("frontend"))
 
 @ test_router.get("/test", tags=["auth"])
 def login_sesion(request: Request):
-    return template.TemplateResponse("templates/paginaPrincipalAdministrador.html", {"request": request})
+    return template.TemplateResponse("templates/paginaPrincipal.html", {"request": request})

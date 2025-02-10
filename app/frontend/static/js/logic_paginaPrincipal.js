@@ -26,7 +26,6 @@ function buscarPalabra(event) {
   });
 }
 
-
   let indice = 0;
 
 function moverCarrusel(direccion) {
@@ -48,3 +47,42 @@ function moverCarrusel(direccion) {
 
 /* evento para realizar desplazamiento cada 3 segundos */
 setInterval(() => moverCarrusel(1), 3000);
+
+/*funcion para funcionamiento front chatboot*/ 
+document.getElementById("chatbot-icon").addEventListener("click", function() {
+  let chatContainer = document.getElementById("chat-container");
+  
+  if (chatContainer.style.display === "flex") {
+      chatContainer.style.display = "none";
+      document.getElementById("chat-box").innerHTML = ""; // Borra los mensajes anteriores
+  } else {
+      chatContainer.style.display = "flex";
+      
+      // Mensaje de bienvenida cuando se vuelve a abrir el chat
+      let chatBox = document.getElementById("chat-box");
+      let botMessage = document.createElement("div");
+      botMessage.classList.add("message", "bot");
+      botMessage.textContent = "¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte?";
+      chatBox.appendChild(botMessage);
+  }
+});
+
+document.getElementById("send-btn").addEventListener("click", function() {
+  let userInput = document.getElementById("user-input").value;
+  if (userInput.trim() !== "") {
+      let chatBox = document.getElementById("chat-box");
+      
+      let userMessage = document.createElement("div");
+      userMessage.classList.add("message", "user");
+      userMessage.textContent = userInput;
+      chatBox.appendChild(userMessage);
+
+      let botMessage = document.createElement("div");
+      botMessage.classList.add("message", "bot");
+      botMessage.textContent = "Gracias por tu mensaje. Te responderé en breve.";
+      chatBox.appendChild(botMessage);
+
+      chatBox.scrollTop = chatBox.scrollHeight;
+      document.getElementById("user-input").value = "";
+  }
+});

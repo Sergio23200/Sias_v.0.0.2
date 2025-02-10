@@ -578,48 +578,106 @@ footer {
 }
 
 /* icono telegram fijo */
-.icono-fijo {
-  position: fixed; /* Hace que el icono siempre sea visible */
-  bottom: 20px; /* Ajusta la distancia desde abajo */
-  right: 20px; /* Ajusta la distancia desde la derecha */
-  width: 65px; /* Tamaño del icono */
-  height: 65px;
-  z-index: 1000; /* Se mantiene por encima de otros elementos */
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  animation: pulse 1.5s infinite;
-}
-
-.icono-fijo img {
-  width: 100%;
-  height: auto;
+/* Estilos para el icono fijo */
+.chatbot-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ffcc00, #e6b800);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease-in-out;
-}
-/* Efecto hover */
-.icono-fijo:hover {
-  transform: scale(1.2) rotate(10deg);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-}
-/* Animación de pulso */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
+  transition: transform 0.3s, background 0.3s;
 }
 
-.resaltado {
-  background-color: #f6a44d;
-  font-weight: bold;
-  padding: 2px;
-  border-radius: 4px;
+.chatbot-icon:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #e6b800, #ffcc00);
 }
+
+.chat-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 90%;
+  max-width: 350px;
+  background: linear-gradient(135deg, #1e3c72, hwb(218 78% 4%));
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  height: 65vh;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 75%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.bot {
+  background: #ffcc00;
+  color: black;
+  align-self: flex-start;
+}
+
+.user {
+  background: #2a5298;
+  color: white;
+  align-self: flex-end;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.chat-input button {
+  background: #ffcc00;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 14px;
+}
+
+.chat-input button:hover {
+  background: #e6b800;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
 /*adaptacion diseño pantallas*/
 @media (max-width: 990px) {

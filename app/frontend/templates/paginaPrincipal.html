@@ -230,10 +230,21 @@
           </div>
         </div>
   <!-- Icono fijo en la página -->
-<a href="RUTA CHATBOOT" target="_blank" class="icono-fijo">
-  <img src="{{ url_for('static', path='/img/imgTelegram.png ') }}" alt="Servicio" />
-</a>
-        </footer>
+  <div class="chatbot-icon" id="chatbot-icon">
+    <a  target="_blank" class="icono-fijo">
+      <img src="{{ url_for('static', path='/img/imgTelegram.png ') }}" alt="Servicio" />
+    </a>
+  </div>
+  <div class="chat-container" id="chat-container">
+      <div class="chat-box" id="chat-box">
+          <div class="message bot">¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte?</div>
+      </div>
+      <div class="chat-input">
+          <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
+          <button id="send-btn">Enviar</button>
+      </div>
+    </div>
+   </footer>
         <script src="{{ url_for('static', path='/js/logic_paginaPrincipal.js')}}"></script>
   </body>
 </html>
