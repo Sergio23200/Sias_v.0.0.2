@@ -12,38 +12,42 @@ body {
 
 .contenedor-padre-header {
   display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 1%;
+  padding: 15px 15px;
   background: linear-gradient(135deg, #0056b3, hwb(212 62% 10%));
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   animation: slideDown 0.5s ease-in-out;
 }
 
 /* Estilos generales para el h1 */
-.titulo {
-  font-size: 2rem;
+.titulo h1 {
+  font-size: 4rem;
   font-weight: bold;
   color: hsl(188, 70%, 90%);
   text-transform: uppercase;
+  text-align: center;
 }
 /* Efecto al pasar el mouse */
 h1:hover {
   text-shadow: 0px 0px 15px hsla(189, 75%, 77%, 0.8);
   transition: all 0.4s ease-in-out;
 }
-.button {
-  padding: 10px;
-  background: #ffcc00;
-  color: #0056b3;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0, 86, 179, 0.2);
-  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out,
-    box-shadow 0.3s;
-}
+  .button {
+    padding: 10px 20px;
+    background: #ffcc00;
+    color: #0056b3;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 86, 179, 0.2);
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out,
+      box-shadow 0.3s;
+  }
 
 .button:hover {
   background: #ffaa00;
@@ -53,10 +57,11 @@ h1:hover {
 
 /*  Logo */
 .header-logo {
-  max-width: 70vh;
+  width: auto;
+  max-width: 100px;
+  height: auto;
   transition: transform 0.3s ease-in-out;
 }
-
 .header-logo:hover {
   transform: scale(1.8);
 }
@@ -64,13 +69,12 @@ h1:hover {
 .carrusel {
   position: relative;
   width: 100%;
-  max-width: 80%;
+  max-width: 1200px;
   margin: auto;
-  overflow: hidden; /* Oculta el contenido que se desborda */
+  overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0px 4px 20px hsla(207, 77%, 74%, 0.302);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
 /* Contenedor del carrusel */
 .carrusel-contenedor {
   display: flex;
@@ -156,155 +160,220 @@ h1:hover {
   transform: scale(1.05);
 }
 
-/***** Estilos de Nuestros servicios ********/
+/* ======= SECCIÓN nuestros servicios ======= */
 .contenedor-padre-servicios {
   width: 100%;
-  margin: 5%;
+  margin: auto;
+  padding: 40px 15px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e3a5f, #95bfef);
+  color: white;
 }
+
 .contenedor1-cajas {
   display: flex;
-  flex-direction: row; /* Alineación horizontal de imagen y texto */
-  gap: 20px; /* Espacio entre imagen y texto */
-  justify-content: center; /* Centra los elementos */
-  align-items: center; /* Centra verticalmente los elementos */
-  padding: 20px;
-  width: 100%;
-  max-width: 1200px; /* Ancho máximo para que no se expanda demasiado */
-  box-sizing: border-box;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 80%;
+  max-width: 1000px;
+  padding: 30px;
+  background-color: rgba(218, 237, 250, 0.15);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Estilo para la imagen */
+/* ===== IMÁGENES ===== */
 .contenedor1-caja-img {
-  flex: 1; /* Ocupa el espacio restante */
-  max-width: 45%; /* Limita el tamaño máximo de la imagen */
-}
-
-.imagen-servicio {
-  width: 100%; /* Hace que la imagen ocupe todo el contenedor */
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo para el texto */
-.contenedor1-caja-texto {
-  flex: 1; /* Ocupa el espacio restante */
-  max-width: 45%; /* Limita el tamaño máximo del texto */
-  text-align: justify;
-}
-
-.contenedor1-caja1-titulo {
-  font-family: "Be Vietnam", sans-serif;
-  font-weight: 700;
-  font-size: 2rem; /* Ajusta el tamaño según sea necesario */
-  color: #232851;
-  margin-bottom: 15px;
-}
-
-#parrafo-1 {
-  font-size: 1.1rem;
-  color: #666;
-  line-height: 1.6;
-}
-/*******estilo informacion de interes******/
-/* Contenedor principal */
-.contenedor_preguntas {
-  margin: 0 25%;
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 2rem 0;
+  align-items: center;
+  gap: 10px;
+  max-width: 45%;
 }
-.contenedor3-cajas {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 5vh;
-  font-weight: 700;
-  color: #232851;
+.contenedor1-caja-img img {
+  width: 90%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Título de la sección */
+.contenedor1-caja-img img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+/* ===== CONTENEDOR DEL TEXTO ===== */
+.contenedor1-caja-texto {
+  flex: 1;
+  text-align: justify;
+  padding: 10px;
+  max-width: 50%;
+  color: white;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  white-space: normal;
+  word-break: keep-all; 
+  hyphens: auto; /* Agrega guiones si es necesario */
+}
+.contenedor1-caja1-titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  white-space: normal;
+  word-break: keep-all; 
+  hyphens: auto; /* Agrega guiones si es necesario */
+
+}
+.lista-servicios {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.lista-servicios li {
+  font-size: 1.2rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 90%;
+  max-width: 500px;
+}
+
+#parrafo-1 {
+  font-size: 1.3rem;
+  color: #e0e0e0;
+  word-spacing: normal;
+  white-space: normal;
+  line-height: 1.4;
+  text-align: justify;
+ 
+}
+/* ======= SECCIÓN PREGUNTAS ======= */
+
+.contenedor_preguntas {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  text-align: center;
+}
+
 .contenedor1-caja3-titulo {
   font-size: 2.5rem;
-  font-weight: 600;
-  color: rgb(235, 239, 242);
-  margin-bottom: 20px;
+  font-weight: 700;
+  color: white;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  background: linear-gradient(135deg, hsl(204, 76%, 19%), hsl(202, 71%, 77%));
-  padding: 5px 20px;
-  border-radius: 5px;
-  display: inline-block;
-}
-
-/* Artículos (cada pregunta) */
-.lista-articulo {
-  display: flex;
-  background-color: #fff;
-  padding: 2%;
-  margin-bottom: 20px;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  padding: 15px 30px;
   border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+}
+
+.cajas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.lista-articulo {
+  background: hsl(235, 69%, 94%);
+  width: 100%;
+  max-width: 550px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  gap: 15px;
-}
-.estilo-lista {
-  font-size: 1em;
-  font-weight: bold;
-  color: #f39c12;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid transparent;
+  gap: 20px;
 }
 
-.contenedor1-caja-img {
-  flex-basis: 40%;
-  max-width: 40%;
+.lista-articulo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px #00031a33;
+  border-color: #3498db;
 }
-
 .img_pregunta {
   width: 100%;
   height: auto;
-  border-radius: 10px;
-  object-fit: cover;
+  border-radius: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.lista-articulo:hover .img_pregunta {
+  transform: scale(1.05);
+}
+
+.contenedor1-caja-texto {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
 }
 
 .lista-titulo {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  color: #34495e;
-  margin-bottom: 10px;
-  line-height: 1.6;
+  color: #2c3e50;
+  margin-bottom: 5px;
+  line-height: 1.3;
 }
 
 .contenedor1-caja-interna-texto {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #7f8c8d;
-  line-height: 1.7;
-  text-align:inherit;
-  margin-top: 10px;
-  letter-spacing: 0.5px; /* Aumentar ligeramente el espaciado */
+  line-height: 1.4;
+  text-align: justify;
+  margin: 0;
 }
-
 /**********estilo experiencia de usuarios*********/
-/*estilo contenedor pare experiencia usuario*/
 .articulo-caja {
-  background: white;
-  color: #333;
+  width: 30%; /* Ajusta según sea necesario */
+  min-width: 250px; /* Para que no se vuelvan demasiado pequeñas */
+  background-color: #e0e5ef;
   padding: 20px;
   border-radius: 10px;
-  width: 300px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
 }
 .contenedor2 {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  margin: 5% 15% 5% 15%;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.articulo-imagen img {
+  width: 100%;
+  max-width: 150px; /* Ajusta según sea necesario */
+  height: auto;
 }
 
 .contenedor1-cajas2:hover .imagen_1 {
@@ -320,7 +389,15 @@ h1:hover {
 .articulos {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: center;
+  gap: 20px; /* Espacio entre tarjetas */
+  color: #7f8c8d;
+  word-spacing: normal;
+  white-space: normal;
+  line-height: 1.4;
+  text-align: justify;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .articulo-caja:hover {
@@ -337,18 +414,16 @@ h1:hover {
   color: #3f4868;
 }
 
-.font-parrafo {
-  font-size: 14px;
-  color: #555;
-}
-
-.titulo-articulos{
+.titulo-articulos {
   justify-content: center;
-  text-align:center;
+  text-align: center;
   font-size: 5vh;
   font-weight: 600;
   margin-bottom: 5%;
-  color:hsl(240, 90%, 27%) ;
+  color: hsl(240, 90%, 27%);
+}
+h4{
+  font-size: 2rem;
 }
 
 /*videos*/
@@ -357,27 +432,29 @@ h1:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 10% auto 2%;
-  max-width: 100%;
+  margin: 5% auto 2%;
+  width: 80%; /*  Menos ancho */
+  max-width: 700px; /*  Limita el tamaño en pantallas grandes */
   background: linear-gradient(135deg, #1e3c72, rgb(132, 178, 251));
-  padding: 1%;
-  border-radius: 2%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 12px;
+  border: 3px solid rgba(30, 60, 114, 0.6); /*  Borde azul más delgado */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 .video-container h3 {
   color: #ffffff;
-  font-size: 24px;
-  margin-bottom: 2%;
+  font-size: 22px;
+  margin-bottom: 15px;
   text-transform: uppercase;
   font-weight: bold;
 }
-
 .video-container iframe {
-  width: 100vh;
-  max-width: 100%;
-  height: 55vh;
+  width: 90%;
+  max-width: 800px; /* Ajusta el tamaño máximo del video */
+  height: 50vh;
   border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Borde del video más sutil */
 }
 
 /*estilos pre-footer*/
@@ -416,12 +493,14 @@ h1:hover {
 /*footer*/
 
 footer {
-  background-color: #003366;
+  background: linear-gradient(135deg, #002147, #003366);
   color: white;
-  padding: 30px 20px;
+  padding: 40px 20px;
   font-family: "Arial", sans-serif;
   text-align: center;
   position: relative;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
 }
 
 #menu {
@@ -433,9 +512,9 @@ footer {
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
+  flex-wrap: wrap; /*  Permite que los elementos se acomoden en pantallas pequeñas */
 }
-
 #menu .contenedor-li li {
   margin: 0;
 }
@@ -445,12 +524,16 @@ footer {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
-  transition: color 0.3s ease;
+  letter-spacing: 1px;
+  padding: 10px;
+  transition: color 0.3s ease, transform 0.2s ease-in-out;
 }
 
 #menu .contenedor-li li a:hover {
-  color: #ff9900; /* Color de hover */
+  color: #ffcc00;
+  transform: scale(1.1);
 }
+
 
 /* Formulario de búsqueda */
 .text-align-center {
@@ -464,148 +547,194 @@ footer {
   gap: 10px;
   max-width: 500px;
   margin: 0 auto;
+  flex-wrap: wrap; /*  Se adapta mejor en pantallas pequeñas */
 }
 .text-align-center .input {
-  padding: 10px;
+  padding: 12px;
   font-size: 1rem;
-  width: 100%;
+  width: 50%;
   max-width: 300px;
   border: none;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  border-radius: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease, transform 0.2s ease-in-out;
 }
 .text-align-center .input:focus {
   outline: none;
   box-shadow: 0 0 10px rgba(255, 153, 0, 0.6);
 }
 .text-align-center .button {
-  padding: 10px 20px;
-  background-color: #ff9900;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #ff9900, #ff6600);
   border: none;
   color: white;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 .text-align-center .button:hover {
   background-color: #e68a00; /* Hover efecto para el botón */
 }
 
-/* Para tablets (pantallas medianas) */
-@media (max-width: 1199px) and (min-width: 768px) {
-  /* Estilo para pantallas de tabletas */
-  .contenedor-padre-header {
-    flex-direction: column; /* Asegura que el header se acomode en columna */
-    align-items: center;
+/* icono telegram fijo */
+/* Estilos para el icono fijo */
+.chatbot-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ffcc00, #e6b800);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.chatbot-icon:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #e6b800, #ffcc00);
+}
+
+.chat-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 90%;
+  max-width: 350px;
+  background: linear-gradient(135deg, #1e3c72, hwb(218 78% 4%));
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  height: 65vh;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 75%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.bot {
+  background: #ffcc00;
+  color: black;
+  align-self: flex-start;
+}
+
+.user {
+  background: #2a5298;
+  color: white;
+  align-self: flex-end;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.chat-input button {
+  background: #ffcc00;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 14px;
+}
+
+.chat-input button:hover {
+  background: #e6b800;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/*adaptacion diseño pantallas*/
+@media (max-width: 990px) {
+  .contenedor1-caja-img {
+    display: flex;
+    max-width: 40vh;
+    justify-content: center;
+    text-align: center;
+  }
+  .lista-titulo {
+    font-size: 1rem;
+  }
+
+  #parrafo-1{
+    text-align: justify;
+    font-size: 16px;
+  }
+
+  .articulo-imagen{
+    justify-content: center;
     text-align: center;
   }
 
-  .carrusel-slide {
-    height: 300px; /* Ajustar la altura de los slides */
+  .contenedor1-caja-interna-texto {
+    font-size: 0.9rem;
   }
 
-  .contenedor1-cajas {
-    flex-direction: column; /* En pantallas más pequeñas, los elementos se organizan en columna */
-    gap: 10px;
-  }
-
-  .contenedor-padre-servicios {
-    width: 90%;
-  }
-
-  .contenedor1-caja-img img {
-    width: 100%;
-    height: 250px;
-  }
-
-  .contenedor2 {
-    display: block;
-    gap: 20px;
-  }
+  .lista-servicios{
+   gap: 20px;
 }
 
-/* Para dispositivos móviles (pantallas pequeñas) */
-@media (max-width: 767px) {
-  /* Estilos para móviles */
+}
+
+/*  Responsive para móviles (Menos de 600px) */
+@media (max-width: 600px) {
   .contenedor-padre-header {
-    padding: 2%;
-    flex-direction: column; /* Organizar los elementos en columna */
-    align-items: center;
-  }
-
-  .header-logo {
-    max-width: 80%; /* Asegura que el logo no sea demasiado grande */
-    width: 20%;
-  }
-
-  .carrusel-slide {
-    height: 200px; /* Ajustar la altura de los slides */
-  }
-
-  .contenedor1-caja-img img {
-    width: 100%;
-    height: auto;
-  }
-
-  .contenedor1-cajas {
     flex-direction: column;
     text-align: center;
-    gap: 20px;
-    padding: 10px;
-  }
-
-  .contenedor-padre-servicios {
-    width: 100%;
-  }
-
-  .contenedor1-caja-texto {
-    padding: 15px;
-  }
-
-  .video-container iframe {
-    width: 100%;
-    height: 200px;
-  }
-
-  .articulo-caja {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-
-  .articulo-nombre,
-  .font-parrafo {
-    font-size: 14px; /* Reducir el tamaño de la fuente para pantallas pequeñas */
-  }
-
-  .pre-footer {
-    font-size: 14px;
-  }
-}
-
-/* Para dispositivos con pantallas muy pequeñas (smartphones más pequeños) */
-@media (max-width: 480px) {
-  /* Ajustes para pantallas muy pequeñas */
-  .titulo h1 {
-    font-size: 1rem;
-    margin-bottom: 15%;
+   
   }
 
   .header-logo {
-    width: 25%;
+    max-width: 70px;
   }
 
-  .header-button {
-    margin-bottom: 5%;
+  .titulo h1 {
+    font-size: 1.6rem;
   }
 
-  .contenedor1-caja1-titulo {
-    font-size: 1.5rem;
-  } 
+  .button {
+    font-size: 0.85rem;
+    padding: 7px 14px;
+  }
 
-  .contenedor1-caja-texto p {
-    font-size: 1rem; /* Ajustar tamaño del texto en pantallas pequeñas */
+  .carrusel-texto {
+    width: 95%;
+    bottom: 8%;
   }
 
   .carrusel-texto h2 {
@@ -613,123 +742,86 @@ footer {
   }
 
   .carrusel-texto p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
-  .articulo-caja {
-    padding: 15px;
-    width: 100%;
+  .enlace_inicio {
+    padding: 5px 10px;
+    font-size: 0.8rem;
   }
 
-  .articulo-nombre {
-    font-size: 12px;
+  .carrusel-btn {
+    font-size: 1.5rem;
+    padding: 8px;
   }
 
-  .font-parrafo {
-    font-size: 12px;
+  .contenedor1-cajas {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
   }
 
   .contenedor1-caja-img {
-    max-width: 80%;
-    margin-top: 5%;
+    flex-direction: column;
   }
 
-  .contenedor1-caja-texto {
+    .contenedor1-caja-img img {
     max-width: 90%;
   }
 
-  .video-container iframe {
-    height: 160px;
-  }
-
-  .contenedor3-cajas {
-    width: 100%;
-    padding: 10px; /* Añadir un poco de espacio a los bordes */
-  }
-
-   /* Ajustar cada artículo */
-   .lista-articulo {
-    width: 100%; /* Hacer que cada tarjeta ocupe todo el ancho */
-    padding: 10px; /* Agregar un poco de espacio interior */
-    box-sizing: border-box; /* Asegurarse de que el padding no afecte el ancho */
-    margin-bottom: 15px; /* Separar cada artículo */
-    display: flex;
-    flex-direction: column; /* Apilar imagen y texto */
-  }
-
-  /* Imagen dentro de cada artículo */
-  .contenedor1-caja-img {
-    width: 100%; /* Hacer que la imagen ocupe todo el ancho */
-    padding: 0; /* Eliminar padding adicional */
-    margin-bottom: 10px; /* Separar la imagen del texto */
-  }
-  .img_pregunta {
-    width: 100%; /* La imagen se adapta al ancho completo del contenedor */
-    height: auto; /* Mantener la relación de aspecto de la imagen */
-  }
-
-  /* Ajustar el texto y otros elementos */
   .contenedor1-caja-texto {
-    width: 100%; /* Asegurarse de que ocupe todo el ancho */
-    padding: 0 10px; /* Agregar algo de espacio alrededor del texto */
-    word-wrap: break-word; /* Permite que las palabras largas se dividan */
-    letter-spacing: normal;
-    overflow-wrap: break-word; 
+    max-width: 100%;
+    padding: 10px;
   }
 
-  .contenedor1-cajas-interna {
-    display: flex;
-    flex-direction: column; /* Apilar número y título verticalmente */
-    align-items: center; /* Centrar los elementos */
-    text-align: center; /* Centrar el texto */
+  .contenedor1-caja1-titulo {
+    font-size: 1rem;
   }
 
-  .estilo-lista {
-    font-size: 16px; /* Ajustar el tamaño del título */
-    margin-bottom: 10px; /* Separar el título del texto */
+  .lista-servicios li {
+    font-size: 1rem;
+    text-align: left;
+  }
+  .contenedor_preguntas {
+    width: 95%;
   }
 
-  .lista-titulo {
-    font-size: 15px; /* Reducir el tamaño de la fuente */
-    text-align: center; /* Centrar el título */
-    
+  .contenedor1-caja3-titulo {
+    font-size: 1.8rem;
+    padding: 10px 18px;
   }
 
- .titulo-articulos{
-  justify-content: center;
-  text-align: center;
-  margin-bottom: 5%;
-  color: #1e3c72;
- }
-  .contenedor1-caja3-titulo{
-    justify-content: center;
-    text-align: justify;
-    font-size: 70%;
-    margin: 0 ;
-  }
-
-  footer {
-    padding: 15px;
-  }
-
-  .contenedor-li {
+  .lista-articulo {
     flex-direction: column;
-    align-items: center;
+    padding: 15px;
+    max-width: 100%;
   }
 
-  .contenedor-li li {
-    margin: 10px 0;
+  .contenedor1-caja-img {
+    display: flex;
+    max-width: 50vh;
+    justify-content: center;
+    text-align: center;
+  }
+  .lista-titulo {
+    font-size: 1rem;
   }
 
-  .input {
-    width: 50%;
+  #parrafo-1{
+    text-align: justify;
+    font-size: 16px;
   }
- #search{
-  width: 40%;
 
-}
-  .button {
-    margin-top: 2px;
-    width: 20%;
+  .articulo-imagen{
+    justify-content: center;
+    text-align: center;
+  }
+
+  .contenedor1-caja-interna-texto {
+    font-size: 0.9rem;
+  }
+
+  .lista-servicios{
+   gap: 20px;
   }
 }

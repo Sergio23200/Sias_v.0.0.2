@@ -1,0 +1,300 @@
+/* Estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+
+header {
+    background: #041241cc;
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 4px solid #ffcc00;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.img-container img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.8));
+}
+
+.img-container img {
+    max-width: 100px;
+    height: auto;
+    transition: transform 0.4s ease-in-out, filter 0.3s ease-in-out;
+}
+
+
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-left: 15px;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+}
+
+.perfil {
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+.perfil:hover {
+    transform: scale(1.02);
+}
+
+.perfil .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #ffcc00;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+.perfil button {
+    background: #ffcc00;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+
+.perfil button:hover {
+    background: #e6b800;
+    transform: scale(1.05);
+}
+
+/* Carrusel ocupa la mitad de la pantalla */
+.carrusel {
+    flex: 1;
+    max-width: 50%;
+}
+.carrusel-container {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contenido {
+    flex: 1;
+    max-width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.carrusel-container img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carrusel-slide img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.carrusel-btn.prev {
+    left: 15px;
+}
+
+.carrusel-btn.next {
+    right: 15px;
+}
+
+.carrusel-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.perfil, .opciones {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.opciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.opciones:hover {
+    transform: scale(1.02);
+}
+
+.opciones ul {
+    list-style: none;
+    padding: 0;
+    width: 50%;
+}
+.opciones li {
+    display: flex;
+    background: #ffcc00;
+    margin: 8px 0;
+    padding: 0;
+    border-radius: 50px;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center; /* Centra verticalmente (si el contenedor tiene altura) */
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+.opciones li:hover {
+    transform: scale(1.05);
+    background: #e6b800;
+}
+.opciones a {
+    text-decoration: none;
+    color: rgb(35, 36, 36);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.opcion-item a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    width: 100%;
+}
+.opcion-item:hover {
+    transform: scale(1.07);
+    background: linear-gradient(135deg, #e6b800, #ffcc00);
+}
+
+#cerrar-sesion:hover {
+    background: linear-gradient(135deg, hsl(32, 93%, 54%), #f78f18);
+}
+
+h3{
+    text-align: center;
+}
+
+footer {
+    background: #041241cc;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+    bottom: 0;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .contenedor {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .img-container img {
+        max-width: 80px;
+    }
+
+    .carrusel,
+    .contenido {
+        max-width: 100%;
+    }
+
+    .opciones {
+        padding: 15px;
+    }
+    .opciones-lista {
+        width: 100%;
+    }
+    .opcion-item {
+        max-width: 100%;
+    }
+}
+@media (min-width: 700px) and (max-width: 780px) {
+    .contenedor {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+    
+    .carrusel,
+    .contenido {
+        max-width: 90%;
+    }
+    
+    .perfil .avatar {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .perfil button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    
+    .opciones ul {
+        width: 100%;
+    }
+    
+    .opciones li {
+        max-width: 90%;
+    }
+}
