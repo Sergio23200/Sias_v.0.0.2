@@ -1,0 +1,171 @@
+.form-inline {
+  display: flex;
+}
+body {
+  background-image: url(https://img.freepik.com/vector-premium/concepto-diseno-fondo-medico-cientifico-atencion-medica-abstracta-telon-fondo-medicina-atencion-medica_618588-684.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(65, 98, 189);
+  padding: 15px 20px;
+  color: white;
+  position: relative;
+}
+.abrir-menu {
+  display: none;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*Estilo para el icono del menú*/
+.icono-menu {
+  margin: 40px 50px;
+  position: relative;
+  z-index: 10;
+}
+.icono-menu img {
+  vertical-align: top;
+  width: 40px;
+  cursor: pointer;
+}
+/*Estilo para el contenedor del menú*/
+.cont-menu {
+  background-color: rgb(65, 98, 189);
+  box-shadow: 2px 0px 5px 2px rgb(65, 98, 189);
+  width: 400px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease;
+}
+/*Estilo por agregar en javacript*/
+.active {
+  transform: translate(-500px);
+}
+.opacity {
+  background-color: white;
+  transition: all 0.5s ease;
+}
+
+/*Estilos para el listado del menu*/
+.cont-menu ul {
+  padding: 100px 0px 20px 0px;
+  list-style: none;
+}
+.cont-menu ul li {
+  color: white;
+  display: block;
+  font-size: 25px;
+  text-decoration: none;
+  padding: 10px 50px;
+  cursor: pointer;
+}
+.cont-menu ul li:hover {
+  background-color: rgb(17, 50, 138);
+  color: white;
+}
+li {
+  display: block;
+  background: rgb(65, 98, 189);
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  border-bottom: 1px;
+}
+.bor {
+  background: rgb(146, 198, 228);
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  border-radius: 8px;
+}
+.t {
+  margin-top: 4%;
+  color: rgb(65, 98, 189);
+  border-radius: 50%;
+  margin-left: 30%;
+  margin-right: 30%;
+  text-align: center;
+  text-size-adjust: 40px;
+  font-size: 50px;
+}
+.e {
+  color: rgb(17, 50, 138);
+  margin-left: 26%;
+  margin-right: 30%;
+  height: 70%;
+  width: 34%;
+}
+.f {
+  margin-top: 2%;
+  color: rgb(17, 50, 138);
+  margin-left: 30%;
+  margin-right: 30%;
+  height: 18%;
+  width: 22%;
+}
+.d {
+  margin-top: 2%;
+  color: rgb(17, 50, 138);
+  margin-left: 28%;
+  margin-right: 40%;
+  height: 60%;
+}
+.i {
+  margin-top: 2%;
+  color: rgb(17, 50, 138);
+  margin-left: 24%;
+  margin-right: 30%;
+  height: 60%;
+  width: 33%;
+}
+.formulario {
+  color: rgb(17, 50, 138);
+  border-radius: 4px;
+  margin-left: 4px;
+  margin-top: 6%;
+  display: flex;
+  flex-direction: column;
+}
+select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px;
+  margin-bottom: 10px;
+  color: rgb(65, 98, 189);
+  width: 22%;
+  outline: none;
+}
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px;
+  margin-bottom: 7px;
+  color: rgb(65, 98, 189);
+  width: 250px;
+  outline: none;
+  text-align: center;
+}
+s.btn-primary {
+  margin-top: 30%;
+  border-radius: 10px;
+}
+#boton {
+  margin-top: 3%;
+  margin-right: 20%;
+  margin-bottom: 25%;
+  margin-left: 20%;
+  color: white;
+  background-color: rgb(65, 98, 189);
+  border-color: rgb(65, 98, 189);
+  width: 10%;
+}

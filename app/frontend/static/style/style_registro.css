@@ -64,7 +64,7 @@ header {
   background-color: hsl(252, 58%, 40%);
 }
 
-/*formulario contendor principal*/
+/*formulario contenedor principal*/
 .form-contenedor {
   display: flex;
   flex-direction: column;
@@ -137,11 +137,12 @@ select {
   justify-content: center;
   text-align: center;
 }
+
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="date"],
-input[type="contraseña"] select {
+input[type="password"] {
   all: unset;
   width: 90%;
   padding: 2%;
@@ -176,7 +177,7 @@ input[type="checkbox"] {
 /*estilo boton registro*/
 
 .button {
-  width: 10%;
+  width: 100%; /* Cambié el ancho a 100% para cubrir todo el espacio disponible */
   padding: 10px;
   background-color: hsl(211, 50%, 52%);
   color: white;
@@ -184,6 +185,7 @@ input[type="checkbox"] {
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  box-sizing: border-box; /* Incluye el padding dentro del tamaño total */
   transition: background-color 0.3s ease;
 }
 
@@ -220,7 +222,9 @@ a:hover {
   }
 
   .button {
-    width: 10%;
+    width: 30%;
+    font-size: 70%;
+    margin-top: 5%;
   }
 
   .contenedor_seleccion {
@@ -228,16 +232,12 @@ a:hover {
   }
 
   body {
-    background-image: url(./imagenes/fondo-inicio-sesion.png);
+    background-image: url("/static/img/imgFondoInicioSesion.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
-  .button {
-    width: 30%;
-    font-size: 70%;
-    margin-top: 5%;
-  }
+
   #birthDate {
     margin-top: 5%;
   }
@@ -249,10 +249,11 @@ a:hover {
 
 @media screen and (max-width: 1024px) {
   .button {
-    width: 10%;
+    width: 30%;
     font-size: 70%;
     margin-top: 2%;
   }
+
   #birthDate {
     margin-top: 5%;
   }
@@ -265,12 +266,14 @@ a:hover {
     width: 25%;
   }
 }
+
 @media screen and (max-width: 768px) {
   .button {
     width: 30%;
     font-size: 70%;
     margin-top: 2%;
   }
+
   #birthDate {
     margin-top: 5%;
   }
@@ -286,6 +289,7 @@ a:hover {
     font-size: 70%;
     margin-top: 5%;
   }
+
   #birthDate {
     margin-top: 5%;
   }

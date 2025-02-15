@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Confirmación de datos</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='/style/sytyle_confirmacionOrdenmedicamento.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="confirmacion">
+        <h2>Confirmación de Cita</h2>
+        <p class="detalle"><strong>Día:</strong> 12 de marzo de 2025</p>
+        <p class="detalle"><strong>Nombre Completo:</strong> Juan Pérez</p>
+        <p class="detalle"><strong>Especialidad:</strong> Dermatología</p>
+        <p class="detalle"><strong>Dirección:</strong> Calle 123, Bogotá</p>
+        <p class="detalle"><strong>Email:</strong> juan.perez@email.com</p>
+        <p class="detalle"><strong>Ciudad:</strong> Bogotá</p>
+        <p class="detalle"><strong>Hora:</strong> 10:30 AM</p>
+        <button class="btn btn-primary" onclick="window.print()">
+          Imprimir
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -26,6 +26,9 @@ from routers.ips import ips_router
 from routers.registro import registro_router
 from routers.medications import medications_router
 from routers.appointments import appointments_router
+from routers.pagina_conocenos import pagina_conocenos_router
+from routers.agendamiento_citas import agendamiento_citas_router
+from routers.orden_medicamentos import orden_medicamentos_router
 
 app = FastAPI()
 app.title = "DOCUMENTACION DEL PROYECTO SIAS"
@@ -38,6 +41,9 @@ app.include_router(ips_router)
 app.include_router(admin_router)
 app.include_router(specialist_router)
 app.include_router(medications_router)
+app.include_router(pagina_conocenos_router)
+app.include_router(agendamiento_citas_router)
+app.include_router(orden_medicamentos_router)
 app.add_middleware(ErrorHandler)
 app.include_router(login_router)
 app.include_router(test_router)

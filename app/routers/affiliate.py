@@ -13,19 +13,6 @@ affiliate_router = APIRouter()
 db = Session()
 
 
-@affiliate_router.get("/create/affiliate", tags=["CRUD AFILADOS"])
-async def create_affiliate(affiliate: Affiliate_schema):
-    """
-    esta funcion crea un registro de tipo afiliado utilizando el archivo en el paquete de schema,
-    con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
-    seguridad ya que los afiliados  tienen varios permisos, luego de valiadar, si el token no es correcto
-    retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
-    """
-
-    Affiliate_service(db).create_Affiliate(affiliate)
-    return JSONResponse(status_code=200, content={"mensage": "el usuario se ha registrado"})
-
-
 @affiliate_router.get("/all/affiliate", tags=["CRUD AFILADOS"], dependencies=[Depends(JWTBearer())])
 async def get_all_affiliate(token: str = Depends(JWTBearer())):
     """
@@ -86,16 +73,14 @@ async def update_afiliate(affialte: affilate_update, token: str = Depends(JWTBea
     return JSONResponse(status_code=200, content={"mensage": "EL afiliado ha sido actualizado"})
 
 
-@affiliate_router.delete("/delete/affiliate", tags=["CRUD AFILADOS"], dependencies=[Depends(JWTBearer())])
-async def delete_affialte(token: str = Depends(JWTBearer())):
+@affiliate_router.delete("/delete/affiliate", tags=["CRUD AFILADOS"])
+async def delete_affialte(id: int):
     """
     esta funcion eliminar un registro de tipo admin,
     con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
     seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
     retorna un error, pero si si, verifica los datos y sin son validos retornara que el usuario ha sido eliminado
     """
-    payload = validate_token(token)
-    id = payload.get("id")
     if not id:
         raise HTTPException(
             status_code=400, detail="No se pudo obtener el número de documento del token")

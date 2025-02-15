@@ -7,6 +7,8 @@ from services.affiliate_services import Affiliate_service
 from config.db import Session
 from schemas.login_schema import login_schema_sign_up
 
+email = []
+
 login_router = APIRouter()
 template = Jinja2Templates(directory="frontend")
 
@@ -29,12 +31,10 @@ def login(document_type: str = Form(...),
                                         password=password)
     db = Session()
 
-    # Verificar si es un afiliado
     validate_user = Affiliate_service(db).vericate_afilate(
         login_schema_sign_up=login_schema)
     user_type = "affiliate" if validate_user else None
 
-    # Si no es afiliado, verificar si es un administrador
     if not validate_user:
         validate_user = Admin_service(db).verificate_admin(
             login_schema_sign_up=login_schema)
@@ -44,14 +44,18 @@ def login(document_type: str = Form(...),
         user_data = {"id": validate_user.id, "email": validate_user.email}
         token: str = create_token(user_data)
 
-        # Crear una respuesta de redirección y almacenar el token en cookies
-        response = RedirectResponse(url="/inicio", status_code=302)
+        if user_type == "affiliate":
+            email.append(validate_user.email)
+            response = RedirectResponse(url="/inicio", status_code=302)
+        else:
+            email.append(validate_user.email)
+            response = RedirectResponse(url="/inicio_admin", status_code=302)
+
         response.set_cookie(key="access_token", value=token,
                             httponly=True, secure=True, samesite="Lax")
 
         return response
 
-    # Si no se encuentra el usuario
     raise HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="El usuario no está registrado"

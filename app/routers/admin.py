@@ -13,20 +13,14 @@ admin_router = APIRouter()
 db = Session()
 
 
-@admin_router.post("/create/admin", tags=["CRUD ADMIN"], dependencies=[Depends(JWTBearer())])
-async def create_admin(admin: Admin_schema, token: str = Depends(JWTBearer())):
+@admin_router.post("/create/admin", tags=["CRUD ADMIN"])
+async def create_admin(admin: Admin_schema):
     """
     esta funcion crea un registro de tipo admin utilizando el archivo en el paquete de schema,
     con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
     seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
     retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
     """
-
-    payload = validate_token(token)
-    email = payload.get("email")
-    validate = Admin_service(db).validate_admin(email)
-    if not validate:
-        return JSONResponse(content={"mensage": "el usuario no tiene permisos"})
 
     a = Admin_service(db).create_Admin(admin)
     if not a:
@@ -96,15 +90,14 @@ async def update_admin(admin: Admin_update, token: str = Depends(JWTBearer())):
 
 
 @admin_router.delete("/dalete/admin", tags=["CRUD ADMIN"], dependencies=[Depends(JWTBearer())])
-async def delete_delete(token: str = Depends(JWTBearer())):
+async def delete_delete(email: str):
     """
     esta funcion eliminar un registro de tipo admin,
     con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
     seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
+
     retorna un error, pero si si, verifica los datos y sin son validos retornara que el usuario ha sido eliminado
     """
-    payload = validate_token(token)
-    email = payload.get("email")
     validate = Admin_service(db).validate_admin(email)
     if not validate:
         return JSONResponse(content={"mensage": "el usuario no tiene permisos"})
