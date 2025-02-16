@@ -49,3 +49,9 @@ class filter_afiliate_schema(BaseModel):
     email: Optional[str] = Field(default="")
     Clinical_history: Optional[int] = Field(default="")
     city:  Optional[str] = Field(default="")
+
+
+class LoginChatbotRequest(BaseModel):
+    type_document: str
+    document_number: int
+    email: str
