@@ -16,6 +16,7 @@ from models.Specialist import Specialist_model
 from models.Medications import Medications_model
 
 from routers.test import test_router
+from routers.configurar_cuenta import Config_datos_router
 from routers.pagina_inicio import pagina_inicio_router
 from routers.specialist import specialist_router
 from routers.admin import admin_router
@@ -40,6 +41,7 @@ app.include_router(hospital_router)
 app.include_router(ips_router)
 app.include_router(admin_router)
 app.include_router(specialist_router)
+app.include_router(Config_datos_router)
 app.include_router(medications_router)
 app.include_router(pagina_conocenos_router)
 app.include_router(agendamiento_citas_router)

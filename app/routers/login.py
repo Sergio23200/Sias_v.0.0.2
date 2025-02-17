@@ -7,15 +7,13 @@ from services.affiliate_services import Affiliate_service
 from config.db import Session
 from schemas.login_schema import login_schema_sign_up
 
-email = []
-
 login_router = APIRouter()
 template = Jinja2Templates(directory="frontend")
 
 
 @login_router.get("/", tags=["auth"])
 def login_sesion(request: Request):
-    return template.TemplateResponse("templates/inicio_sesion.html", {"request": request})
+    return template.TemplateResponse("templates/inicioSesion.html", {"request": request})
 
 
 @login_router.post("/login/", tags=["auth"])
@@ -45,10 +43,8 @@ def login(document_type: str = Form(...),
         token: str = create_token(user_data)
 
         if user_type == "affiliate":
-            email.append(validate_user.email)
             response = RedirectResponse(url="/inicio", status_code=302)
         else:
-            email.append(validate_user.email)
             response = RedirectResponse(url="/inicio_admin", status_code=302)
 
         response.set_cookie(key="access_token", value=token,

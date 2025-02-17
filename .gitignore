@@ -1,0 +1,12 @@
+# Permitir el archivo .gitignore
+!.gitignore
+
+# Excluir la carpeta de caché de Python
+__pycache__/
+
+# Excluir entornos virtuales
+env/
+venv/
+
+#vsc
+.vscode

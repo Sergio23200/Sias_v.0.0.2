@@ -4,12 +4,13 @@
   margin: 0%;
 }
 body {
-  background-image: url("/static/img/fondo-inicio-sesion.png");
   background-size: cover;
+  background-image: url("/static/img/imgFondoInicioSesion.png");
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
 }
+
 header {
   background-color: #3f7fc2;
   color: white;

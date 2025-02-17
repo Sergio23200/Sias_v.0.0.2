@@ -85,20 +85,3 @@ async def create_appointments(data: medical_appointments_schema, token: str = De
         return JSONResponse(content={"mensage": "el hospitañ no esta registrado"})
     appoinments_service(db).create_appoinments(data)
     return JSONResponse(content={"mensage": "la cita  se ha registrado"})
-
-
-@appointments_router.delete("/dalete/appointments",  tags=["CRUD APPOINSTMENTS"], dependencies=[Depends(JWTBearer())])
-async def delete_appointments(generic_name: str, token: str = Depends(JWTBearer())):
-    """
-    esta funcion eliminar un registro de tipo medications,
-    con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
-    seguridad ya que los admins tienen varios permisos, luego de valiadar, si el token no es correcto
-    retorna un error, pero si si, verifica los datos y sin son validos retornara que el usuario ha sido eliminado
-    """
-    payload = validate_token(token)
-    email = payload.get("email")
-    validate = Admin_service(db).validate_admin(email)
-    if not validate:
-        return JSONResponse(content={"mensage": "el usuario no tiene permisos"})
-    result = appoinments_service(db).delete_appoinments(generic_name)
-    return JSONResponse(status_code=200, content={"mensage": "el medicamento ha sido eliminados"})

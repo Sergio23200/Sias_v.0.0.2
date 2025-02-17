@@ -127,3 +127,11 @@ class Affiliate_service():
             return None
         else:
             return result["email"]
+
+    def validate_affilate_email(self, email: str):
+        result = self.db.query(Affiliate_model).filter(
+            Affiliate_model.email == email).first()
+        if result is None:
+            return None
+        else:
+            return result

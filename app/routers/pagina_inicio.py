@@ -13,8 +13,11 @@ template = Jinja2Templates(directory="frontend")
 
 
 @pagina_inicio_router.get("/inicio", tags=["pagina_principal"], dependencies=[Depends(JWTBearer())])
-def pagina_principal(request: Request):
-    return template.TemplateResponse("templates/paginaPrincipal.html", {"request": request})
+def pagina_principal(request: Request, token: str = Depends(JWTBearer())):
+    return template.TemplateResponse(
+        "templates/paginaPrincipal.html",
+        {"request": request, "token": token}
+    )
 
 
 @pagina_inicio_router.get("/inicio_admin", tags=["pagina_principal"], dependencies=[Depends(JWTBearer())])
