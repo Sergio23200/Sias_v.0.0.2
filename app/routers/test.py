@@ -9,4 +9,8 @@ template = Jinja2Templates(directory=("frontend"))
 @test_router.get("/test", tags=["auth"])
 def login_sesion(request: Request):
 
+<<<<<<< HEAD
     return template.TemplateResponse("templates/actualizarDatosUser.html", {"request": request})
+=======
+    return template.TemplateResponse("templates/inicio_sesion.html", {"request": request})
+>>>>>>> caro_main

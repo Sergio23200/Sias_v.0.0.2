@@ -9,6 +9,7 @@
       href="{{ url_for('static', path='/style/style_gestionCitas.css') }}"
     />
   </head>
+<<<<<<< HEAD
   <body>
     <div class="container">
       <h1>Gestión de Citas</h1>
@@ -21,4 +22,29 @@
       </p>
     </div>
   </body>
+=======
+  <header>
+    <div class="menu-container">
+        <button class="menu-icon" onclick="toggleMenu()">☰</button>
+        <nav class="menuOptions" id="menuOptions">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Conócenos</a></li>
+                <li><a href="#">Información Usuario</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<body>
+    <main class="container">
+        <h1>Gestión de Citas</h1>
+        <button class="btn">Eliminar Cita</button>
+        <button class="btn">Ver Citas</button>
+        <button class="btn">Actualizar Cita</button>
+        <button class="btn">Crear Cita</button>
+    </main>
+    
+    <script src="{{ url_for('static', path='/js/logic_gestionCitas.js')}}"></script>
+</body>
+>>>>>>> caro_main
 </html>
