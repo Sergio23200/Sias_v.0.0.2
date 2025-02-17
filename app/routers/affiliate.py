@@ -8,6 +8,7 @@ from services.affiliate_services import Affiliate_service
 from fastapi import APIRouter, Depends, HTTPException, Query
 from utils.jwt_manger import validate_token
 from middleware.jwt_bear import JWTBearer
+from schemas.affiliate_schema import LoginChatbotRequest
 affiliate_router = APIRouter()
 
 db = Session()
@@ -87,3 +88,10 @@ async def delete_affialte(id: int):
     result = Affiliate_service(db).delete_affilate(id)
 
     return JSONResponse(status_code=200, content={"message": "El afiliado ha sido eliminado"})
+
+
+@affiliate_router.post("/chatbot/login", tags=["CRUD AFILIADOS CHATBOT"])
+async def login_chatbot(request: filter_afiliate_schema):
+    result = Affiliate_service(db).get_affiliates_filter(request)
+    
+    return result
