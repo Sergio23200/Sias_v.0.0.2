@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestión de Citas</title>
+    <title>Gestión orden Medicamentos</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', path='/style/style_gestionCitas.css') }}"
+      href="{{ url_for('static', path='/style/style_gestionMedicamentos.css') }}"
     />
   </head>
   <header>
@@ -24,12 +24,11 @@
 <body>
     <main class="container">
         <h1>Gestión de Citas</h1>
-        <button class="btn">Eliminar Cita</button>
-        <button class="btn">Ver Citas</button>
-        <button class="btn">Actualizar Cita</button>
-        <button class="btn">Crear Cita</button>
+        <button class="btn">Ver orden medicamentos</button>
+        <button class="btn">Eliminar orden medimentos</button>
+        <button class="btn">Actualizar orden medicamentos</button>
     </main>
     
-    <script src="{{ url_for('static', path='/js/logic_gestionCitas.js')}}"></script>
+    <script src="{{ url_for('static', path='/js/logic_gestionMedicamentos.js')}}"></script>
 </body>
 </html>

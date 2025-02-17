@@ -88,8 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Función para manejar el menú hamburguesa en dispositivos móviles
-function toggleMenu() {
-  const menu = document.getElementById("menuOptions");
-  menu.classList.toggle("show"); // Alterna la visibilidad del menú
-}
+    // Función para manejar menu desplegable
+    function toggleMenu() {
+      const menu = document.getElementById("menuOptions");
+      menu.classList.toggle("active"); // Agrega o quita la clase "active"
+  }

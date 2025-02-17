@@ -1,0 +1,191 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: linear-gradient(135deg, hsl(206, 44%, 28%), hwb(210 42% 17%));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Estilos del header */
+  header {
+    background: linear-gradient(90deg, #3f7fc2, #0056b3);
+    color: white;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Contenedor del menú */
+  .menu-container {
+    position: absolute;
+    left: 20px;
+  }
+  
+  /* Botón del icono de menú */
+  .menu-icon {
+    background: none;
+    border: none;
+    font-size: 5vh;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .menu-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Estilos del menú desplegable */
+  .menuOptions {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: #ffffff;
+    width: 150px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    overflow: hidden;
+  }
+  
+  .menuOptions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menuOptions li {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .menuOptions li a {
+    text-decoration: none;
+    color: #3f7fc2;
+    font-weight: 700;
+    display: block;
+    padding: 10px;
+  }
+  
+  .menuOptions li:hover {
+   
+    background: hsl(239, 56%, 83%);
+  }
+  
+  /* Mostrar menú cuando está activo */
+  .menuOptions.active {
+    display: block;
+  }
+  
+  /* Contenedor de citas */
+  .container {
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 5%;
+    padding: 2%;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #007bff;
+    animation: fadeInUp 1s ease-in-out;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  /* Estilo del título */
+  h1 {
+    color: #0056b3;
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    -webkit-background-clip: text;
+    background-clip: none;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  /* Botones */
+  .btn {
+    width: 80%;
+    max-width: 300px;
+    margin: 12px auto;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(90deg, #66b2ff, #3399ff);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  .btn:hover {
+    background: linear-gradient(90deg, #3399ff, #0056b3);
+    transform: scale(1.05);
+  }
+  
+  .btn:active {
+    background-color: #0056b3;
+  }
+  
+  /* Decoración */
+  .decoration {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+    font-style: italic;
+    font-weight: 500;
+  }
+  
+  /* Animaciones */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @media (max-width: 768px) {
+    header {
+        height: auto;
+        padding: 20px;
+    }
+  
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+  
+    .btn {
+        width: 100%;
+    }
+  }
+  
+  
