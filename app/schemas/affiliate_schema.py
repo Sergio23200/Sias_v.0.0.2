@@ -55,3 +55,10 @@ class LoginChatbotRequest(BaseModel):
     type_document: str
     document_number: int
     email: str
+
+
+class return_afiliate(BaseModel):
+    fullname: str
+    document_number: int
+    birthdate: date
+    membership_type: str

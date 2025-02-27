@@ -1,4 +1,4 @@
-from schemas.affiliate_schema import Affiliate_schema, affilate_update, filter_afiliate_schema
+from schemas.affiliate_schema import Affiliate_schema, affilate_update, filter_afiliate_schema, return_afiliate
 from services.admin_services import Admin_service
 from fastapi.responses import JSONResponse
 from config.db import Session
@@ -14,21 +14,26 @@ affiliate_router = APIRouter()
 db = Session()
 
 
-@affiliate_router.get("/all/affiliate", tags=["CRUD AFILADOS"], dependencies=[Depends(JWTBearer())])
-async def get_all_affiliate(token: str = Depends(JWTBearer())):
+@affiliate_router.get("/all/affiliate", tags=["CRUD AFILADOS"])
+async def get_all_affiliate():
     """
     esta funcion trear todos los  registro de la base de datos de  afiliado
     con este busca tambien si el usuario esta autenticado antes de hacer el proceso, esto por 
     seguridad ya que los afiliados tienen varios permisos, luego de valiadar, si el token no es correcto
     retorna un error, pero si si, verifica los datos y sin son validos retornara  que el usuario ha sido eliminado
     """
-    payload = validate_token(token)
-    email = payload.get("email")
-    validate = Admin_service(db).validate_admin(email)
-    if not validate:
-        return JSONResponse(content={"mensage": "el usuario no tiene permisos"})
-    result = Affiliate_service(db).get_afiliate()
-    return JSONResponse(status_code=200, content=jsonable_encoder(result))
+    results = Affiliate_service(db).get_afiliate()
+    users = []
+    print(results)
+    for result in results:
+        template = {
+            "nombre": result.fullname,
+            "cedula": result.document_number,
+            "fecha_nacimiento": result.birthdate,
+            "tipo_afiliacion": result.membership_type
+        }
+        users.append(template)
+    return JSONResponse(status_code=200, content=jsonable_encoder(users))
 
 
 @affiliate_router.get("/filter/affiliate", tags=["CRUD AFILADOS"], dependencies=[Depends(JWTBearer())])
@@ -93,5 +98,5 @@ async def delete_affialte(id: int):
 @affiliate_router.post("/chatbot/login", tags=["CRUD AFILIADOS CHATBOT"])
 async def login_chatbot(request: filter_afiliate_schema):
     result = Affiliate_service(db).get_affiliates_filter(request)
-    
+
     return result

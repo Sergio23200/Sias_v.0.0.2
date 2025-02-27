@@ -123,4 +123,4 @@ class Admin_service():
         if result is None:
             return None
         else:
-            return result.email
+            return result

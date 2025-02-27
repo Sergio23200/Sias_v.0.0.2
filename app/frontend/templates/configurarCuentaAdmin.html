@@ -54,9 +54,6 @@
                   <strong>Celular Principal:</strong> {{first_number}}
                 </li>
                 <li class="list-group-item">
-                  <strong>Celular Secundario:</strong> {{second_number}}
-                </li>
-                <li class="list-group-item">
                   <strong>Documento:</strong> {{number_document}}
                   ({{document_type}})
                 </li>
@@ -64,14 +61,11 @@
                   <strong>Ciudad:</strong> {{city}}
                 </li>
                 <li class="list-group-item">
-                  <strong>Afiliación:</strong> {{membership_type}}
-                </li>
-                <li class="list-group-item">
-                  <strong>Fecha de Creación:</strong> {{created_date}}
+                  <strong>titulo: </strong> {{job_title}}
                 </li>
               </ul>
               <div class="text-center mt-3">
-                <a href="/update/userpg" class="btn btn-warning"
+                <a href="/update/adminpg" class="btn btn-warning"
                   >Actualizar Datos</a
                 >
               </div>
@@ -127,7 +121,9 @@
             data-bs-parent="#configAccordion"
           >
             <div class="accordion-body text-center">
-              <a href="/inicio" class="btn btn-secondary">Volver al Inicio</a>
+              <a href="/inicio_admin" class="btn btn-secondary"
+                >Volver al Inicio</a
+              >
             </div>
           </div>
         </div>
