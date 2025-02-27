@@ -1,0 +1,170 @@
+HOSPITALES :
+
+  {
+    "name_hospital": "Hospital Universitario San Ignacio",
+    "city": "Bogotá",
+    "Address": "Carrera 7 #40-62",
+    "email": "contacto@sanignacio.edu.co",
+    "phone_number": "+57 1 5946161",
+    "ambulance_dispo": "Sí",
+    "ambulances_on_route": 3,
+    "create_by": 1
+  }
+
+  {
+    "name_hospital": "Fundación Valle del Lili",
+    "city": "Cali",
+    "Address": "Carrera 98 #18-49",
+    "email": "info@valledellili.org",
+    "phone_number": "+57 2 3319090",
+    "ambulance_dispo": "No",
+    "ambulances_on_route": 0,
+    "create_by": 2
+  }
+
+  {
+    "name_hospital": "Hospital Pablo Tobón Uribe",
+    "city": "Medellín",
+    "Address": "Calle 78B #69-240",
+    "email": "atencion@hptu.org.co",
+    "phone_number": "+57 4 4459000",
+    "ambulance_dispo": "Sí",
+    "ambulances_on_route": 1,
+    "create_by": 3
+  }
+
+  {
+    "name_hospital": "Hospital General de Medellín",
+    "city": "Medellín",
+    "Address": "Calle 80 #45-98",
+    "email": "info@hgm.gov.co",
+    "phone_number": "+57 4 5128888",
+    "ambulance_dispo": "No",
+    "ambulances_on_route": 0,
+    "create_by": 2
+  }
+
+  {
+    "name_hospital": "Hospital Universitario del Valle",
+    "city": "Cali",
+    "Address": "Calle 5 #36-08",
+    "email": "atencion@huv.gov.co",
+    "phone_number": "+57 2 6206000",
+    "ambulance_dispo": "Sí",
+    "ambulances_on_route": 1,
+    "create_by": 3
+  }
+
+
+
+IPS : 
+  {
+    "name_hospital": "Clínica del Country",
+    "city": "Bogotá",
+    "Address": "Carrera 16 #82-57",
+    "email": "contacto@clinicadelcountry.com",
+    "create_by": 1,
+    "phone_number": "+57 1 5300470"
+  }
+
+{
+    "name_hospital": "Centro Médico Imbanaco",
+    "city": "Cali",
+    "Address": "Calle 5B1 #38-71",
+    "email": "info@imbanaco.com",
+    "create_by": 2,
+    "phone_number": "+57 2 5580707"
+    }
+
+  {
+    "name_hospital": "Clínica Medellín",
+    "city": "Medellín",
+    "Address": "Calle 7 #39-290",
+    "email": "atencion@clinicamedellin.com",
+    "create_by": 3,
+    "phone_number": "+57 4 3113030"
+  }
+
+{
+    "name_hospital": "Hospital Universitario Fundación Santa Fe",
+    "city": "Bogotá",
+    "Address": "Carrera 7 #117-15",
+    "email": "info@fsfb.org.co",
+    "create_by": 4,
+    "phone_number": "+57 1 6030303"
+  }
+
+  {
+    "name_hospital": "Clínica Portoazul",
+    "city": "Barranquilla",
+    "Address": "Calle 110 #50-60",
+    "email": "contacto@portoazul.com",
+    "create_by": 5,
+    "phone_number": "+57 5 3851300"
+  }
+
+  {
+    "name_hospital": "Clínica Marly",
+    "city": "Bogotá",
+    "Address": "Carrera 8 #50-50",
+    "email": "servicioalcliente@clinicademarly.com",
+    "create_by": 6,
+    "phone_number": "+57 1 3436600"
+  }
+
+MEDICAMENTOS :
+
+ {
+    "generic_name": "Paracetamol",
+    "dose": 500,
+    "price": 10,
+    "contraindications": "No administrar en caso de insuficiencia hepática grave",
+    "created_by": "Dr. Juan Pérez",
+    "Stocks": 100
+  }
+
+  {
+    "generic_name": "Ibuprofeno",
+    "dose": 400,
+    "price": 15,
+    "contraindications": "Evitar en pacientes con úlcera gástrica activa",
+    "created_by": "Dra. María Gómez",
+    "Stocks": 200
+  }
+
+  {
+    "generic_name": "Amoxicilina",
+    "dose": 500,
+    "price": 25,
+    "contraindications": "No usar en pacientes alérgicos a penicilinas",
+    "created_by": "Dr. Carlos Ramírez",
+    "Stocks": 150
+  }
+
+  {
+    "generic_name": "Loratadina",
+    "dose": 10,
+    "price": 12,
+    "contraindications": "No administrar en menores de 2 años",
+    "created_by": "Dra. Ana Torres",
+    "Stocks": 180
+  }
+
+  {
+    "generic_name": "Metformina",
+    "dose": 850,
+    "price": 20,
+    "contraindications": "Contraindicado en insuficiencia renal severa",
+    "created_by": "Dr. Pedro Sánchez",
+    "Stocks": 120
+  }
+
+  {
+    "generic_name": "Losartán",
+    "dose": 50,
+    "price": 30,
+    "contraindications": "No usar en embarazo",
+    "created_by": "Dra. Laura Fernández",
+    "Stocks": 90
+  }
+
